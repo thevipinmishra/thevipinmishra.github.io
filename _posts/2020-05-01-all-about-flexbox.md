@@ -2,6 +2,7 @@
 layout: post
 title: "Getting Started with CSS Flexbox in 2020 - Part 1"
 comments: true
+description: CSS Flexbox for absolute begginers, Learn Flexbox the right way!
 author: "Vipin Mishra"
 ---
 
