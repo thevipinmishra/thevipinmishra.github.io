@@ -1,0 +1,79 @@
+---
+layout: default
+bClass: 'post__page'
+---
+
+<nav>
+    <header class="wrap">
+        <h1 class="branding">
+            <a href="/">Vipin Mishra</a>
+        </h1>
+
+        <button class="hamburger">
+            <svg class="icon__open" fill="currentColor" viewBox="0 0 20 20" class="w-8 h-8">
+                <path fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <svg class="icon__close" fill="currentColor" viewBox="0 0 20 20" class="w-8 h-8">
+                <path fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </button>
+
+        <ul class="menu">
+            <!-- <li><a href="#">Blog</a></li>
+            <li><a href="#">Projects</a></li> -->
+            <li><a href="https://forms.gle/uaAb7vVWwSUSPddx6">Contact</a></li>
+        </ul>
+    </header>
+</nav>
+
+<main>
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header {% if page.featuredImage %}has-image{% endif %}" {% if page.featuredImage %} style=' background:
+            linear-gradient(
+              rgba(44, 62, 80, 0.88), 
+              rgba(44, 62, 80, 0.92)
+            ),
+            url({{page.featuredImage}}) center center no-repeat; background-size: cover;' {% endif %}>
+            <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+            <p class="post-meta">
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                    {{ page.date | date: date_format }}
+                </time>
+                {%- if page.modified_date -%}
+                ~
+                {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+                <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+                    {{ mdate | date: date_format }}
+                </time>
+                {%- endif -%}
+                {%- if page.author -%}
+                {% for author in page.author %}
+                <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+                {%- if forloop.last == false %}, {% endif -%}
+                {% endfor %}
+                {%- endif -%}</p>
+        </div>
+
+        <div class="post-content e-content wrap" itemprop="articleBody">
+            {{ content }}
+        </div>
+
+        <div class="post__footer wrap">
+            {% include share.html %}
+
+            {% if page.comments %}
+            <div class="post__comments">
+                {% include comments.html %}
+            </div>
+            {% endif %}
+
+            <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+        </div>
+    </article>
+</main>
