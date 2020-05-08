@@ -161,6 +161,29 @@
 .highlight {
 	border-radius: 2px;
 	overflow: hidden;
+
+	code {
+		display: block;
+		width: 100%;
+		padding: var(--gutter);
+		position: relative;
+
+		&[data-lang]::before {
+			content: attr(data-lang);
+			position: absolute;
+			font-family: var(--font-sans-serif);
+			right: 0.5rem;
+			top: 0.5rem;
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			display: inline-block;
+			padding: 0.25rem 0.5rem;
+			border-radius: 2px;
+			color: #ff35a9;
+		}
+	}
 }
 
 .highlight .hll {
