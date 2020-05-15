@@ -274,7 +274,7 @@ Here's how it looks 🙄. untill and unless, you got the free space of 1000px, i
   </div>
   </div>
 
-Okay, so the default value of `flex-wrap` is **no-wrap** and the flex-items will not go the single line by default. it accepts another two values, that are `wrap` and `wrap-reverse`.
+Okay, so the default value of `flex-wrap` is **no-wrap** and the flex-items will not go the next line. it accepts another two values, that are `wrap` and `wrap-reverse`.
 
 `flex-wrap: wrap` will allow the flex-items to go the new line or multiple lines if needed and they will still be flexible in that space.
 
