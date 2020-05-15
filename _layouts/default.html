@@ -8,6 +8,9 @@
   <link rel="stylesheet" href=" ">
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   {% seo title=false %}
+  {% if jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
 </head>
 
 <body class="{% if page.layout == 'post' %}post__page{% endif %}">
