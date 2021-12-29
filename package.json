@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "predeploy": "vite build",
+    "predeploy": "astro build",
     "deploy": "gh-pages -d dist",
     "dev": "astro dev",
     "start": "astro dev",
