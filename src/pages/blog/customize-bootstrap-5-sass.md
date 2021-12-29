@@ -4,7 +4,7 @@ setup: |
 title: Customizing Bootstrap 5 Using Sass
 publishDate: 27 Dec 2021
 author: Vipin Mishra
-heroImage: "../../../public/assets/blog/customizing-bootstrap-5-sass.png"
+heroImage: "/assets/blog/customizing-bootstrap-5-sass.png"
 description: A quick guide to customizing Bootstrap 5 using Sass. Following it, you can get a fully customized Bootstrap build as per you project needs.
 tags: [Sass, bootstrap]
 ---
