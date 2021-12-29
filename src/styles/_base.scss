@@ -1,0 +1,30 @@
+$accent: #1270e3;
+
+:root {
+  --accent: #{$accent};
+  --accent-dark: #{darken($accent, 10%)};
+  --duration: 140ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+  outline-color: var(--accent-dark);
+  transition: background 0.2s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+body {
+  font-size: var(--bs-body-font-size);
+  font-family: var(--bs-font-sans-serif);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  border-top: 1ch solid var(--accent-dark);
+}

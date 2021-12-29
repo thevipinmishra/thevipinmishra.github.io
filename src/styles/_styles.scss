@@ -1,0 +1,55 @@
+@import "mixins";
+
+.site-header {
+  background-color: var(--gray-0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%230e59b4' fill-opacity='0.045'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  padding-inline: 0;
+  padding-block-start: var(--size-8);
+  padding-block-end: var(--size-10);
+  clip-path: ellipse(177% 100% at 14.44% 0%);
+
+  .header-cta {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--radius-2);
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    padding: 1em 3em;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    transition: background var(--duration) ease;
+    box-shadow: var(--shadow-1);
+
+    .name {
+      font-weight: 800;
+      font-size: var(--font-size-fluid-3);
+      color: var(--gray-dark);
+    }
+
+    .headline {
+      font-weight: 400;
+      font-size: var(--size-3);
+
+      @include break(md) {
+        font-size: var(--size-4);
+      }
+    }
+
+    &:hover {
+      background: var(--accent-dark);
+
+      svg {
+        animation: var(--animation-shake-x) forwards;
+        animation-timing-function: var(--ease-squish-2);
+        animation-duration: 0.5s;
+      }
+    }
+
+    @include focus-ring;
+  }
+}

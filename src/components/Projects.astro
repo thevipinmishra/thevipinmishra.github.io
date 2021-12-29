@@ -1,0 +1,320 @@
+---
+import { Browser, GithubLogo } from "phosphor-react";
+---
+
+<section class="projects py-5 py-lg-6">
+  <div class="projects-inner container">
+    <h2 class="section-title">Projects</h2>
+    <p class="text-muted">
+      A few of my public web-design projects that I kind of handled single
+      handedly!
+    </p>
+
+    <div class="projects-grid mt-5">
+      <div class="project-item">
+        <h3 class="project-title">Nikgapps</h3>
+        <p class="text-muted project-about my-3">
+          Nikgapps is a custom Google Apps package provider. If you are a
+          hardcore Android enthusiast &amp; into{" "}
+          <a
+            href="https://en.wikipedia.org/wiki/Rooting_(Android)"
+            target="_blank"
+            rel="noreferrer"
+          >
+            rooting
+          </a>{" "}
+          and Custom ROMs stuff, you would probably have come across this wonderful
+          project!
+        </p>
+        <div class="links">
+          <a
+            href="https://nikgapps.com/"
+            target="_blank"
+            rel="noreferrer"
+            class="live-preview"
+          >
+            <Browser size={20} /> Live Preview
+          </a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">PixysOS</h3>
+        <p class="text-muted project-about my-3">
+          PixysOS is an AOSP based Custom ROM project that you can use on your
+          Android devices if you are into it.
+        </p>
+        <div class="links">
+          <a
+            href="https://pixysos.com/"
+            target="_blank"
+            rel="noreferrer"
+            class="live-preview"
+          >
+            <Browser size={20} /> Live Preview
+          </a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">Pixel Experience</h3>
+        <p class="text-muted  project-about my-3">
+          I had the opportunity to design the website for one of the most
+          popular Android Custom ROMs project, Pixel Experience. Color scheme of
+          this website has been modified (not by me) a lot since I handed it off
+          but it was a fun project to work with.
+        </p>
+        <div class="links">
+          <a
+            href="https://download.pixelexperience.org/"
+            target="_blank"
+            rel="noreferrer"
+            class="live-preview"
+          >
+            <Browser size={20} /> Live Preview
+          </a>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <h3 class="project-title">thePortfolio</h3>
+        <p class="text-muted  project-about  my-3">
+          This is a modern and responsive Open-Source portfolio built for anyone
+          to use. Honestly, I don’t know if anyone’s using it though. Looking
+          for a good portfolio template? Why not use it?
+        </p>
+        <div class="links">
+          <a
+            href="https://thevipinmishra.github.io/theportfolio/"
+            target="_blank"
+            rel="noreferrer"
+            class="live-preview"
+          >
+            <Browser size={20} /> Live Preview
+          </a>
+
+          <a
+            href="https://thevipinmishra.github.io/theportfolio/"
+            target="_blank"
+            rel="noreferrer"
+            class="github"
+          >
+            <GithubLogo size={20} /> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="other-projects mt-5 mt-lg-10">
+      <h3 class="section-title">Quick 1 Hour Creations</h3>
+      <p class="text-muted">
+        Quick fun & simple projects that I did over my weekends! ;)
+      </p>
+
+      <div class="other-project-grid mt-5">
+        <div class="op-item">
+          <h3>Color Shades Generator</h3>
+          <p class="my-3  project-about text-muted">
+            Built this very simple color shades 🌈 generator using ReactJS. Give
+            it a HEX color and it will give you 10 light and dark shades of the
+            color.
+          </p>
+          <div class="links">
+            <a
+              href="https://thevipinmishra.github.io/color-shades-generator/"
+              target="_blank"
+              rel="noreferrer"
+              class="live"
+            >
+              Live Preview
+            </a>
+            <a href="#" class="source"> GitHub </a>
+          </div>
+        </div>
+
+        <div class="op-item">
+          <h3>Breaking Bad Characters</h3>
+          <p class="my-3  project-about text-muted">
+            A simple application showing almost all the legendary Breaking Bad
+            characters 🔥. This is one of my favourite shows and I grabbed some
+            data from the API and created a little page, just for fun!
+          </p>
+          <div class="links">
+            <a
+              href="https://thevipinmishra.github.io/breaking-bad-characters"
+              target="_blank"
+              rel="noreferrer"
+              class="live"
+            >
+              Live Preview
+            </a>
+            <a href="#" class="source"> GitHub </a>
+          </div>
+        </div>
+
+        <div class="op-item">
+          <h3>VIPColors</h3>
+          <p class="my-3  project-about text-muted">
+            Yeah, very weird name. I don’t know why I named it{" "}
+            <em>VIPColors</em> to be honest but this was fun to create. It’s a Color
+            Picker app with some good accent colors and built using Vanilla JavaScript.
+            Wanna listen a secret? It's in <em>BETA</em> since I launched it. 🤭
+          </p>
+          <div class="links">
+            <a
+              href="https://thevipinmishra.github.io/VIPColors"
+              target="_blank"
+              rel="noreferrer"
+              class="live"
+            >
+              Live Preview
+            </a>
+            <a href="#" class="source"> GitHub </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../styles/_mixins.scss";
+  // Projects
+
+  .projects-grid {
+    display: grid;
+    gap: 3rem;
+
+    @include break(lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-item {
+      @include card-base;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-1);
+      border: 1px solid;
+      border-color: var(--grape-5);
+
+      &:nth-child(2n) {
+        border-color: var(--lime-5);
+      }
+
+      &:nth-child(3n) {
+        border-color: var(--violet-5);
+      }
+
+      &:nth-child(3n + 1) {
+        border-color: var(--indigo-5);
+      }
+
+      .project-title {
+        font-size: var(--font-size-fluid-2);
+        line-height: 1.125;
+      }
+
+      .project-about {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        flex: 1;
+
+        a {
+          color: var(--accent);
+          font-weight: 500;
+          text-decoration: underline;
+        }
+      }
+
+      .links {
+        display: flex;
+        gap: 1rem;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5em;
+          font-size: 0.88rem;
+          font-weight: 600;
+          flex: 1;
+          padding: 0.7em 1em;
+          border-radius: var(--radius-2);
+          background: var(--accent);
+          color: #fff;
+
+          &:hover {
+            background: var(--accent-dark);
+          }
+
+          @include focus-ring;
+        }
+      }
+    }
+  }
+
+  .other-project-grid {
+    display: grid;
+    gap: 3rem;
+
+    .op-item {
+      padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+      border-radius: var(--radius-2);
+      background-color: #fff;
+      border: 1.5px solid;
+      border-color: var(--yellow-5);
+
+      &:nth-child(2n) {
+        border-color: var(--teal-5);
+      }
+
+      &:nth-child(3n) {
+        border-color: var(--grape-5);
+      }
+
+      h3 {
+        font-size: var(--font-size-fluid-1);
+        line-height: 1.125;
+        position: relative;
+
+        &::before {
+          content: "";
+          --size: 0.5rem;
+          height: var(--size);
+          width: var(--size);
+          border-radius: 50%;
+          background: var(--accent);
+          position: absolute;
+          left: -1.35rem;
+          top: 0.5ch;
+        }
+      }
+
+      p {
+        font-size: 0.88rem;
+
+        @include break(md) {
+          font-size: var(--size-3);
+        }
+      }
+
+      .links {
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+          color: var(--accent);
+          font-size: 0.9rem;
+          font-weight: 600;
+
+          &:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+          }
+
+          @include focus-ring;
+        }
+      }
+    }
+  }
+</style>

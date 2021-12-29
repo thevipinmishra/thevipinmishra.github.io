@@ -1,0 +1,174 @@
+---
+import { LightbulbFilament } from "phosphor-react";
+---
+
+<section class="skills py-5 py-lg-6">
+  <div class="skills-inner container">
+    <h2 class="section-title">Technical Skill Set</h2>
+    <p class="text-muted">
+      Constantly keeping myself updated with the latest tech in frontend space!
+    </p>
+
+    <div class="skills-grid mt-5">
+      <div class="skill-item">
+        <p class="skill-title pb-3">
+          html <span>6 Years</span>
+        </p>
+        <p class="text-muted skill-about mb-4">
+          I always prefer semantic markup and keep accesibility in mind while
+          writing my <code>html</code>. I keep the structure consistent so that
+          it can be targeted well with CSS & can be scaled further.
+        </p>
+        <div class="tags">
+          <span>a11y</span>
+          <span>html5</span>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <p class="skill-title pb-3">
+          CSS/SASS <span>5 Years</span>
+        </p>
+        <p class="text-muted skill-about mb-4">
+          I write modular & scalable CSS to design pixel-perfect websites,
+          strong layout debugging skills. Can leverage the benefits of
+          frameworks like Bootstrap and Tailwind to create aesthetic and
+          beautiful layouts from absolutely scratch.
+        </p>
+        <div class="tags">
+          <span>bootstrap</span>
+          <span>tailwind</span>
+          <span>css-in-js</span>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <p class="skill-title pb-3">
+          Javascript <span>2 Years</span>
+        </p>
+        <p class="text-muted skill-about mb-4">
+          Comfortable with DOM Manuplations and interactions, events, APIs,
+          ES6/ES7 & ReactJS. Can work with any library (sort of) that has a good
+          documentation!
+        </p>
+        <div class="tags">
+          <span>es6</span>
+          <span>ReactJS</span>
+          <span>css-in-js</span>
+        </div>
+      </div>
+
+      <div class="extra-skills d-flex align-items-center">
+        <div class="icon">
+          <LightbulbFilament size={36} weight="duotone" />
+        </div>
+        <p>
+          Does Googling the console errors, doing research on them and solving
+          them by understanding the root cause count in as well? I think I got
+          them!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../styles/_mixins.scss";
+
+  // Skills
+  .skills-grid {
+    display: grid;
+    gap: 3rem;
+
+    @include break(lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .skill-item {
+      @include card-base;
+      display: flex;
+      flex-direction: column;
+
+      .skill-title {
+        font-size: var(--font-size-fluid-1);
+        font-weight: 600;
+        text-transform: uppercase;
+        display: flex;
+        align-items: baseline;
+        line-height: 1.2;
+        color: var(--accent-dark);
+
+        span {
+          position: relative;
+          display: inline-flex;
+          font-size: var(--font-size-1);
+          padding-left: 1.5rem;
+          text-transform: none;
+          font-weight: 400;
+          color: var(--gray-8);
+
+          &::before {
+            content: "";
+            --size: 5px;
+            height: var(--size);
+            width: var(--size);
+            border-radius: 50%;
+            position: absolute;
+            background: var(--gray-5);
+            left: 0.75rem;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+
+      .skill-about {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        flex: 1;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+
+        span {
+          flex-shrink: 0;
+          display: inline-flex;
+          padding: 0.4rem 1rem;
+          background: var(--gray-2);
+          border-radius: 9999rem;
+          border: 1.5px dashed var(--yellow-5);
+          font-size: 0.65rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.25px;
+          color: var(--gray-8);
+        }
+      }
+    }
+
+    .extra-skills {
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 2rem;
+      border-radius: var(--radius-2);
+      margin-inline: auto;
+      max-width: 600px;
+      background: linear-gradient(
+          to bottom right,
+          rgba(#000, 0.88),
+          rgba(#111, 0.9)
+        ),
+        url("/assets/html-code.jpg") center center no-repeat;
+      background-size: cover;
+      color: var(--gray-2);
+
+      .icon {
+        flex-shrink: 0;
+      }
+    }
+  }
+</style>

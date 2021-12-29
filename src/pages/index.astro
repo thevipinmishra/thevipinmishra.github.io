@@ -1,0 +1,42 @@
+---
+// Components
+import Header from "../components/Header.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Footer from "../components/Footer.astro";
+import RecentPosts from "../components/RecentPosts.astro";
+
+const { canonicalURL } = Astro.request;
+
+// Vars
+let title = "Vipin Mishra";
+let metaDescription =
+  "I design & develop modern websites with pixel-perfection in mind, love solving complex design problems & have a strong devotion towards CSS";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={metaDescription} />
+    <title>{title}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#1270e3" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="article" />
+    <meta property="og.url" content={canonicalURL} />
+    <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
+  </head>
+  <body>
+    <Header />
+    <Skills />
+    <Projects />
+    <RecentPosts />
+    <Footer />
+  </body>
+</html>

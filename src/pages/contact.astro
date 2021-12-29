@@ -1,0 +1,161 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { TelegramLogo, ArrowLeft } from "phosphor-react";
+// Vars
+let title = "Contact | Vipin Mishra";
+let metaDescription =
+  "I design & develop modern websites with pixel-perfection in mind, love solving complex design problems & have a strong devotion towards CSS";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={metaDescription} />
+    <title>{title}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#1270e3" />
+    <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
+  </head>
+  <body class="contact d-flex flex-column">
+    <Nav />
+    <header class="contact-header">
+      <div class="contact-header-inner text-center container">
+        <h2 class="headline">Contact</h2>
+        <p class="text-muted">Got something to talk about? Let's connect!</p>
+      </div>
+    </header>
+    <main class="contact-content">
+      <div class="main-inner container">
+        <div class=" text-center">
+          <a href="#" class="telegram-btn"
+            ><TelegramLogo size={20} /> Telegram</a
+          >
+          <span class="telegram-helper-text text-muted d-inline-block mt-2"
+            >For almost instant replies.</span
+          >
+        </div>
+
+        <p class="ruler my-5">or email on</p>
+
+        <div class="mail text-center">
+          <p class="email-id">thevipinmishra[at]gmail.com</p>
+          <span class="mail-helper-text text-muted d-inline-block mt-2"
+            >You can expect a reply within 5-6 hours.</span
+          >
+        </div>
+      </div>
+
+      <a href="/" class="back-to-home"><ArrowLeft size={20} /> Back to Home</a>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style lang="scss">
+  @import "../styles/_mixins.scss";
+
+  .contact-header {
+    padding-block: var(--size-8);
+    background: var(--gray-1);
+
+    .headline {
+      font-weight: 800;
+      font-size: var(--size-fluid-4);
+      margin-block-end: 0.5rem;
+    }
+  }
+
+  .contact-content {
+    flex: 1;
+    padding-block: var(--size-8);
+
+    .telegram-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1ch;
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      background: #0088cc;
+      color: #fff;
+      border-radius: var(--radius-2);
+
+      @include focus-ring;
+
+      &:hover {
+        background: #0071aa;
+      }
+    }
+
+    .ruler {
+      text-align: center;
+      display: inline-flex;
+      position: relative;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        background: #f1f3f5;
+        width: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        right: 7rem;
+      }
+
+      &::after {
+        left: 7rem;
+      }
+    }
+
+    .mail {
+      .email-id {
+        background: var(--gray-1);
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-2);
+      }
+      .mail-helper-text {
+        font-size: 0.8rem;
+      }
+    }
+
+    .telegram-helper-text {
+      font-size: 0.8rem;
+    }
+  }
+
+  .back-to-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1ch;
+    max-width: 200px;
+    margin-block-start: var(--size-10);
+    margin-inline: auto;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-2);
+
+    @include focus-ring;
+  }
+</style>

@@ -1,0 +1,51 @@
+@import "bootstrap/scss/functions";
+
+// sans-serif font
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+//   mono font
+$font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, Monaco,
+  Consolas, "Liberation Mono", "Courier New", monospace;
+
+//   text-muted
+$text-muted: #6b7280;
+
+// Container padding
+$container-padding-x: 1.25rem;
+
+// spacer-variables-maps
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 6,
+  9: $spacer * 7,
+  10: $spacer * 8,
+);
+
+// Limiting the container max-width to 960px
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  //   xl: 1140px,
+  //   xxl: 1320px,,,,
+);
+
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/helpers";
+
+@import "bootstrap/scss/utilities/api";

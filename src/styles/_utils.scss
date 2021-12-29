@@ -1,0 +1,23 @@
+.font-mono {
+  font-family: var(--bs-font-monospace);
+}
+
+.section-title {
+  font-size: var(--font-size-fluid-2);
+  font-weight: 800;
+  position: relative;
+  display: inline-flex;
+  line-height: 1.125;
+  margin-bottom: 0.5rem;
+
+  &::after {
+    content: "";
+    height: 0.25rem;
+    width: 60px;
+    background: var(--yellow-8);
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,140 @@
+---
+import { UserCircle } from "phosphor-react";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+
+const { content } = Astro.props;
+const { title, description, publishDate, author, heroImage, tags } = content;
+---
+
+<html lang={content.lang || "en"}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title} | Vipin Mishra</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#1270e3" />
+    <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
+    <link
+      async
+      rel="stylesheet"
+      href={Astro.resolve("../styles/typography.scss")}
+    />
+  </head>
+
+  <body class="blog-post">
+    <Nav />
+    <main>
+      <div class="article-outer">
+        <div class="article-inner">
+          <div class="article-header text-center">
+            {heroImage && (
+              <div class="article-hero mb-4 container-lg">
+                <img src={heroImage} alt={title} />
+              </div>
+            )}
+            <h2 class="article-title">{title}</h2>
+            <div class="article-meta mt-4">
+              <p class="d-inline-flex align-items-center article-author">
+                <span class="d-inline-block">{author}</span>
+                <span class="d-inline-block mx-1">on</span>
+                <span class="d-inline-block">{publishDate}</span>
+              </p>
+              <div class="tags mt-3">
+                {tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
+          </div>
+          <article class="article-content container">
+            <slot />
+          </article>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style lang="scss">
+  @import "../styles/_mixins.scss";
+
+  .article-hero {
+    max-height: 480px;
+    overflow: hidden;
+    --bs-gutter-x: 0;
+
+    img {
+      object-fit: cover;
+      margin-inline: auto;
+    }
+  }
+
+  .article-header {
+    padding: var(--size-fluid-4) 1.25rem;
+    background: #fff;
+    position: relative;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    border-bottom: 1px solid var(--gray-1);
+
+    .article-title {
+      font-size: var(--size-6);
+      line-height: 1.3;
+      font-weight: 800;
+
+      @include break(lg) {
+        font-size: var(--size-9);
+      }
+    }
+
+    .article-author {
+      font-size: var(--size-3);
+      color: var(--gray-6);
+
+      @include break(lg) {
+        font-size: var(--size-4);
+      }
+    }
+  }
+
+  .article-meta {
+    position: relative;
+    .tags {
+      span {
+        display: inline-flex;
+        font-size: 0.88rem;
+        color: var(--accent-dark);
+        font-weight: 500;
+        text-transform: uppercase;
+
+        & + span {
+          &::before {
+            content: ",";
+            display: inline-flex;
+            margin-right: 0.5em;
+          }
+        }
+      }
+    }
+  }
+
+  .article-content {
+    padding-block: 2rem;
+    border-bottom: 1px solid var(--gray-1);
+    margin-bottom: 3rem;
+
+    @include break(md) {
+      border-left: 1px solid var(--gray-1);
+      border-right: 1px solid var(--gray-1);
+    }
+
+    @include break(lg) {
+      padding-block: 4rem;
+    }
+  }
+</style>

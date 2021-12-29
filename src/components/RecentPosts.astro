@@ -1,0 +1,135 @@
+---
+import { ArrowRight } from "phosphor-react";
+const data = Astro.fetchContent("../pages/blog/*.md");
+---
+
+<section class="recent-posts py-5 py-lg-6">
+  <div class="recent-posts-inner container">
+    <h3 class="section-title">Recent Blog Posts</h3>
+    <p class="text-muted">
+      I try to share my learnings through blog posts and cover topics around
+      web-design & development!
+    </p>
+
+    <ul class="recent-blog-posts my-5">
+      {data.slice(0, 3).map((post) => (
+        <li>
+          <a class="recent-article-title" href={post.url} title={post.title}>
+            {post.title}
+          </a>
+          <span class="publish-date d-none d-lg-inline-flex">
+            {post.publishDate}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href="/blog"
+      class="blog-page-link d-inline-flex align-items-center gap-2"
+      >See the Blog <ArrowRight size={18} /></a
+    >
+  </div>
+</section>
+
+<style lang="scss">
+  @import "../styles/_mixins.scss";
+
+  // Recent Posts
+  .recent-posts {
+    .recent-blog-posts {
+      margin-inline: 0;
+      list-style: none;
+      padding: 0;
+
+      & > li {
+        display: flex;
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+        position: relative;
+        --accent: var(--indigo-5);
+
+        a {
+          font-weight: 600;
+          font-size: var(--size-3);
+          transition: color 150ms ease;
+
+          @include break(md) {
+            font-size: var(--size-4);
+          }
+
+          &:hover {
+            color: var(--accent-dark);
+          }
+        }
+
+        .publish-date {
+          display: inline-flex;
+          font-size: var(--size-3);
+          color: var(--gray-4);
+          margin-block-start: 0.5rem;
+
+          @include break(lg) {
+            margin-block-start: 0;
+            margin-inline-start: 1.5rem;
+          }
+        }
+
+        &::before {
+          content: "";
+          --size: 0.5rem;
+          height: var(--size);
+          width: var(--size);
+          background: var(--accent);
+          position: absolute;
+          left: 0.75rem;
+          top: 50%;
+          transform: translateY(-50%);
+          border-radius: 50%;
+        }
+
+        &:nth-child(2) {
+          --accent: var(--violet-5);
+        }
+
+        &:nth-child(3) {
+          --accent: var(--teal-5);
+        }
+
+        &:nth-child(4) {
+          --accent: var(--cyan-5);
+        }
+
+        &:nth-child(5) {
+          --accent: var(--yellow-5);
+        }
+
+        & + li {
+          border-top: 1px solid var(--gray-2);
+        }
+      }
+    }
+
+    .blog-page-link {
+      color: var(--accent);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      background: var(--gray-1);
+      border-radius: var(--radius-2);
+      font-weight: 500;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:hover {
+        background: var(--gray-2);
+
+        svg {
+          transform: translateX(1ch);
+        }
+      }
+    }
+  }
+</style>
