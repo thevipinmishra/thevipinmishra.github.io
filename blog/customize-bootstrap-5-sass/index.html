@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en" class="astro-R7C7ATH3"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A quick guide to customizing Bootstrap 5 using Sass. Following it, you can get a fully customized Bootstrap build as per you project needs.">
+    <title>Customizing Bootstrap 5 Using Sass | Vipin Mishra</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#1270e3">
+    <link rel="stylesheet" async="" href="../../assets/main.e413f515.css"><link rel="stylesheet" async="" href="../../assets/typography.49deeeea.css"><link rel="stylesheet" async="" href="../../assets/customize-bootstrap-5-sass.64878a19.css">
+    
+  
+
+</head>
+
+  <body class="blog-post">
+    
+<nav class="site-nav astro-7VPUZSWY">
+  <div class="nav-inner container d-flex justify-content-between align-items-center py-3 astro-7VPUZSWY">
+    <h1 class="branding astro-7VPUZSWY">
+      <a href="/" class="astro-7VPUZSWY">Vipin Mishra</a>
+    </h1>
+
+    <ul class="nav-links d-flex gap-3 ps-0 m-0 astro-7VPUZSWY">
+      <li class="astro-7VPUZSWY">
+        <a href="/contact" class="astro-7VPUZSWY">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+    <main class="astro-R7C7ATH3">
+      <div class="article-outer astro-R7C7ATH3">
+        <div class="article-inner astro-R7C7ATH3">
+          <div class="article-header text-center astro-R7C7ATH3">
+            <div class="article-hero mb-4 container-lg astro-R7C7ATH3">
+                <img src="../../../public/assets/blog/customizing-bootstrap-5-sass.png" alt="Customizing Bootstrap 5 Using Sass" class="astro-R7C7ATH3">
+              </div>
+            <h2 class="article-title astro-R7C7ATH3">Customizing Bootstrap 5 Using Sass</h2>
+            <div class="article-meta mt-4 astro-R7C7ATH3">
+              <p class="d-inline-flex align-items-center article-author astro-R7C7ATH3">
+                <span class="d-inline-block astro-R7C7ATH3">Vipin Mishra</span>
+                <span class="d-inline-block mx-1 astro-R7C7ATH3">on</span>
+                <span class="d-inline-block astro-R7C7ATH3">27 Dec 2021</span>
+              </p>
+              <div class="tags mt-3 astro-R7C7ATH3">
+                <span class="astro-R7C7ATH3">Sass</span><span class="astro-R7C7ATH3">bootstrap</span>
+              </div>
+            </div>
+          </div>
+          <article class="article-content container astro-R7C7ATH3">
+            <p>Bootstrap is the most popular CSS Library/Framework to build mobile-first responsive websites with powerful grid system, pre-built components and a good amount of utility classes.</p><h2 id="defaults-are-good-but-not-always-enough">Defaults are Good, But not Always Enough</h2><p>For most of the times, the default build can get the work done and it’s all good, but sometimes you need to customize the default values of what Bootstrap provides by default.</p><p>Let’s say you are at your work working on a big project, or maybe you got a project to work on that has different colors, spacings, fonts, etc. and you want the bootstrap to get all the work done but with the custom values.</p><p>What if you need more than 12 columns in the grid-system for some reason, what if you want to extend the spacing utilities - let’s say 10, what if you want to change the set of colors you have (<code data-astro-raw="">bg-primary</code>, <code data-astro-raw="">bg-secondary</code>, etc..)</p><p>To do this, we need 2 things, the Bootstrap’s Sass source files and the <strong>Sass</strong> itself to manuplate and compile the source files.</p><p>We can download the bootstrap source files from <a href="https://github.com/twbs/bootstrap/releases/tag/v5.1.3">GitHub releases</a> but we will be doing it through <a href="https://www.npmjs.com/">npm</a> to avoid extra work &amp; get future updates very easily.</p><p>Let’s see how we can leverage the true power of Bootstrap using Sass.</p><h3 id="customizing-bootstrap-5-using-sass">Customizing Bootstrap 5 Using Sass.</h3><p>For this article, the goal would be to customize bootstrap 5 the way so that we can have following things.</p><ol>
+<li>Let’s say <strong>15</strong> grid columns, instead of 12.</li>
+<li>spacing utilities till 10 units. (by default it’s 5).</li>
+<li>Only have the CSS for <strong>Container</strong>, <strong>Grid</strong>, <strong>Utilities</strong> &amp; <strong>Buttons</strong> in our final bootstrap build.</li>
+<li>We will get rid of border-radius on all our buttons. (just for fun, lol).</li>
+</ol><p>&amp; this should give you a clear idea on how you can get your own customized Bootstrap build in almost no time.</p><p>Let’s start. I’ll be doing this on a <strong>vanilla html/css/Sass</strong> project, but you can do this for any project that has Sass + Bootstrap available.</p><p>If you have NodeJS installed, you should have <code data-astro-raw="">npm</code> available that you can verify using <code data-astro-raw="">npm -v</code> to get the version of Node Package Manager. Install it from <a href="https://nodejs.org/en/">here</a> if you don’t already have it.</p><p>I’ve an empty directry named <strong>custom-bootstrap</strong> &amp; I’ll do a <code data-astro-raw="">npm init y</code> to initialize a base <strong>package.json</strong> file that you can ignore for now.</p><p>Let’s install Sass &amp; Bootstrap as a dependency.</p><p>I’m using <strong>npm</strong> to do this, but you can use <em>yarn</em> or <em>pnpm</em>, whatever you prefer. open the terminal and run the following command.</p><pre class="language-bash"><code data-astro-raw="" class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> sass bootstrap</code></pre><p>If everything goes well, your package.json will now have <code data-astro-raw="">Sass</code> &amp; <code data-astro-raw="">bootstrap</code> as a dependency. You will also have a folder named <strong>node_modules</strong> which have the source for our dependencies.</p><p>Now let’s create our source files. we will have 2 files, <code data-astro-raw="">index.html</code> &amp; <code data-astro-raw="">bootstrap.scss</code>. Add a very basic boilerplate to your <code data-astro-raw="">index.html</code> file.</p><p class="message info">You can hit <kbd>! + Tab</kbd> in a <code>html</code> file to create a basic html boilerpate inside VS Code using <a href="https://emmet.io/">emmet</a>.</p><p>Now that we have our setup done, let’s move on to the good part. open <code data-astro-raw="">bootstrap.scss</code> file inside your code editor &amp; paste the below snippet.</p><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token comment">// 1. Functions</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/functions"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 2. Put your variable overrides here</span>
+
+<span class="token comment">// 3. Mixins</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/mixins"</span><span class="token punctuation">;</span>
+<span class="token comment">// 4. Variables</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/variables"</span><span class="token punctuation">;</span>
+<span class="token comment">// 5. Container</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/containers"</span><span class="token punctuation">;</span>
+<span class="token comment">// 6. Grid</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/grid"</span><span class="token punctuation">;</span>
+<span class="token comment">// 7. Buttons</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/buttons"</span><span class="token punctuation">;</span>
+<span class="token comment">// 8. Utilities</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/utilities"</span><span class="token punctuation">;</span>
+<span class="token comment">// 9. Utilities API to extend them</span>
+<span class="token keyword">@import</span> <span class="token string">"./node_modules/bootstrap/scss/utilities/api"</span><span class="token punctuation">;</span></code></pre><p>Now the path to import can differ with the project &amp; folder structure you have, all we want is the scss files from bootstrap that we downloaded through npm.</p><p>Here in this <code data-astro-raw="">bootstrap.scss</code> file, we are importing only the files that are required to achieve our goals that we set before getting started. Now the order for first 3 things matter here.</p><ol>
+<li><strong>Functions [Required]</strong> - you need them at top to manipulate colors, SVGs, do calculations, etc.</li>
+<li><strong>Variable overrides</strong> - We need to change the default values from bootstrap here, we’ll make our changes here, but later.</li>
+<li><strong>Mixins [Required]</strong> - Reusable mixins required to generate css.</li>
+<li><strong>Variables</strong> - Whole set of default Sass variables from bootstrap.</li>
+<li><strong>Container</strong> - scss for bootstrap container.</li>
+<li><strong>Grid</strong> - Grid scss so that we can manuplate the columns.</li>
+<li><strong>Buttons</strong> - to remove the border-radius from them. (Remember the goals we set earlier.)</li>
+<li><strong>Utilities</strong> - Utilities like position, floats, margin &amp; padding, height &amp; width etc. (Again, we need to extend them till 10 units.)</li>
+<li><strong>Utilities API</strong> to generate class names based on the Sass map in <code data-astro-raw="">_utilities.scss</code>.</li>
+</ol><p>This should be enough to compile our custom build with only the parts we have imported. Now, open the <code data-astro-raw="">package.json</code> file, it should have a test script that we need to customize or you can also add a new one.</p><pre class="language-json"><code data-astro-raw="" class="language-json"> <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"compile-css"</span><span class="token operator">:</span> <span class="token string">"sass --watch bootstrap.scss:bootstrap.css"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre><p>Here we have defined a npm-script with the name of <strong>compile css</strong> and added a command to compile the <code data-astro-raw="">bootstrap.scss</code> into <code data-astro-raw="">bootstrap.css</code> (refer to <a href="https://Sass-lang.com/documentation/cli/dart-Sass">Sass cli</a> options for more).</p><p>Now, open your terminal and run the following command to build the css files.</p><pre class="language-bash"><code data-astro-raw="" class="language-bash"><span class="token function">npm</span> run compile-css</code></pre><p>If you’ve done everything as explained above, it should throw a message in console that <code data-astro-raw="">Compiled bootstrap.scss to bootstrap.css.</code>.</p><p>Note that we’ve also added the <code data-astro-raw="">--watch</code> flag to the script so that we don’t have to run the script every time we make any change to our .scss file.</p><p>Now let’s customize this build as per our needs. we will be adding following scss lines to our <strong>Variable overrides</strong> section.</p><ol>
+<li>Getting 15 Grid columns instead of 12.</li>
+</ol><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token property"><span class="token variable">$grid-columns</span></span><span class="token punctuation">:</span> 15<span class="token punctuation">;</span></code></pre><ol start="2">
+<li>Extending Spacing Utilities till 10 Units.</li>
+</ol><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token property"><span class="token variable">$spacer</span></span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$spacers</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+  <span class="token property">0</span><span class="token punctuation">:</span> 0<span class="token punctuation">,</span>
+  <span class="token property">1</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 0.25<span class="token punctuation">,</span>
+  <span class="token property">2</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 0.5<span class="token punctuation">,</span>
+  <span class="token property">3</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span><span class="token punctuation">,</span>
+  <span class="token property">4</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 1.5<span class="token punctuation">,</span>
+  <span class="token property">5</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 3<span class="token punctuation">,</span>
+  <span class="token property">6</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 4<span class="token punctuation">,</span>
+  <span class="token property">7</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 5<span class="token punctuation">,</span>
+  <span class="token property">8</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 6<span class="token punctuation">,</span>
+  <span class="token property">9</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 7<span class="token punctuation">,</span>
+  <span class="token property">10</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token operator">*</span> 8<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><ol start="3">
+<li>
+<p>We have already achieved ths part. Our bootstrap.css file already has css for the parts we imported, Container, Grid, Utilities &amp; Buttons.</p>
+</li>
+<li>
+<p>Getting rid of border-radius on our Buttons.</p>
+</li>
+</ol><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token property"><span class="token variable">$btn-border-radius</span></span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></code></pre><p>That should be enough to get things done. Check your console, you should have your scss compiled message. Now do check the final css to confirm the changes.</p><p>Bootstrap documentation provides the Sass variables relevant to the component you want to customize, and you can also visit the <code data-astro-raw="">_variables.scss</code> file on github to see them all at once.</p><p>I hope this guide was helpful for you, I think Custom Bootstrap builds are very powerful to achieve custom designs very quickly and in very less time compared to custom css or any other time-taking methods.</p>
+          </article>
+        </div>
+      </div>
+    </main>
+    
+<footer class="site-footer astro-X75R33BM" id="footer">
+  <div class="footer-inner astro-X75R33BM">
+    <h4 class="text-center name astro-X75R33BM">Vipin Mishra</h4>
+    <p class="email text-center my-4 astro-X75R33BM">thevipinmishra[at]gmail.com</p>
+    <ul class="social-list astro-X75R33BM">
+      <li class="astro-X75R33BM">
+        <a href="https://github.com/thevipinmishra" target="_blank" rel="noreferrer" title="GitHub" class="astro-X75R33BM">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M224,224a8,8,0,0,1-8,8,32.1,32.1,0,0,1-32-32v-8a16,16,0,0,0-16-16H156v40a16,16,0,0,0,16,16,8,8,0,0,1,0,16,32.1,32.1,0,0,1-32-32V176H116v40a32.1,32.1,0,0,1-32,32,8,8,0,0,1,0-16,16,16,0,0,0,16-16V176H88a16,16,0,0,0-16,16v8a32.1,32.1,0,0,1-32,32,8,8,0,0,1,0-16,16,16,0,0,0,16-16v-8a32.1,32.1,0,0,1,14.8-27A55.8,55.8,0,0,1,48,120v-8a58,58,0,0,1,7.7-28.3A59.9,59.9,0,0,1,61.1,36,7.8,7.8,0,0,1,68,32a59.7,59.7,0,0,1,48,24h24a59.7,59.7,0,0,1,48-24,7.8,7.8,0,0,1,6.9,4,59.9,59.9,0,0,1,5.4,47.7A58,58,0,0,1,208,112v8a55.8,55.8,0,0,1-22.8,45A32.1,32.1,0,0,1,200,192v8a16,16,0,0,0,16,16A8,8,0,0,1,224,224Z"></path></svg>
+        </a>
+      </li>
+      <li class="astro-X75R33BM">
+        <a href="https://www.linkedin.com/in/thevipinmishra/" target="_blank" rel="noreferrer" title="Linkedin" class="astro-X75R33BM">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M212,28H44A16,16,0,0,0,28,44V212a16,16,0,0,0,16,16H212a16,16,0,0,0,16-16V44A16,16,0,0,0,212,28ZM96,176a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0ZM88,92a12,12,0,1,1,12-12A12,12,0,0,1,88,92Zm96,84a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.8-1.8A36,36,0,0,1,184,140Z"></path></svg>
+        </a>
+      </li>
+      <li class="astro-X75R33BM">
+        <a href="https://www.linkedin.com/in/thevipinmishra/" target="_blank" rel="noreferrer" title="Instagram" class="astro-X75R33BM">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="32"></circle><path d="M172,28H84A56,56,0,0,0,28,84v88a56,56,0,0,0,56,56h88a56,56,0,0,0,56-56V84A56,56,0,0,0,172,28ZM128,176a48,48,0,1,1,48-48A48,48,0,0,1,128,176Zm52-88a12,12,0,1,1,12-12A12,12,0,0,1,180,88Z"></path></svg>
+        </a>
+      </li>
+      <li class="astro-X75R33BM">
+        <a href="https://twitter.com/thevipinmishraa" target="_blank" rel="noreferrer" title="Twitter" class="astro-X75R33BM">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M245.7,77.7l-30.2,30.1C209.5,177.7,150.5,232,80,232c-14.5,0-26.5-2.3-35.6-6.8-7.3-3.7-10.3-7.6-11.1-8.8a8,8,0,0,1,3.9-11.9c.2-.1,23.8-9.1,39.1-26.4a108.6,108.6,0,0,1-24.7-24.4c-13.7-18.6-28.2-50.9-19.5-99.1a8.1,8.1,0,0,1,5.5-6.2,8,8,0,0,1,8.1,1.9c.3.4,33.6,33.2,74.3,43.8V88a48.3,48.3,0,0,1,48.6-48,48.2,48.2,0,0,1,41,24H240a8,8,0,0,1,7.4,4.9A8.4,8.4,0,0,1,245.7,77.7Z"></path></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+
+
+  
+</body></html>
