@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 
 const { canonicalURL } = Astro.request;
+const ogImage = "/Vipin-Mishra.png";
 
 // Vars
 let title = "Vipin Mishra";
@@ -28,8 +29,10 @@ let metaDescription =
     <meta name="theme-color" content="#1270e3" />
 
     <meta property="og:title" content={title} />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og.url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
     <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
   </head>
   <body>

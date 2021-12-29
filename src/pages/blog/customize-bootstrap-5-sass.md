@@ -13,11 +13,11 @@ Bootstrap is the most popular CSS Library/Framework to build mobile-first respon
 
 ## Defaults are Good, But not Always Enough
 
-For most of the times, the default build can get the work done and it's all good, but sometimes you need to customize the default values of what Bootstrap provides by default.
+For most of the times, the default build can get the work done and it's all good, but sometimes you need to customize the default values of what Bootstrap provides.
 
-Let's say you are at your work working on a big project, or maybe you got a project to work on that has different colors, spacings, fonts, etc. and you want the bootstrap to get all the work done but with the custom values.
+Let's say you are at your work working on a big project, or maybe you got a project to work on that has different colors than bootstrap, spacings, fonts, etc. and you want bootstrap to get all the work done but with the custom values.
 
-What if you need more than 12 columns in the grid-system for some reason, what if you want to extend the spacing utilities - let's say 10, what if you want to change the set of colors you have (`bg-primary`, `bg-secondary`, etc..)
+What if you need more than 12 columns in the grid-system for some reason, what if you want to extend the spacing utilities - let's say 10, what if you want to change the set of colors you have (`bg-primary`, `bg-secondary`, etc..)?
 
 To do this, we need 2 things, the Bootstrap's Sass source files and the **Sass** itself to manuplate and compile the source files.
 

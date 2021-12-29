@@ -6,6 +6,8 @@ import { TelegramLogo, ArrowLeft } from "phosphor-react";
 let title = "Contact | Vipin Mishra";
 let metaDescription =
   "I design & develop modern websites with pixel-perfection in mind, love solving complex design problems & have a strong devotion towards CSS";
+const ogImage = "/Vipin-Mishra.png";
+const { canonicalURL } = Astro.request;
 ---
 
 <html lang="en">
@@ -21,6 +23,12 @@ let metaDescription =
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#1270e3" />
     <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og.url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
   </head>
   <body class="contact d-flex flex-column">
     <Nav />

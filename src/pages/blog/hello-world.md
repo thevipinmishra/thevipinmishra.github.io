@@ -11,7 +11,7 @@ tags: [astro, sass]
 
 Hey there, welcome to my brand new portfolio!
 
-Even though I never started doing web-design with the intentions to pursue my career in this, I finally got a job in April 2020 after trying several other career options that I don't even want to mention now, but the bottom line is, I'm a full-time Web Designer now, hurray!?
+Even though I never started doing web-designing with the intentions to pursue my career in this, I finally got a job in April 2020 after trying several other career options that I don't even want to mention now, but the bottom line is, I'm a full-time Web Designer now, hurray!?
 
 ## The New Portfolio Design
 
@@ -46,11 +46,11 @@ const message = "Hello World";
 </style>
 ```
 
-### Tools I've used to Built this Portfolio.
+### Tools I've used to Build this Portfolio.
 
 - Astro as my main framework.
 - Custom Bootstrap build + SASS to design my components & web pages.
-- [Open Props](https://open-props.style/) for a good amount of CSS Custom Properties to use them as my design tokens.
+- [Open Props](https://open-props.style/) for a good amount of CSS Custom Properties to use them as my design tokens. It's RAD.
 - [Phosphor Icons](https://phosphoricons.com/) for all the icons I've used in this site.
 - `Astro.fetchContent()` to fetch my `.md` files that can be used with `paginate()` to get paginated data for my blog.
 - [Dracula theme](https://draculatheme.com/) for the syntax highlighing on my code blocks along with **Source Code Pro** font.
@@ -59,4 +59,4 @@ This can not be the best set of tools & tech you'll see for what I needed, but I
 
 Got a quick feedback? or anything to talk about? please send them on my [telegram](https://t.me/thevipinmishra).
 
-With that note, thanks for the read and **Happy New Year** :)
+With that note, thanks for the read and **Happy New Year**! :)

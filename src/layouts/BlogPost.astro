@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
 const { content } = Astro.props;
+const { canonicalURL } = Astro.request;
 const { title, description, publishDate, author, heroImage, tags } = content;
 ---
 
@@ -25,6 +26,12 @@ const { title, description, publishDate, author, heroImage, tags } = content;
       rel="stylesheet"
       href={Astro.resolve("../styles/typography.scss")}
     />
+
+    <meta property="og:title" content={`${title} | Vipin Mishra`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content={description} />
+    <meta property="og.url" content={canonicalURL} />
+    <meta property="og:image" content={heroImage} />
   </head>
 
   <body class="blog-post">

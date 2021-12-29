@@ -8,6 +8,22 @@
   padding-block-end: var(--size-10);
   clip-path: ellipse(177% 100% at 14.44% 0%);
 
+  .name {
+    font-weight: 800;
+    font-size: var(--font-size-fluid-3);
+    color: var(--gray-dark);
+  }
+
+  .tagline {
+    font-weight: 600;
+    font-size: var(--size-3);
+    letter-spacing: -0.35px;
+
+    @include break(md) {
+      font-size: var(--size-4);
+    }
+  }
+
   .header-cta {
     background: var(--accent);
     color: #fff;
@@ -24,21 +40,6 @@
     gap: 0.35em;
     transition: background var(--duration) ease;
     box-shadow: var(--shadow-1);
-
-    .name {
-      font-weight: 800;
-      font-size: var(--font-size-fluid-3);
-      color: var(--gray-dark);
-    }
-
-    .headline {
-      font-weight: 400;
-      font-size: var(--size-3);
-
-      @include break(md) {
-        font-size: var(--size-4);
-      }
-    }
 
     &:hover {
       background: var(--accent-dark);
