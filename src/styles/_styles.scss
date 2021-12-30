@@ -11,13 +11,13 @@
   .name {
     font-weight: 800;
     font-size: var(--font-size-fluid-3);
-    color: var(--gray-dark);
+    color: var(--gray-9);
   }
 
   .tagline {
     font-weight: 600;
     font-size: var(--size-3);
-    letter-spacing: -0.35px;
+    color: var(--accent);
 
     @include break(md) {
       font-size: var(--size-4);

@@ -53,7 +53,7 @@ const message = "Hello World";
 - [Open Props](https://open-props.style/) for a good amount of CSS Custom Properties to use them as my design tokens. It's RAD.
 - [Phosphor Icons](https://phosphoricons.com/) for all the icons I've used in this site.
 - `Astro.fetchContent()` to fetch my `.md` files that can be used with `paginate()` to get paginated data for my blog.
-- [Dracula theme](https://draculatheme.com/) for the syntax highlighing on my code blocks along with **Source Code Pro** font.
+- [Dracula theme](https://draculatheme.com/) for the syntax highlighing on my code blocks along with **Cascadia Code** font.
 
 This can not be the best set of tools & tech you'll see for what I needed, but I'm pretty satisfied with the experience I had building this.
 

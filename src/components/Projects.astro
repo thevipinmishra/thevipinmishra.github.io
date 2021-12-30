@@ -279,18 +279,19 @@ import { Browser, GithubLogo } from "phosphor-react";
     gap: 3rem;
 
     .op-item {
-      padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+      padding: 2rem 2rem 2rem 3rem;
       border-radius: var(--radius-2);
       background-color: #fff;
       border: 1.5px solid;
-      border-color: var(--yellow-5);
+      --border: var(--yellow-5);
+      border-color: var(--border);
 
       &:nth-child(2n) {
-        border-color: var(--teal-5);
+        --border: var(--teal-5);
       }
 
       &:nth-child(3n) {
-        border-color: var(--grape-5);
+        --border: var(--grape-5);
       }
 
       h3 {
@@ -304,9 +305,9 @@ import { Browser, GithubLogo } from "phosphor-react";
           height: var(--size);
           width: var(--size);
           border-radius: 50%;
-          background: var(--accent);
+          background: var(--border);
           position: absolute;
-          left: -1.35rem;
+          left: -1.75rem;
           top: 0.5ch;
         }
       }

@@ -6,8 +6,8 @@ $font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 //   mono font
-$font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, Monaco,
-  Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-monospace: "Cascadia Code", SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
 
 //   text-muted
 $text-muted: #6b7280;
@@ -37,7 +37,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   //   xl: 1140px,
-  //   xxl: 1320px,,,,
+  //   xxl: 1320px,,,,,
 );
 
 @import "bootstrap/scss/variables";
