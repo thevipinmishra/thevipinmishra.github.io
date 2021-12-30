@@ -17,7 +17,7 @@ Even though I never started doing web-designing with the intentions to pursue my
 
 Ever since I got a new job, I wanted to update my portfolio, like to make it a little bit Job-oriented, I started working on a couple of portfolio designs as well, but they never actually made it to the Internet because I never got enough time to focus on those.
 
-I finally started working on a new re-design in first week of December 2020, and here it is, live!
+I finally started working on a new re-design in the first week of December 2021, and here it is, live!
 
 ### My Choice of Framework
 
