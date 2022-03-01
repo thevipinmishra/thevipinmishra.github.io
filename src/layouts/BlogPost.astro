@@ -1,5 +1,4 @@
 ---
-import { UserCircle } from "phosphor-react";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
@@ -40,12 +39,15 @@ const { title, description, publishDate, author, heroImage, tags } = content;
       <div class="article-outer">
         <div class="article-inner">
           <div class="article-header text-center">
-            {heroImage && (
-              <div class="article-hero mb-4 container-lg">
-                <img src={heroImage} alt={title} />
-              </div>
-            )}
-            <h2 class="article-title">{title}</h2>
+            <div class="container">
+              {heroImage && (
+                <div class="article-hero mb-4 container-lg">
+                  <img src={heroImage} alt={title} />
+                </div>
+              )}
+              <h2 class="article-title">{title}</h2>
+            </div>
+
             <div class="article-meta mt-4">
               <p class="d-inline-flex align-items-center article-author">
                 <span class="d-inline-block">{author}</span>

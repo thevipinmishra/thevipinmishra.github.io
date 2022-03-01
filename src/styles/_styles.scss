@@ -12,6 +12,10 @@
     font-weight: 800;
     font-size: var(--font-size-fluid-3);
     color: var(--gray-9);
+
+    @include break(lg) {
+      font-size: 4.75rem;
+    }
   }
 
   .tagline {
@@ -34,15 +38,20 @@
     text-decoration: none;
     display: inline-flex;
     padding: 1em 3em;
-    width: 100%;
     align-items: center;
     justify-content: center;
     gap: 0.35em;
-    transition: background var(--duration) ease;
+    transition: background var(--duration) ease, box-shadow var(--duration) ease;
     box-shadow: var(--shadow-1);
+    width: 100%;
+
+    @include break(md) {
+      width: auto;
+    }
 
     &:hover {
       background: var(--accent-dark);
+      box-shadow: var(--shadow-3);
 
       svg {
         animation: var(--animation-shake-x) forwards;
