@@ -66,16 +66,22 @@ Now that we have our setup done, let's move on to the good part. open `bootstrap
 
 // 3. Mixins
 @import "./node_modules/bootstrap/scss/mixins";
+
 // 4. Variables
 @import "./node_modules/bootstrap/scss/variables";
+
 // 5. Container
 @import "./node_modules/bootstrap/scss/containers";
+
 // 6. Grid
 @import "./node_modules/bootstrap/scss/grid";
+
 // 7. Buttons
 @import "./node_modules/bootstrap/scss/buttons";
+
 // 8. Utilities
 @import "./node_modules/bootstrap/scss/utilities";
+
 // 9. Utilities API to extend them
 @import "./node_modules/bootstrap/scss/utilities/api";
 ```

@@ -128,8 +128,12 @@
   //   Code
 
   pre {
-    font-size: 0.88rem;
-    line-height: 1.7;
+    font-size: 0.8rem;
+    line-height: 2;
+
+    @include break(lg) {
+      font-size: 0.95rem;
+    }
   }
 
   code,
