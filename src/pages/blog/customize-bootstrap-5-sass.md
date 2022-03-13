@@ -5,7 +5,7 @@ title: Customizing Bootstrap 5 Using Sass
 publishDate: 27 Dec 2021
 author: Vipin Mishra
 heroImage: "/assets/blog/customizing-bootstrap-5-sass.png"
-description: A quick guide to customizing Bootstrap 5 using Sass. Following it, you can get a fully customized Bootstrap build as per you project needs.
+description: A quick guide to customizing Bootstrap 5 using Sass. Following it, you can get a fully customized Bootstrap build as per your project needs.
 tags: [Sass, bootstrap]
 ---
 
@@ -13,24 +13,24 @@ Bootstrap is the most popular CSS Library/Framework to build mobile-first respon
 
 ## Defaults are Good, But not Always Enough
 
-For most of the times, the default build can get the work done and it's all good, but sometimes you need to customize the default values of what Bootstrap provides.
+For most of the time, the default build can get the work done, and it's all good, but sometimes you need to customize the default values of what Bootstrap provides.
 
-Let's say you are at your work working on a big project, or maybe you got a project to work on that has different colors than bootstrap, spacings, fonts, etc. and you want bootstrap to get all the work done but with the custom values.
+Let's say you are at your work working on a big project, or maybe you got a project to work on that has different colors than bootstrap, spacing, fonts, etc. and you want bootstrap to get all the work done but with the custom values.
 
-What if you need more than 12 columns in the grid-system for some reason, what if you want to extend the spacing utilities - let's say 10, what if you want to change the set of colors you have (`bg-primary`, `bg-secondary`, etc..)?
+What if you require more than 12 columns in the grid-system for some reason, what if you want to extend the spacing utilities - let's say 10, what if you want to change the set of colors you have (`bg-primary`, `bg-secondary`, etc.)?
 
-To do this, we need 2 things, the Bootstrap's Sass source files and the **Sass** itself to manuplate and compile the source files.
+To do this, we need 2 things, the Bootstrap's Sass source files and the **Sass** itself to manipulate and compile the source files.
 
-We can download the bootstrap source files from [GitHub releases](https://github.com/twbs/bootstrap/releases/tag/v5.1.3) but we will be doing it through [npm](https://www.npmjs.com/) to avoid extra work & get future updates very easily.
+We can download the bootstrap source files from [GitHub releases](https://github.com/twbs/bootstrap/releases/tag/v5.1.3), but we will be doing it through [npm](https://www.npmjs.com/) to avoid extra work & get future updates very easily.
 
 Let's see how we can leverage the true power of Bootstrap using Sass.
 
 ### Customizing Bootstrap 5 Using Sass.
 
-For this article, the goal would be to customize bootstrap 5 the way so that we can have following things.
+For this article, the goal would be to customize bootstrap 5 the way so that we can have the following things.
 
 1. Let's say **15** grid columns, instead of 12.
-2. spacing utilities till 10 units. (by default it's 5).
+2. spacing utilities till 10 units. (by default, it's 5).
 3. Only have the CSS for **Container**, **Grid**, **Utilities** & **Buttons** in our final bootstrap build.
 4. We will get rid of border-radius on all our buttons. (just for fun, lol).
 
@@ -40,11 +40,11 @@ Let's start. I'll be doing this on a **vanilla html/css/Sass** project, but you 
 
 If you have NodeJS installed, you should have `npm` available that you can verify using `npm -v` to get the version of Node Package Manager. Install it from [here](https://nodejs.org/en/) if you don't already have it.
 
-I've an empty directry named **custom-bootstrap** & I'll do a `npm init y` to initialize a base **package.json** file that you can ignore for now.
+I've an empty directly named **custom-bootstrap** & I'll do a `npm init y` to initialize a base **package.json** file that you can ignore for now.
 
 Let's install Sass & Bootstrap as a dependency.
 
-I'm using **npm** to do this, but you can use _yarn_ or _pnpm_, whatever you prefer. open the terminal and run the following command.
+I'm using **npm** to do this, but you can use _yarn_ or _pnpm_, whatever you prefer. Open the terminal and run the following command.
 
 ```bash
 npm install sass bootstrap
@@ -52,11 +52,11 @@ npm install sass bootstrap
 
 If everything goes well, your package.json will now have `Sass` & `bootstrap` as a dependency. You will also have a folder named **node_modules** which have the source for our dependencies.
 
-Now let's create our source files. we will have 2 files, `index.html` & `bootstrap.scss`. Add a very basic boilerplate to your `index.html` file.
+Now let's create our source files. We will have 2 files, `index.html` & `bootstrap.scss`. Add a very basic boilerplate to your `index.html` file.
 
-<p class="message info">You can hit <kbd>! + Tab</kbd> in a <code>html</code> file to create a basic html boilerpate inside VS Code using <a href="https://emmet.io/">emmet</a>.</p>
+<p class="message info">You can hit <kbd>! + Tab</kbd> in a <code>html</code> file to create a basic HTML boilerplate inside VS Code using <a href="https://emmet.io/">emmet</a>.</p>
 
-Now that we have our setup done, let's move on to the good part. open `bootstrap.scss` file inside your code editor & paste the below snippet.
+Now that we have our setup done, let's move on to the good part. Open `bootstrap.scss` file inside your code editor & paste the below snippet.
 
 ```scss
 // 1. Functions
@@ -86,21 +86,21 @@ Now that we have our setup done, let's move on to the good part. open `bootstrap
 @import "./node_modules/bootstrap/scss/utilities/api";
 ```
 
-Now the path to import can differ with the project & folder structure you have, all we want is the scss files from bootstrap that we downloaded through npm.
+Now the path to import can differ with the project & folder structure you have, all we want is the SCSS files from bootstrap that we downloaded through npm.
 
-Here in this `bootstrap.scss` file, we are importing only the files that are required to achieve our goals that we set before getting started. Now the order for first 3 things matter here.
+Here in this `bootstrap.scss` file, we are importing only the files that are required to achieve our goals that we set before getting started. Now, the order for first 3 things matter here.
 
 1. **Functions [Required]** - you need them at top to manipulate colors, SVGs, do calculations, etc.
 2. **Variable overrides** - We need to change the default values from bootstrap here, we'll make our changes here, but later.
-3. **Mixins [Required]** - Reusable mixins required to generate css.
+3. **Mixins [Required]** - Reusable mixins required to generate CSS.
 4. **Variables** - Whole set of default Sass variables from bootstrap.
-5. **Container** - scss for bootstrap container.
-6. **Grid** - Grid scss so that we can manuplate the columns.
+5. **Container** - SCSS for bootstrap container.
+6. **Grid** - Grid SCSS so that we can manipulate the columns.
 7. **Buttons** - to remove the border-radius from them. (Remember the goals we set earlier.)
 8. **Utilities** - Utilities like position, floats, margin & padding, height & width etc. (Again, we need to extend them till 10 units.)
 9. **Utilities API** to generate class names based on the Sass map in `_utilities.scss`.
 
-This should be enough to compile our custom build with only the parts we have imported. Now, open the `package.json` file, it should have a test script that we need to customize or you can also add a new one.
+This should be enough to compile our custom build with only the parts we have imported. Now, open the `package.json` file, it should have a test script that we need to customize, or you can also add a new one.
 
 ```json
  "scripts": {
@@ -110,7 +110,7 @@ This should be enough to compile our custom build with only the parts we have im
 
 Here we have defined a npm-script with the name of **compile css** and added a command to compile the `bootstrap.scss` into `bootstrap.css` (refer to [Sass cli](https://Sass-lang.com/documentation/cli/dart-Sass) options for more).
 
-Now, open your terminal and run the following command to build the css files.
+Now, open your terminal and run the following command to build the CSS files.
 
 ```bash
 npm run compile-css
@@ -120,7 +120,7 @@ If you've done everything as explained above, it should throw a message in conso
 
 Note that we've also added the `--watch` flag to the script so that we don't have to run the script every time we make any change to our .scss file.
 
-Now let's customize this build as per our needs. we will be adding following scss lines to our **Variable overrides** section.
+Now let's customize this build as per our needs. We will be adding following SCSS lines to our **Variable overrides** section.
 
 1. Getting 15 Grid columns instead of 12.
 
@@ -147,7 +147,7 @@ $spacers: (
 );
 ```
 
-3. We have already achieved ths part. Our bootstrap.css file already has css for the parts we imported, Container, Grid, Utilities & Buttons.
+3. We have already achieved this part. Our bootstrap.css file already has CSS for the parts we imported, Container, Grid, Utilities & Buttons.
 
 4. Getting rid of border-radius on our Buttons.
 
@@ -155,8 +155,8 @@ $spacers: (
 $btn-border-radius: 0;
 ```
 
-That should be enough to get things done. Check your console, you should have your scss compiled message. Now do check the final css to confirm the changes.
+That should be enough to get things done. Check your console, you should have your SCSS compiled message. Now, do check the final CSS to confirm the changes.
 
-Bootstrap documentation provides the Sass variables relevant to the component you want to customize, and you can also visit the `_variables.scss` file on github to see them all at once.
+Bootstrap documentation provides the Sass variables relevant to the component you want to customize, and you can also visit the `_variables.scss` file on GitHub to see them all at once.
 
-I hope this guide was helpful for you, I think Custom Bootstrap builds are very powerful to achieve custom designs very quickly and in very less time compared to custom css or any other time-taking methods.
+I hope this guide was helpful for you, I think Custom Bootstrap builds are very powerful to achieve custom designs very quickly and in very less time compared to custom CSS or any other time-taking methods.

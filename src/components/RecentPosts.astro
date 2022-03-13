@@ -1,6 +1,10 @@
 ---
 import { ArrowRight } from "phosphor-react";
-const data = Astro.fetchContent("../pages/blog/*.md");
+let data = Astro.fetchContent("../pages/blog/*.md");
+data = data.sort(
+  (a, b) =>
+    new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+);
 ---
 
 <section class="recent-posts py-5 py-lg-6">
@@ -33,7 +37,7 @@ const data = Astro.fetchContent("../pages/blog/*.md");
 </section>
 
 <style lang="scss">
-  @import "../styles/_mixins.scss";
+  @use "../styles/mixins" as *;
 
   // Recent Posts
   .recent-posts {

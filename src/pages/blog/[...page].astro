@@ -4,8 +4,11 @@ import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
 
 export async function getStaticPaths({ paginate }) {
-  const response = Astro.fetchContent("./*.md");
-  const allPosts = response;
+  let allPosts = Astro.fetchContent("./*.md");
+  allPosts = allPosts.sort(
+    (a, b) =>
+      new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+  );
   return paginate(allPosts, { pageSize: 6 });
 }
 
@@ -63,19 +66,24 @@ let metaDescription =
           <p class="pages">
             Showing {page.currentPage} of total <b>{page.lastPage}</b> pages.
           </p>
-          <div class="posts-nav mt-4">
-            <a
-              href={page.url.prev}
-              class={`prev ${page.url.prev ? "" : "isDisabled"}`}
-              ><CaretDoubleLeft size={20} /> Prev</a
-            >
 
-            <a
-              href={page.url.next}
-              class={`next ${page.url.next ? "" : "isDisabled"}`}
-              >Next <CaretDoubleRight size={20} />
-            </a>
-          </div>
+          {(page.url.prev || page.url.next) && (
+            <div class="posts-nav mt-4">
+              <a
+                href={page.url.prev}
+                class={`prev ${page.url.prev ? "" : "isDisabled"}`}
+              >
+                <CaretDoubleLeft size={20} /> Prev
+              </a>
+
+              <a
+                href={page.url.next}
+                class={`next ${page.url.next ? "" : "isDisabled"}`}
+              >
+                Next <CaretDoubleRight size={20} />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </main>
@@ -125,6 +133,12 @@ let metaDescription =
       font-size: var(--size-4);
       line-height: 1.275;
       margin-block: 0.75rem;
+
+      a {
+        &:hover {
+          color: var(--accent-dark);
+        }
+      }
     }
 
     .post-description {
