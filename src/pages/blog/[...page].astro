@@ -3,12 +3,33 @@ import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate, rss }) {
   let allPosts = Astro.fetchContent("./*.md");
   allPosts = allPosts.sort(
     (a, b) =>
       new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
   );
+
+  // Generate an RSS feed from this collection
+  rss({
+    // The RSS Feed title, description, and custom metadata.
+    title: `Vipin Mishra's Blog`,
+    // See "Styling" section below
+    stylesheet: true,
+    description: "A blog with articles around CSS & Web Design",
+    customData: `<language>en-us</language>`,
+    // The list of items for your RSS feed, sorted.
+    items: allPosts.map((item) => ({
+      title: item.title,
+      description: item.description,
+      link: item.url,
+      pubDate: item.publishDate,
+    })),
+    // Optional: Customize where the file is written to.
+    // Otherwise, defaults to "/rss.xml"
+    dest: "/my/custom/feed.xml",
+  });
+
   return paginate(allPosts, { pageSize: 6 });
 }
 

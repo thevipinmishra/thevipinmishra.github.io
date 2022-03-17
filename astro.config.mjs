@@ -5,7 +5,7 @@ export default {
   //   public: "./public", // A folder of static files Astro will copy to the root. Useful for favicons, images, and other files that don’t need processing.
   buildOptions: {
     site: "https://vipinmishra.dev", // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
-    sitemap: false, // Generate sitemap (set to "false" to disable)
+    sitemap: true,
   },
   devOptions: {
     hostname: "0.0.0.0",
