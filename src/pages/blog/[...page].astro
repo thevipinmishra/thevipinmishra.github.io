@@ -2,6 +2,7 @@
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
+import "../../styles/main.scss";
 
 export async function getStaticPaths({ paginate, rss }) {
   let allPosts = Astro.fetchContent("./*.md");
@@ -47,8 +48,6 @@ let metaDescription =
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#1270e3" />
-    <link async rel="stylesheet" href={Astro.resolve("../../styles/main.scss")}
-    />
   </head>
   <body class="blog-list d-flex flex-column">
     <Nav />
