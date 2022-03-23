@@ -2,7 +2,7 @@
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
-import "../../styles/main.scss";
+
 
 export async function getStaticPaths({ paginate, rss }) {
   let allPosts = Astro.fetchContent("./*.md");
@@ -106,6 +106,8 @@ let metaDescription =
 </html>
 
 <style lang="scss">
+@import "../../styles/main.scss";
+
   .blog-posts-list {
     flex: 1;
   }
