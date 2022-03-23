@@ -1,12 +1,13 @@
 ---
+import '../../styles/main.scss';
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
 
 
+
 export async function getStaticPaths({ paginate, rss }) {
-  let allPosts = Astro.fetchContent("./*.md");
-  allPosts = allPosts.sort(
+  const allPosts = Astro.fetchContent("./*.md").sort(
     (a, b) =>
       new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
   );
@@ -106,8 +107,6 @@ let metaDescription =
 </html>
 
 <style lang="scss">
-@import "../../styles/main.scss";
-
   .blog-posts-list {
     flex: 1;
   }
