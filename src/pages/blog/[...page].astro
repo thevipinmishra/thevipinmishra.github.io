@@ -1,10 +1,7 @@
 ---
-import '../../styles/main.scss';
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
-
-
 
 export async function getStaticPaths({ paginate, rss }) {
   const allPosts = Astro.fetchContent("./*.md").sort(
@@ -50,6 +47,8 @@ let metaDescription =
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#1270e3" />
   </head>
+
+
   <body class="blog-list d-flex flex-column">
     <Nav />
 
@@ -105,6 +104,8 @@ let metaDescription =
     <Footer />
   </body>
 </html>
+
+
 
 <style lang="scss">
   .blog-posts-list {
