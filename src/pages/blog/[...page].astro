@@ -24,7 +24,7 @@ export async function getStaticPaths({ paginate, rss }) {
     })),
   });
 
-  return paginate(allPosts, { pageSize: 6 });
+  return paginate(allPosts, { pageSize: 5 });
 }
 
 const { page } = Astro.props;
@@ -106,7 +106,9 @@ let metaDescription =
   </body>
 </html>
 
-
+<style global>
+@import('.../../styles/main.scss');
+</style>
 
 <style lang="scss">
   .blog-posts-list {
