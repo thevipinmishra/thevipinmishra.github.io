@@ -1,6 +1,9 @@
 ---
+import "../styles/main.scss";
+import "../styles/typography.scss";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import CoverImage from "/Vipin-Mishra.png";
 
 const { content } = Astro.props;
 const { canonicalURL } = Astro.request;
@@ -19,21 +22,11 @@ const { title, description, publishDate, author, heroImage, tags } = content;
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#1270e3" />
-    <link async rel="stylesheet" href={Astro.resolve("../styles/main.scss")} />
-    <link
-      async
-      rel="stylesheet"
-      href={Astro.resolve("../styles/typography.scss")}
-    />
-
     <meta property="og:title" content={`${title} | Vipin Mishra`} />
     <meta property="og:type" content="article" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta
-      property="og:image"
-      content={heroImage ? heroImage : Astro.resolve("/Vipin-Mishra.png")}
-    />
+    <meta property="og:image" content={heroImage ? heroImage : CoverImage} />
   </head>
 
   <body class="blog-post">
