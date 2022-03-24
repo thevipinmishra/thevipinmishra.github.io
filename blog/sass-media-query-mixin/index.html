@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="astro-6G445HR6">
-  <head>
+<!DOCTYPE html><html lang="en" class="astro-6G445HR6"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A easy to use SASS mixin for responsive design using plain sass/scss.">
@@ -16,12 +14,15 @@
     <meta property="og:description" content="A easy to use SASS mixin for responsive design using plain sass/scss.">
     <meta property="og:url" content="https://vipinmishra.dev/blog/sass-media-query-mixin/">
     <meta property="og:image" content="/Vipin-Mishra.png">
-  <link rel="stylesheet" href="/assets/BlogPost.43e0aa1b.css"></link>
-<link rel="stylesheet" href="/assets/main.c7ea6a9a.css"></link>
+  
+
+<link rel="stylesheet" href="../../assets/main.1ce5eb03.css"><link rel="stylesheet" href="../../assets/customize-bootstrap-5-sass.fb45e327.css"><link rel="stylesheet" href="../../assets/typography.9e77f6db.css">
+
 </head>
 
   <body class="blog-post">
-    <nav class="site-nav astro-BD4236GJ">
+    
+<nav class="site-nav astro-BD4236GJ">
   <div class="nav-inner container d-flex justify-content-between align-items-center py-3 astro-BD4236GJ">
     <h1 class="branding astro-BD4236GJ">
       <a href="/" class="astro-BD4236GJ">Vipin Mishra</a>
@@ -58,14 +59,14 @@
             </div>
           </div>
           <article class="article-content container astro-6G445HR6">
-            <p>One of the pain points of designing with Vanilla CSS/SCSS is handling and structuring of the media queries you write for the responsive design.</p><p>If you’re using SASS (which you should, instead of plain CSS), you can of course nest the media queries like this.</p><pre class="language-scss"><code class="language-scss"><span class="token selector">.circle </span><span class="token punctuation">{</span>
+            <p>One of the pain points of designing with Vanilla CSS/SCSS is handling and structuring of the media queries you write for the responsive design.</p><p>If you’re using SASS (which you should, instead of plain CSS), you can of course nest the media queries like this.</p><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token selector">.circle </span><span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> #2c3e50<span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
 
   <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
     <span class="token property">background</span><span class="token punctuation">:</span> #ddd<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p>Yeah, it works, but it’s too repetitive if you’re writing breakpoints every single time.</p><p>The number of breakpoints might also vary across the project, that may bring inconsistency to your overall strategy of making the layouts responsive.</p><p><a href="https://sass-lang.com/documentation/at-rules/mixin">SASS mixins</a> can do wonder and reduces so much of repetitive work, you just define a mixin and can re-use it throughout your stylesheet.</p><h2 id="the-sass-media-query-mixin">The SASS Media Query Mixin</h2><p>Here I am sharing a mixin that I personally use in my projects or at my work if I’m using plain SCSS to style my layouts.</p><p>It’s based on <strong>mobile-first</strong> pattern and goes like this.</p><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$breakpoints</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+<span class="token punctuation">}</span></code></pre><p>Yeah, it works, but it’s too repetitive if you’re writing breakpoints every single time.</p><p>The number of breakpoints might also vary across the project, that may bring inconsistency to your overall strategy of making the layouts responsive.</p><p><a href="https://sass-lang.com/documentation/at-rules/mixin">SASS mixins</a> can do wonder and reduces so much of repetitive work, you just define a mixin and can re-use it throughout your stylesheet.</p><h2 id="the-sass-media-query-mixin">The SASS Media Query Mixin</h2><p>Here I am sharing a mixin that I personally use in my projects or at my work if I’m using plain SCSS to style my layouts.</p><p>It’s based on <strong>mobile-first</strong> pattern and goes like this.</p><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token property"><span class="token variable">$breakpoints</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
   <span class="token property">xs</span><span class="token punctuation">:</span> 0<span class="token punctuation">,</span>
   <span class="token property">sm</span><span class="token punctuation">:</span> 576px<span class="token punctuation">,</span>
   <span class="token property">md</span><span class="token punctuation">:</span> 768px<span class="token punctuation">,</span>
@@ -78,7 +79,7 @@
   @media <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token function">map-get</span><span class="token punctuation">(</span><span class="token variable">$breakpoints</span><span class="token punctuation">,</span> <span class="token variable">$size</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">@content</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p>Here you have a <a href="https://sass-lang.com/documentation/values/maps">SASS map</a> that basically holds pairs of keys and values. Keys being the short code of breakpoints that we will be using in our project and their respective values in <code>px</code> that you can of course change with <code>em</code> or any other unit you prefer.</p><p>I got these values from the <a href="https://getbootstrap.com/docs/5.1/layout/breakpoints/">bootstrap breakpoints</a>. You can use <a href="https://tailwindcss.com/docs/responsive-design">breakpoints from Tailwind CSS</a> or whatever you want, it’s just about putting key-value pairs.</p><h3 id="usage-of-the-mixin">Usage of the mixin</h3><p>You can import the mixin to any stylesheet (.scss) and can use it like this.</p><pre class="language-scss"><code class="language-scss"><span class="token comment">// Import the mixin from the relative path</span>
+<span class="token punctuation">}</span></code></pre><p>Here you have a <a href="https://sass-lang.com/documentation/values/maps">SASS map</a> that basically holds pairs of keys and values. Keys being the short code of breakpoints that we will be using in our project and their respective values in <code data-astro-raw="">px</code> that you can of course change with <code data-astro-raw="">em</code> or any other unit you prefer.</p><p>I got these values from the <a href="https://getbootstrap.com/docs/5.1/layout/breakpoints/">bootstrap breakpoints</a>. You can use <a href="https://tailwindcss.com/docs/responsive-design">breakpoints from Tailwind CSS</a> or whatever you want, it’s just about putting key-value pairs.</p><h3 id="usage-of-the-mixin">Usage of the mixin</h3><p>You can import the mixin to any stylesheet (.scss) and can use it like this.</p><pre class="language-scss"><code data-astro-raw="" class="language-scss"><span class="token comment">// Import the mixin from the relative path</span>
 <span class="token keyword">@use</span> <span class="token string">"../styles/mixins"</span> <span class="token module-modifier keyword">as</span> *<span class="token punctuation">;</span>
 
 <span class="token selector">a </span><span class="token punctuation">{</span>
@@ -90,12 +91,13 @@
   <span class="token keyword">@include</span> <span class="token function">media</span><span class="token punctuation">(</span>md<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--size-4<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p>Here I’m using <code>@use</code> rule from sass, that basically loads mixins, functions and variables from other sass files, also called modules.</p><p>Make sure you have the latest sass version available, as it’s not supported on older versions of sass. You can read more about it <a href="https://sass-lang.com/documentation/at-rules/use">here</a>.</p>
+<span class="token punctuation">}</span></code></pre><p>Here I’m using <code data-astro-raw="">@use</code> rule from sass, that basically loads mixins, functions and variables from other sass files, also called modules.</p><p>Make sure you have the latest sass version available, as it’s not supported on older versions of sass. You can read more about it <a href="https://sass-lang.com/documentation/at-rules/use">here</a>.</p>
           </article>
         </div>
       </div>
     </main>
-    <footer class="site-footer astro-TX6CV57L" id="footer">
+    
+<footer class="site-footer astro-TX6CV57L" id="footer">
   <div class="footer-inner astro-TX6CV57L">
     <h4 class="text-center name astro-TX6CV57L">Vipin Mishra</h4>
     <p class="email text-center my-4 astro-TX6CV57L">thevipinmishra[at]gmail.com</p>

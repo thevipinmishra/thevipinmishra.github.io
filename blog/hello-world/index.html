@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="astro-6G445HR6">
-  <head>
+<!DOCTYPE html><html lang="en" class="astro-6G445HR6"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="All about my new portfolio re-design, built with Astro, Bootstrap, SASS + Open Props.">
@@ -16,12 +14,15 @@
     <meta property="og:description" content="All about my new portfolio re-design, built with Astro, Bootstrap, SASS + Open Props.">
     <meta property="og:url" content="https://vipinmishra.dev/blog/hello-world/">
     <meta property="og:image" content="/assets/blog/hello-world.jpeg">
-  <link rel="stylesheet" href="/assets/BlogPost.43e0aa1b.css"></link>
-<link rel="stylesheet" href="/assets/main.c7ea6a9a.css"></link>
+  
+
+<link rel="stylesheet" href="../../assets/main.1ce5eb03.css"><link rel="stylesheet" href="../../assets/typography.9e77f6db.css"><link rel="stylesheet" href="../../assets/customize-bootstrap-5-sass.fb45e327.css">
+
 </head>
 
   <body class="blog-post">
-    <nav class="site-nav astro-BD4236GJ">
+    
+<nav class="site-nav astro-BD4236GJ">
   <div class="nav-inner container d-flex justify-content-between align-items-center py-3 astro-BD4236GJ">
     <h1 class="branding astro-BD4236GJ">
       <a href="/" class="astro-BD4236GJ">Vipin Mishra</a>
@@ -60,30 +61,31 @@
             </div>
           </div>
           <article class="article-content container astro-6G445HR6">
-            <p>Hey there, welcome to my brand new portfolio!</p><p>Even though I never started doing web-designing with the intentions to pursue my career in this, I finally got a job in April 2020 after trying several other career options that I don’t even want to mention now, but the bottom line is, I’m a full-time Web Designer now, hurray!?</p><h2 id="the-new-portfolio-design">The New Portfolio Design</h2><p>Ever since I got a new job, I wanted to update my portfolio, like to make it a little bit Job-oriented, I started working on a couple of portfolio designs as well, but they never actually made it to the Internet because I never got enough time to focus on those.</p><p>I finally started working on a new re-design in the first week of December 2021, and here it is, live!</p><h3 id="my-choice-of-framework">My Choice of Framework</h3><p>I’ve used <a href="https://jekyllrb.com/">jekyll</a> a lot in the past to create static sites, but setting up the dev environment to run jekyll is very old school now, you need Ruby + Jekyll as a Ruby Gem to run, which is pretty heavy on resources.</p><p>With so many options in the community right now, I decided to go ahead with <a href="https://astro.build/">Astro</a>, their tagline being <strong>Build faster websites with less client-side Javascript</strong>.</p><p>The thing I liked most about Astro is, you can use any JavaScript frontend library like React, Vue, Svelte, etc., &#x26; in return you get just plain old html with zero javascript by default. now, that doesn’t mean, you can’t get client side javascript for your interactive components, Astro got them covered as well, they call it <strong>Partial Hydration</strong> &#x26; you can read the documentation <a href="https://docs.astro.build/core-concepts/component-hydration/">here</a>.</p><p>They also have their special <code>.astro</code> file which is pretty similar to <a href="https://vuejs.org/v2/guide/single-file-components.html">Vue’s Single File Component</a>, with scoped styles, JSX like expressions, etc.</p><p>Here’s a valid <code>.astro</code> file, the optional style block is scoped to this component/page only (can be global as well).</p><pre class="language-astro"><code class="language-astro"><span class="token operator">--</span><span class="token operator">-</span>
+            <p>Hey there, welcome to my brand new portfolio!</p><p>Even though I never started doing web-designing with the intentions to pursue my career in this, I finally got a job in April 2020 after trying several other career options that I don’t even want to mention now, but the bottom line is, I’m a full-time Web Designer now, hurray!?</p><h2 id="the-new-portfolio-design">The New Portfolio Design</h2><p>Ever since I got a new job, I wanted to update my portfolio, like to make it a little bit Job-oriented, I started working on a couple of portfolio designs as well, but they never actually made it to the Internet because I never got enough time to focus on those.</p><p>I finally started working on a new re-design in the first week of December 2021, and here it is, live!</p><h3 id="my-choice-of-framework">My Choice of Framework</h3><p>I’ve used <a href="https://jekyllrb.com/">jekyll</a> a lot in the past to create static sites, but setting up the dev environment to run jekyll is very old school now, you need Ruby + Jekyll as a Ruby Gem to run, which is pretty heavy on resources.</p><p>With so many options in the community right now, I decided to go ahead with <a href="https://astro.build/">Astro</a>, their tagline being <strong>Build faster websites with less client-side Javascript</strong>.</p><p>The thing I liked most about Astro is, you can use any JavaScript frontend library like React, Vue, Svelte, etc., &amp; in return you get just plain old html with zero javascript by default. now, that doesn’t mean, you can’t get client side javascript for your interactive components, Astro got them covered as well, they call it <strong>Partial Hydration</strong> &amp; you can read the documentation <a href="https://docs.astro.build/core-concepts/component-hydration/">here</a>.</p><p>They also have their special <code data-astro-raw="">.astro</code> file which is pretty similar to <a href="https://vuejs.org/v2/guide/single-file-components.html">Vue’s Single File Component</a>, with scoped styles, JSX like expressions, etc.</p><p>Here’s a valid <code data-astro-raw="">.astro</code> file, the optional style block is scoped to this component/page only (can be global as well).</p><pre class="language-astro"><code data-astro-raw="" class="language-astro"><span class="token operator">--</span><span class="token operator">-</span>
 <span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
 <span class="token operator">--</span><span class="token operator">-</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>message<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>message<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
   <span class="token selector">p</span> <span class="token punctuation">{</span>
     <span class="token property">font-weight</span><span class="token punctuation">:</span> 600<span class="token punctuation">;</span>
     <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Source Code Pro"</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre><h3 id="tools-ive-used-to-build-this-portfolio">Tools I’ve used to Build this Portfolio.</h3><ul>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span></code></pre><h3 id="tools-ive-used-to-build-this-portfolio">Tools I’ve used to Build this Portfolio.</h3><ul>
 <li>Astro as my main framework.</li>
-<li>Custom Bootstrap build + SASS to design my components &#x26; web pages.</li>
+<li>Custom Bootstrap build + SASS to design my components &amp; web pages.</li>
 <li><a href="https://open-props.style/">Open Props</a> for a good amount of CSS Custom Properties to use them as my design tokens. It’s RAD.</li>
 <li><a href="https://phosphoricons.com/">Phosphor Icons</a> for all the icons I’ve used in this site.</li>
-<li><code>Astro.fetchContent()</code> to fetch my <code>.md</code> files that can be used with <code>paginate()</code> to get paginated data for my blog.</li>
+<li><code data-astro-raw="">Astro.fetchContent()</code> to fetch my <code data-astro-raw="">.md</code> files that can be used with <code data-astro-raw="">paginate()</code> to get paginated data for my blog.</li>
 <li><a href="https://draculatheme.com/">Dracula theme</a> for the syntax highlighing on my code blocks along with <strong>Cascadia Code</strong> font.</li>
-</ul><p>This can not be the best set of tools &#x26; tech you’ll see for what I needed, but I’m pretty satisfied with the experience I had building this.</p><p>Got a quick feedback? or anything to talk about? please send them on my <a href="https://t.me/thevipinmishra">telegram</a>.</p><p>With that note, thanks for the read and <strong>Happy New Year</strong>! :)</p>
+</ul><p>This can not be the best set of tools &amp; tech you’ll see for what I needed, but I’m pretty satisfied with the experience I had building this.</p><p>Got a quick feedback? or anything to talk about? please send them on my <a href="https://t.me/thevipinmishra">telegram</a>.</p><p>With that note, thanks for the read and <strong>Happy New Year</strong>! :)</p>
           </article>
         </div>
       </div>
     </main>
-    <footer class="site-footer astro-TX6CV57L" id="footer">
+    
+<footer class="site-footer astro-TX6CV57L" id="footer">
   <div class="footer-inner astro-TX6CV57L">
     <h4 class="text-center name astro-TX6CV57L">Vipin Mishra</h4>
     <p class="email text-center my-4 astro-TX6CV57L">thevipinmishra[at]gmail.com</p>
