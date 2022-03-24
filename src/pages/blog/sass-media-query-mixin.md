@@ -70,7 +70,7 @@ a {
   transition: color 150ms ease;
 
   // Use it like this
-  @include break(md) {
+  @include media(md) {
     font-size: var(--size-4);
   }
 }
