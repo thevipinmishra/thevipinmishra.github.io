@@ -1,3 +1,5 @@
+import react from "@astrojs/react";
+
 export default {
   // projectRoot: '.',     // Where to resolve all URLs relative to. Useful if you have a monorepo project.
   // pages: './src/pages', // Path to Astro components, pages, and data
@@ -11,5 +13,13 @@ export default {
     hostname: "0.0.0.0",
     // port: 3000,             // The port to run the dev server on.
   },
-  renderers: ["@astrojs/renderer-react"],
+  markdownOptions: {
+    render: [
+      "@astrojs/markdown-remark",
+      {
+        syntaxHighlight: "prism",
+      },
+    ],
+  },
+  integrations: [react()],
 };
