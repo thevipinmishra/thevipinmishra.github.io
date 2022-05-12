@@ -7,7 +7,7 @@ import CoverImage from "/Vipin-Mishra.png";
 
 const { content } = Astro.props;
 const { canonicalURL } = Astro;
-const { title, description, publishDate, author, heroImage, tags } = content;
+const { title, description, pubDate, author, heroImage, tags } = content;
 ---
 
 <html lang={content.lang || "en"}>
@@ -48,7 +48,7 @@ const { title, description, publishDate, author, heroImage, tags } = content;
               <p class="d-inline-flex align-items-center article-author">
                 <span class="d-inline-block">{author}</span>
                 <span class="d-inline-block mx-1">on</span>
-                <span class="d-inline-block">{publishDate}</span>
+                <span class="d-inline-block">{pubDate}</span>
               </p>
               <div class="tags mt-3">
                 {tags.map((tag) => <span>{tag}</span>)}

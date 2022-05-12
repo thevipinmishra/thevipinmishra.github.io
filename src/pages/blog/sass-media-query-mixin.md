@@ -2,7 +2,7 @@
 setup: |
   import Layout from '../../layouts/BlogPost.astro'
 title: Easy Media Queries using SASS Mixin
-publishDate: 09 Mar 2022
+pubDate: 09 Mar 2022
 author: Vipin Mishra
 description: A easy to use SASS mixin for responsive design using plain sass/scss.
 tags: [Sass, Responsive Design]

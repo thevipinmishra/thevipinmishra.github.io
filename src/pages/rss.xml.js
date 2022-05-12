@@ -17,11 +17,7 @@ export const get = () =>
     // list of `<item>`s in output xml
     // simple example: generate items for every md file in /src/pages
     // see "Generating items" section for required frontmatter and advanced use cases
-    items: posts.map((post) => ({
-      link: post.frontmatter.slug,
-      title: post.frontmatter.title,
-      pubDate: post.frontmatter.publishDate,
-    })),
+    items: import.meta.glob("./blog/*.md"),
     // (optional) inject custom xml
     customData: `<language>en-us</language>`,
   });

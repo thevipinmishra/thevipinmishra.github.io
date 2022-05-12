@@ -2,7 +2,7 @@
 setup: |
   import Layout from '../../layouts/BlogPost.astro'
 title: New Year, New Portfolio!
-publishDate: 25 Dec 2021
+pubDate: 25 Dec 2021
 author: Vipin Mishra
 heroImage: "/assets/blog/hello-world.jpeg"
 description: All about my new portfolio re-design, built with Astro, Bootstrap, SASS + Open Props.

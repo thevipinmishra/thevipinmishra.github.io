@@ -2,7 +2,7 @@
 setup: |
   import Layout from '../../layouts/BlogPost.astro'
 title: Customizing Bootstrap 5 Using Sass
-publishDate: 27 Dec 2021
+pubDate: 27 Dec 2021
 author: Vipin Mishra
 heroImage: "/assets/blog/customizing-bootstrap-5-sass.png"
 description: A quick guide to customizing Bootstrap 5 using Sass. Following it, you can get a fully customized Bootstrap build as per your project needs.

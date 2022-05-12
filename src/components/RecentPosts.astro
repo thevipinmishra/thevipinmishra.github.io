@@ -3,7 +3,7 @@ import { ArrowRight } from "phosphor-react";
 let data = await Astro.glob("../pages/blog/*.md");
 data = data.sort(
   (a, b) =>
-    new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+    new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf()
 );
 ---
 
@@ -22,7 +22,7 @@ data = data.sort(
             {post.frontmatter.title}
           </a>
           <span class="publish-date d-none d-lg-inline-flex">
-            {post.frontmatter.publishDate}
+            {post.frontmatter.pubDate}
           </span>
         </li>
       ))}
