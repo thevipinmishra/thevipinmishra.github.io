@@ -12,20 +12,6 @@ export async function getStaticPaths({ paginate, rss }) {
       new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
   );
 
-  // Generate an RSS feed from this collection
-  rss({
-    title: `Vipin Mishra's Blog`,
-    stylesheet: true,
-    description: "A blog with articles around CSS & Web Design",
-    customData: `<language>en-us</language>`,
-    items: allPosts.map((item) => ({
-      title: item.title,
-      description: item.description,
-      link: item.url,
-      pubDate: item.publishDate,
-    })),
-  });
-
   return paginate(allPosts, { pageSize: 5 });
 }
 

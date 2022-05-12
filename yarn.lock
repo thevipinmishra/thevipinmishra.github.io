@@ -82,6 +82,13 @@
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.17.3"
 
+"@astrojs/rss@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-0.2.0.tgz#857450cad33d449e8487019b16bfa3bda585805d"
+  integrity sha512-Y6e6nL8BN0swd2tvlY3xNu9VHx6IQz70NcKIiPzjKXcjiubJMx0TyfpYWGOtwHCtGvHiPV3rJa6U+cbkgy2HVQ==
+  dependencies:
+    fast-xml-parser "^4.0.7"
+
 "@astrojs/sitemap@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-0.1.0.tgz#c1dda58e829ae7118cb9a32a8a479637b0ecc5bd"
