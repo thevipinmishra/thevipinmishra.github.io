@@ -1,6 +1,6 @@
 ---
 import { ArrowRight } from "phosphor-react";
-let data = Astro.fetchContent("../pages/blog/*.md");
+let data = await Astro.glob("../pages/blog/*.md");
 data = data.sort(
   (a, b) =>
     new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
@@ -18,11 +18,11 @@ data = data.sort(
     <ul class="recent-blog-posts my-5">
       {data.slice(0, 3).map((post) => (
         <li>
-          <a class="recent-article-title" href={post.url} title={post.title}>
-            {post.title}
+          <a class="recent-article-title" href={post.url} title={post.frontmatter.title}>
+            {post.frontmatter.title}
           </a>
           <span class="publish-date d-none d-lg-inline-flex">
-            {post.publishDate}
+            {post.frontmatter.publishDate}
           </span>
         </li>
       ))}

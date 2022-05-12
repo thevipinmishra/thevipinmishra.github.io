@@ -5,7 +5,9 @@ import Nav from "../../components/Nav.astro";
 import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
 
 export async function getStaticPaths({ paginate, rss }) {
-  const allPosts = Astro.fetchContent("./*.md").sort(
+  let allPosts = await Astro.glob("./*.md");
+  
+  allPosts = allPosts.sort(
     (a, b) =>
       new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
   );
@@ -65,11 +67,11 @@ let metaDescription =
       <div class="posts-list container py-5 py-lg-7">
         {page.data.map((post) => (
           <div class="post-outer">
-            <span class="date">{post.publishDate}</span>
+            <span class="date">{post.frontmatter.publishDate}</span>
             <h2 class="post-title">
-              <a href={post.url}>{post.title}</a>
+              <a href={post.url}>{post.frontmatter.title}</a>
             </h2>
-            <p class="post-description">{post.description}</p>
+            <p class="post-description">{post.frontmatter.description}</p>
           </div>
         ))}
       </div>
