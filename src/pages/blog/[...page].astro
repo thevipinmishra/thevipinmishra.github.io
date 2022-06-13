@@ -7,10 +7,7 @@ import { CaretDoubleLeft, CaretDoubleRight } from "phosphor-react";
 export async function getStaticPaths({ paginate, rss }) {
   let allPosts = await Astro.glob("./*.md");
   
-  allPosts = allPosts.sort(
-    (a, b) =>
-      new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf()
-  );
+  allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
 
   return paginate(allPosts, { pageSize: 5 });
 }

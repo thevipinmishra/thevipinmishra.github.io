@@ -41,23 +41,27 @@ const { canonicalURL } = Astro;
     </header>
     <main class="contact-content">
       <div class="main-inner container">
-        <div class=" text-center">
-          <a href="https://t.me/thevipinmishra" class="telegram-btn"
-            ><TelegramLogo size={20} /> Telegram</a
-          >
-          <span class="telegram-helper-text text-muted d-inline-block mt-2"
-            >For almost instant replies.</span
-          >
-        </div>
 
-        <p class="ruler my-5">or email on</p>
-
-        <div class="mail text-center">
-          <p class="email-id">thevipinmishra[at]gmail.com</p>
-          <span class="mail-helper-text text-muted d-inline-block mt-2"
-            >You can expect a reply within 5-6 hours.</span
-          >
+        <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-5">
+            <div class="text-center flex-fill">
+                <a href="https://t.me/thevipinmishra" class="telegram-btn"
+                  ><TelegramLogo size={20} /> Telegram</a
+                >
+                <span class="telegram-helper-text text-muted d-inline-block mt-2"
+                  >For almost instant replies.</span
+                >
+              </div>
+      
+           
+      
+              <div class="mail text-center flex-fill">
+                <p class="email-id">thevipinmishra[at]gmail.com</p>
+                <span class="mail-helper-text text-muted d-inline-block mt-2"
+                  >I usually reply within 5-6 hours.</span
+                >
+              </div>
         </div>
+      
       </div>
 
       <a href="/" class="back-to-home"><ArrowLeft size={20} /> Back to Home</a>
@@ -70,19 +74,19 @@ const { canonicalURL } = Astro;
   @import "../styles/_mixins.scss";
 
   .contact-header {
-    padding-block: var(--size-8);
+    padding-block: var(--size-10);
     background: var(--gray-1);
 
     .headline {
       font-weight: 800;
-      font-size: var(--size-fluid-4);
+      font-size: var(--size-fluid-5);
       margin-block-end: 0.5rem;
     }
   }
 
   .contact-content {
     flex: 1;
-    padding-block: var(--size-8);
+    padding-block: var(--size-10);
 
     .telegram-btn {
       display: flex;
@@ -102,39 +106,8 @@ const { canonicalURL } = Astro;
       }
     }
 
-    .ruler {
-      text-align: center;
-      display: inline-flex;
-      position: relative;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      &::after,
-      &::before {
-        content: "";
-        position: absolute;
-        height: 3px;
-        background: #f1f3f5;
-        width: 100px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      &::before {
-        right: 7rem;
-      }
-
-      &::after {
-        left: 7rem;
-      }
-    }
-
     .mail {
+        
       .email-id {
         background: var(--gray-1);
         font-weight: 600;
@@ -157,7 +130,7 @@ const { canonicalURL } = Astro;
     justify-content: center;
     gap: 1ch;
     max-width: 200px;
-    margin-block-start: var(--size-10);
+    margin-block-start: var(--size-12);
     margin-inline: auto;
     background: var(--accent);
     color: #fff;

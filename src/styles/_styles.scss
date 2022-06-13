@@ -39,7 +39,7 @@
 
   .tagline {
     font-weight: 600;
-    font-size: var(--size-3);
+    font-size: 0.9rem;
     color: var(--accent);
 
     @include break(md) {
