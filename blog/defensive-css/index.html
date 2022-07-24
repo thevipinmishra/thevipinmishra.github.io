@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="All about my new portfolio re-design, built with Astro, Bootstrap, SASS + Open Props.">
-    <title>New Year, New Portfolio! | Vipin Mishra</title>
+    <title>Defensive CSS FTW! | Vipin Mishra</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#1270e3">
-    <meta property="og:title" content="New Year, New Portfolio! | Vipin Mishra">
+    <meta property="og:title" content="Defensive CSS FTW! | Vipin Mishra">
     <meta property="og:type" content="article">
     <meta property="og:description" content="All about my new portfolio re-design, built with Astro, Bootstrap, SASS + Open Props.">
-    <meta property="og:url" content="https://vipinmishra.dev/blog/hello-world/">
-    <meta property="og:image" content="/assets/blog/hello-world.jpeg">
+    <meta property="og:url" content="https://vipinmishra.dev/blog/defensive-css/">
+    <meta property="og:image" content="/Vipin-Mishra.png">
   <link rel="stylesheet" href="/assets/f3584920.bf3a5ce8.css" />
 <link rel="stylesheet" href="/assets/d009a8f5.6b30db35.css" /></head>
 
@@ -40,10 +40,8 @@
         <div class="article-inner astro-UIUCTTIN">
           <div class="article-header text-center astro-UIUCTTIN">
             <div class="container astro-UIUCTTIN">
-              <div class="article-hero mb-4 container-lg astro-UIUCTTIN">
-                  <img src="/assets/blog/hello-world.jpeg" alt="New Year, New Portfolio!" class="astro-UIUCTTIN">
-                </div>
-              <h2 class="article-title astro-UIUCTTIN">New Year, New Portfolio!</h2>
+              
+              <h2 class="article-title astro-UIUCTTIN">Defensive CSS FTW!</h2>
             </div>
 
             <div class="article-meta mt-4 astro-UIUCTTIN">
@@ -53,36 +51,18 @@
             </span>
                 <span class="d-inline-block astro-UIUCTTIN">Vipin Mishra</span>
                 <span class="d-inline-block mx-1 astro-UIUCTTIN">on</span>
-                <span class="d-inline-block astro-UIUCTTIN">25 Dec 2021</span>
+                <span class="d-inline-block astro-UIUCTTIN">30 Jun 2022</span>
               </p>
               <div class="tags d-flex align-items-center justify-content-center mt-3 astro-UIUCTTIN">
                <span class="d-inline flex me-2 lh-1 astro-UIUCTTIN">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M122.7,25.9,42,42,25.9,122.7a8,8,0,0,0,2.2,7.2L132.5,234.3a7.9,7.9,0,0,0,11.3,0l90.5-90.5a7.9,7.9,0,0,0,0-11.3L129.9,28.1A8,8,0,0,0,122.7,25.9Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="84" cy="84" r="12"></circle></svg>
                </span>
-                <span class="tag-item astro-UIUCTTIN">astro</span><span class="tag-item astro-UIUCTTIN">sass</span>
+                <span class="tag-item astro-UIUCTTIN">css</span><span class="tag-item astro-UIUCTTIN">flexbox</span>
               </div>
             </div>
           </div>
           <article class="article-content container astro-UIUCTTIN">
-            <p>Hey there, welcome to my brand new portfolio!</p><p>Even though I never started doing web-designing with the intentions to pursue my career in this, I finally got a job in April 2020 after trying several other career options that I don’t even want to mention now, but the bottom line is, I’m a full-time Web Designer now, hurray!?</p><h2 id="the-new-portfolio-design">The New Portfolio Design</h2><p>Ever since I got a new job, I wanted to update my portfolio, like to make it a little bit Job-oriented, I started working on a couple of portfolio designs as well, but they never actually made it to the Internet because I never got enough time to focus on those.</p><p>I finally started working on a new re-design in the first week of December 2021, and here it is, live!</p><h3 id="my-choice-of-framework">My Choice of Framework</h3><p>I’ve used <a href="https://jekyllrb.com/">jekyll</a> a lot in the past to create static sites, but setting up the dev environment to run jekyll is very old school now, you need Ruby + Jekyll as a Ruby Gem to run, which is pretty heavy on resources.</p><p>With so many options in the community right now, I decided to go ahead with <a href="https://astro.build/">Astro</a>, their tagline being <strong>Build faster websites with less client-side Javascript</strong>.</p><p>The thing I liked most about Astro is, you can use any JavaScript frontend library like React, Vue, Svelte, etc., & in return you get just plain old html with zero javascript by default. now, that doesn’t mean, you can’t get client side javascript for your interactive components, Astro got them covered as well, they call it <strong>Partial Hydration</strong> & you can read the documentation <a href="https://docs.astro.build/core-concepts/component-hydration/">here</a>.</p><p>They also have their special <code>.astro</code> file which is pretty similar to <a href="https://vuejs.org/v2/guide/single-file-components.html">Vue’s Single File Component</a>, with scoped styles, JSX like expressions, etc.</p><p>Here’s a valid <code>.astro</code> file, the optional style block is scoped to this component/page only (can be global as well).</p><pre class="language-astro"><code class="language-astro"><span class="token operator">--</span><span class="token operator">-</span>
-<span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
-<span class="token operator">--</span><span class="token operator">-</span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>message<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-  <span class="token selector">p</span> <span class="token punctuation">{</span>
-    <span class="token property">font-weight</span><span class="token punctuation">:</span> 600<span class="token punctuation">;</span>
-    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Source Code Pro"</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre><h3 id="tools-ive-used-to-build-this-portfolio">Tools I’ve used to Build this Portfolio.</h3><ul>
-<li>Astro as my main framework.</li>
-<li>Custom Bootstrap build + SASS to design my components & web pages.</li>
-<li><a href="https://open-props.style/">Open Props</a> for a good amount of CSS Custom Properties to use them as my design tokens. It’s RAD.</li>
-<li><a href="https://phosphoricons.com/">Phosphor Icons</a> for all the icons I’ve used in this site.</li>
-<li><code>Astro.fetchContent()</code> to fetch my <code>.md</code> files that can be used with <code>paginate()</code> to get paginated data for my blog.</li>
-<li><a href="https://draculatheme.com/">Dracula theme</a> for the syntax highlighing on my code blocks along with <strong>Cascadia Code</strong> font.</li>
-</ul><p>This can not be the best set of tools & tech you’ll see for what I needed, but I’m pretty satisfied with the experience I had building this.</p><p>Got a quick feedback? or anything to talk about? please send them on my <a href="https://t.me/thevipinmishra">telegram</a>.</p><p>With that note, thanks for the read and <strong>Happy New Year</strong>! :)</p>
+            <p>In my initial days of working as a Web-designer, much of the bugs encountered by our QA guy were because of some edge cases that we don’t generally consider while writing our styles.</p><p>Having a component with dummy data might not reflect the side-effects of having real-world data, things like number of words in a title, number of cards in a slider, amount of words in a button, won’t be fixed to a certian number.</p><p>You will always have to make your components and layouts ready for such edge cases.</p><p>Last year, I came across this great article from Ahmed Shadeed, called <a href="https://ishadeed.com/article/defensive-css/">Defensive CSS</a>, where he demonstrated a whole lot of such cases where our general assumptions as a designer may go wrong, or there can be some edge cases we don’t even think about that can lead to a complete layout breake and eventually, a very bad user experience.</p><p>You can have a read, it’s full of very detailed and <strong>real-world</strong> examples.</p><p>The article got quite a lot of popularity as a term <strong>Defensive CSS</strong> and the author decided to put it into a whole new <strong>Series</strong> or collection.</p><p>Recently, <a href="https://defensivecss.dev/">defensive.dev</a> came into light, with a new article and so many <a href="https://defensivecss.dev/tips">tips</a>.</p><p>This resource is a <strong>must</strong> go-to guide if you’re an aspiring Web-designer, especially if you love writing Vanilla CSS.</p>
           </article>
         </div>
       </div>
