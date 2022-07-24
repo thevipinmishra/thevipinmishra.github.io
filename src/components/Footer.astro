@@ -1,10 +1,10 @@
 ---
 import {
-  LinkedinLogo,
-  GithubLogo,
-  InstagramLogo,
-  TwitterLogo,
-} from "phosphor-react";
+  IconBrandLinkedin,
+  IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandTwitter,
+} from "@tabler/icons";
 ---
 
 <footer class="site-footer" id="footer">
@@ -19,7 +19,7 @@ import {
           rel="noreferrer"
           title="GitHub"
         >
-          <GithubLogo weight="fill" size={26} />
+          <IconBrandGithub size={26} />
         </a>
       </li>
       <li>
@@ -29,7 +29,7 @@ import {
           rel="noreferrer"
           title="Linkedin"
         >
-          <LinkedinLogo weight="fill" size={26} />
+          <IconBrandLinkedin size={26} />
         </a>
       </li>
       <li>
@@ -39,7 +39,7 @@ import {
           rel="noreferrer"
           title="Instagram"
         >
-          <InstagramLogo weight="fill" size={26} />
+          <IconBrandInstagram size={26} />
         </a>
       </li>
       <li>
@@ -49,7 +49,7 @@ import {
           rel="noreferrer"
           title="Twitter"
         >
-          <TwitterLogo weight="fill" size={26} />
+          <IconBrandTwitter size={26} />
         </a>
       </li>
     </ul>
@@ -72,21 +72,11 @@ import {
       font-weight: 800;
       font-size: var(--font-size-fluid-3);
       color: var(--gray-9);
-      --x-offset: -0.0625em;
-      --y-offset: 0.0625em;
-      --stroke: 0.025em;
-      --background-color: white;
-      --stroke-color: var(--gray-2);
-
-      text-shadow: var(--x-offset) var(--y-offset) 0px var(--background-color),
-        calc(var(--x-offset) - var(--stroke))
-          calc(var(--y-offset) + var(--stroke)) 0px var(--stroke-color);
     }
 
     .email {
       position: relative;
       color: var(--gray-7);
-      font-family: var(--bs-font-monospace);
     }
 
     .social-list {

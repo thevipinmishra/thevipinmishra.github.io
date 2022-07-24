@@ -1,6 +1,7 @@
 ---
 import "../styles/main.scss";
 import "../styles/typography.scss";
+import { Pencil, Tag } from 'phosphor-react';
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 import CoverImage from "/Vipin-Mishra.png";
@@ -46,12 +47,18 @@ const { title, description, pubDate, author, heroImage, tags } = content;
 
             <div class="article-meta mt-4">
               <p class="d-inline-flex align-items-center article-author">
+              <span class="d-inline-block me-2 lh-1">
+                <Pencil size={18} />
+            </span>
                 <span class="d-inline-block">{author}</span>
                 <span class="d-inline-block mx-1">on</span>
                 <span class="d-inline-block">{pubDate}</span>
               </p>
-              <div class="tags mt-3">
-                {tags.map((tag) => <span>{tag}</span>)}
+              <div class="tags d-flex align-items-center justify-content-center mt-3">
+               <span class="d-inline flex me-2 lh-1">
+                <Tag size={18} />
+               </span>
+                {tags.map((tag) => <span class="tag-item">{tag}</span>)}
               </div>
             </div>
           </div>
@@ -110,14 +117,14 @@ const { title, description, pubDate, author, heroImage, tags } = content;
   .article-meta {
     position: relative;
     .tags {
-      span {
+      .tag-item {
         display: inline-flex;
         font-size: 0.88rem;
         color: var(--accent-dark);
         font-weight: 500;
         text-transform: uppercase;
 
-        & + span {
+        & + .tag-item {
           &::before {
             content: ",";
             display: inline-flex;

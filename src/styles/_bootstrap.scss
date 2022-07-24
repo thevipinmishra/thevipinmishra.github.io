@@ -13,7 +13,7 @@ $font-family-monospace: "Cascadia Code", SFMono-Regular, Menlo, Monaco, Consolas
 $text-muted: #6b7280;
 
 // Container padding
-$container-padding-x: 1.25rem;
+$container-padding-x: 2rem;
 
 // spacer-variables-maps
 $spacer: 1rem;
@@ -37,10 +37,11 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   //   xl: 1140px,
-  //   xxl: 1320px,,,,,,,,,,
+  //   xxl: 1320px,,,,,,,,,,,,,,
 );
 
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 

@@ -6,6 +6,11 @@ $accent: #1270e3;
   --duration: 140ms;
 }
 
+::selection {
+  background-color: var(--yellow-8);
+  color: #fff;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 17px;

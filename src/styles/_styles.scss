@@ -28,7 +28,7 @@
   }
 
   .name {
-    font-weight: 800;
+    font-weight: 700;
     font-size: var(--font-size-fluid-3);
     color: var(--gray-9);
 
@@ -38,8 +38,7 @@
   }
 
   .tagline {
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-size: var(--size-3);
     color: var(--accent);
 
     @include break(md) {

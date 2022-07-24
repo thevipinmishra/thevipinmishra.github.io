@@ -1,5 +1,6 @@
 ---
 import { Browser, GithubLogo } from "phosphor-react";
+import {IconBrowser} from '@tabler/icons'
 ---
 
 <section class="projects py-5 py-lg-6">
@@ -193,6 +194,31 @@ import { Browser, GithubLogo } from "phosphor-react";
             </a>
           </div>
         </div>
+
+         <div class="op-item">
+          <h3>Rick & Morty Characters</h3>
+          <p class="my-3 project-about text-muted">
+           A dead simple React App where I experimented with <a href="https://tanstack.com/query/" target="_blank">React Query</a>, to fetch and cache data. It got nice pagination and dark mode support.
+          </p>
+          <div class="links">
+            <a
+              href="https://thevipinmishra.github.io/VIPColors"
+              target="_blank"
+              rel="noreferrer"
+              class="live"
+            >
+              Live Preview
+            </a>
+            <a
+              href="https://github.com/thevipinmishra/VIPColors"
+              target="_blank"
+              rel="noreferrer"
+              class="source"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -292,6 +318,18 @@ import { Browser, GithubLogo } from "phosphor-react";
 
       &:nth-child(3n) {
         --border: var(--grape-5);
+      }
+
+        &:nth-child(4n) {
+        --border: var(--red-5);
+      }
+
+      .project-about {
+         a {
+          color: var(--accent);
+          font-weight: 500;
+          text-decoration: underline;
+        }
       }
 
       h3 {
