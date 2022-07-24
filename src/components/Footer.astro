@@ -1,10 +1,10 @@
 ---
 import {
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandTwitter,
-} from "@tabler/icons";
+  LinkedinLogo,
+  GithubLogo,
+  InstagramLogo,
+  TwitterLogo,
+} from "phosphor-react";
 ---
 
 <footer class="site-footer" id="footer">
@@ -19,7 +19,7 @@ import {
           rel="noreferrer"
           title="GitHub"
         >
-          <IconBrandGithub size={26} />
+          <GithubLogo weight="fill" size={26} />
         </a>
       </li>
       <li>
@@ -29,7 +29,7 @@ import {
           rel="noreferrer"
           title="Linkedin"
         >
-          <IconBrandLinkedin size={26} />
+          <LinkedinLogo weight="fill" size={26} />
         </a>
       </li>
       <li>
@@ -39,7 +39,7 @@ import {
           rel="noreferrer"
           title="Instagram"
         >
-          <IconBrandInstagram size={26} />
+          <InstagramLogo weight="fill" size={26} />
         </a>
       </li>
       <li>
@@ -49,7 +49,7 @@ import {
           rel="noreferrer"
           title="Twitter"
         >
-          <IconBrandTwitter size={26} />
+          <TwitterLogo weight="fill" size={26} />
         </a>
       </li>
     </ul>
@@ -77,6 +77,7 @@ import {
     .email {
       position: relative;
       color: var(--gray-7);
+      font-family: var(--bs-font-monospace);
     }
 
     .social-list {
