@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: '../../layouts/BlogPost.astro'
 title: Easy Media Queries using SASS Mixin
 pubDate: 09 Mar 2022
 author: Vipin Mishra

@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: '../../layouts/BlogPost.astro'
 title: Customizing Bootstrap 5 Using Sass
 pubDate: 27 Dec 2021
 author: Vipin Mishra
@@ -61,44 +60,40 @@ Now that we have our setup done, let's move on to the good part. Open `bootstrap
 ```scss
 // 1. Functions
 @import "./node_modules/bootstrap/scss/functions";
-
 // 2. Put your variable overrides here
 
-// 3. Mixins
+// 3. Maps
+@import "./node_modules/bootstrap/scss/maps";
+// 4. Mixins
 @import "./node_modules/bootstrap/scss/mixins";
-
-// 4. Variables
+// 5. Variables
 @import "./node_modules/bootstrap/scss/variables";
-
-// 5. Container
+// 6. Container
 @import "./node_modules/bootstrap/scss/containers";
-
-// 6. Grid
+// 7. Grid
 @import "./node_modules/bootstrap/scss/grid";
-
-// 7. Buttons
+// 8. Buttons
 @import "./node_modules/bootstrap/scss/buttons";
-
-// 8. Utilities
+// 9. Utilities
 @import "./node_modules/bootstrap/scss/utilities";
-
-// 9. Utilities API to extend them
+// 10. Utilities API to extend them
 @import "./node_modules/bootstrap/scss/utilities/api";
 ```
 
 Now the path to import can differ with the project & folder structure you have, all we want is the SCSS files from bootstrap that we downloaded through npm.
 
-Here in this `bootstrap.scss` file, we are importing only the files that are required to achieve our goals that we set before getting started. Now, the order for first 3 things matter here.
+Here in this `bootstrap.scss` file, we are importing only the files that are required to achieve our goals that we set before getting started.
 
 1. **Functions [Required]** - you need them at top to manipulate colors, SVGs, do calculations, etc.
 2. **Variable overrides** - We need to change the default values from bootstrap here, we'll make our changes here, but later.
-3. **Mixins [Required]** - Reusable mixins required to generate CSS.
-4. **Variables** - Whole set of default Sass variables from bootstrap.
-5. **Container** - SCSS for bootstrap container.
-6. **Grid** - Grid SCSS so that we can manipulate the columns.
-7. **Buttons** - to remove the border-radius from them. (Remember the goals we set earlier.)
-8. **Utilities** - Utilities like position, floats, margin & padding, height & width etc. (Again, we need to extend them till 10 units.)
-9. **Utilities API** to generate class names based on the Sass map in `_utilities.scss`.
+3. **Maps [Required]** - In bootstrap 5.2, several maps from `_variables.scss` were moved to a separate scss file, `_maps.scss` because of a longstanding issue.
+4. **Mixins [Required]** - Reusable mixins required to generate CSS.
+5. **Variables** - Whole set of default Sass variables from bootstrap.
+6. **Container** - SCSS for bootstrap container.
+7. **Grid** - Grid SCSS so that we can manipulate the columns.
+8. **Buttons** - to remove the border-radius from them. (Remember the goals we set earlier.)
+9. **Utilities** - Utilities like position, floats, margin & padding, height & width etc. (Again, we need to extend them till 10 units.)
+10. **Utilities API** to generate class names based on the Sass map in `_utilities.scss`.
 
 This should be enough to compile our custom build with only the parts we have imported. Now, open the `package.json` file, it should have a test script that we need to customize, or you can also add a new one.
 

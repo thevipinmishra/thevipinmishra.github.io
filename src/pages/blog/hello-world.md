@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: '../../layouts/BlogPost.astro'
 title: New Year, New Portfolio!
 pubDate: 25 Dec 2021
 author: Vipin Mishra

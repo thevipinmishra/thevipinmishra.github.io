@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: '../../layouts/BlogPost.astro'
 title: Defensive CSS FTW!
 pubDate: 30 Jun 2022
 author: Vipin Mishra

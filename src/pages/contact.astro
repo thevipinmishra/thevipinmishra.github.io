@@ -9,7 +9,7 @@ let title = "Contact | Vipin Mishra";
 let metaDescription =
   "I design & develop modern websites with pixel-perfection in mind, love solving complex design problems & have a strong devotion towards CSS";
 const ogImage = "/Vipin-Mishra.png";
-const { canonicalURL } = Astro;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">

@@ -7,7 +7,7 @@ import Projects from "../components/Projects.astro";
 import Footer from "../components/Footer.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 
-const { canonicalURL } = Astro;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = "/Vipin-Mishra.png";
 
 let title = "Vipin Mishra";

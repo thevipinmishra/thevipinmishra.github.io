@@ -7,7 +7,7 @@ import Nav from "../components/Nav.astro";
 import CoverImage from "/Vipin-Mishra.png";
 
 const { content } = Astro.props;
-const { canonicalURL } = Astro;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, pubDate, author, heroImage, tags } = content;
 ---
 
