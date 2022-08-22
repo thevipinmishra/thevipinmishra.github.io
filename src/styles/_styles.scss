@@ -6,7 +6,6 @@
   padding-inline: 0;
   padding-block-start: var(--size-8);
   padding-block-end: var(--size-10);
-  clip-path: ellipse(177% 100% at 14.44% 0%);
   position: relative;
   z-index: 9;
 
@@ -69,7 +68,6 @@
 
     &:hover {
       background: var(--accent-dark);
-      box-shadow: var(--shadow-3);
 
       svg {
         animation: var(--animation-shake-x) forwards;
