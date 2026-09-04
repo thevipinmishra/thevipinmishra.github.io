@@ -1,34 +1,34 @@
 ---
 /**
- * Fixed decorative layers behind all content.
- * Soft mauve–gold wash + SVG film grain; GPU-friendly transform/opacity only.
+ * Fixed decorative backdrop: static mauve–gold wash + canvas film grain.
+ * Canvas tiles a 128px noise texture (~12fps refresh); no CSS grain animation.
  */
 ---
 
 <div class="page-atmosphere" aria-hidden="true">
 	<div class="page-atmosphere__wash"></div>
-	<div class="page-atmosphere__grain"></div>
+	<canvas class="page-atmosphere__grain" data-page-grain></canvas>
 </div>
+
+<script>
+	import { initPageGrain } from '../lib/grain';
+	initPageGrain();
+</script>
 
 <style>
 	.page-atmosphere {
-		/* Pin to largest viewport height so the layer doesn't resize with mobile chrome. */
 		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		height: 100lvh;
+		inset: 0;
 		z-index: -1;
 		overflow: hidden;
 		pointer-events: none;
 		isolation: isolate;
-		contain: paint;
+		contain: strict;
 	}
 
 	.page-atmosphere__wash {
 		position: absolute;
-		/* Oversized so slow drift never reveals edges */
-		inset: -18%;
+		inset: 0;
 		opacity: var(--page-wash-opacity);
 		background-image:
 			radial-gradient(
@@ -46,95 +46,25 @@
 				var(--color-hero-mesh-b),
 				transparent 65%
 			);
-		/* translateZ keeps a compositor layer after LightningCSS flattens 3D translates */
-		transform: translateZ(0);
-		backface-visibility: hidden;
-		animation: page-wash-drift 64s var(--ease-out) infinite alternate;
 	}
 
 	.page-atmosphere__grain {
 		position: absolute;
-		inset: -12%;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
 		opacity: var(--page-grain-opacity);
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-		background-size: 180px 180px;
 		mix-blend-mode: var(--page-grain-blend);
-		transform: translateZ(0);
-		backface-visibility: hidden;
-		/* Tiny stepped jitter — large % travel on oversized layers reads as layout jump */
-		animation: page-grain-drift 36s steps(8) infinite;
-	}
-
-	@keyframes page-wash-drift {
-		from {
-			transform: translate3d(-0.6%, -0.4%, 0) scale(1);
-		}
-		to {
-			transform: translate3d(0.7%, 0.5%, 0) scale(1.02);
-		}
-	}
-
-	/* Stepped micro-jitter — film grain, not a smooth slide */
-	@keyframes page-grain-drift {
-		0%,
-		100% {
-			transform: translate3d(0, 0, 0);
-		}
-		10% {
-			transform: translate3d(-0.5%, -0.35%, 0);
-		}
-		20% {
-			transform: translate3d(0.4%, 0.5%, 0);
-		}
-		30% {
-			transform: translate3d(-0.25%, 0.3%, 0);
-		}
-		40% {
-			transform: translate3d(0.55%, -0.4%, 0);
-		}
-		50% {
-			transform: translate3d(-0.4%, 0.15%, 0);
-		}
-		60% {
-			transform: translate3d(0.3%, -0.5%, 0);
-		}
-		70% {
-			transform: translate3d(-0.6%, 0.35%, 0);
-		}
-		80% {
-			transform: translate3d(0.2%, 0.55%, 0);
-		}
-		90% {
-			transform: translate3d(-0.35%, -0.2%, 0);
-		}
 	}
 
 	@media (max-width: 767px) {
 		.page-atmosphere__wash {
 			opacity: calc(var(--page-wash-opacity) * 0.65);
-			animation-duration: 96s;
 		}
 
 		.page-atmosphere__grain {
 			opacity: calc(var(--page-grain-opacity) * 0.75);
-			animation-duration: 48s;
-			animation-timing-function: steps(6);
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.page-atmosphere__wash,
-		.page-atmosphere__grain {
-			animation: none;
-		}
-
-		.page-atmosphere__wash {
-			transform: translateZ(0);
-		}
-
-		.page-atmosphere__grain {
-			/* Static grain still present; pin to a neutral crop */
-			transform: translate3d(-2%, -1.5%, 0);
 		}
 	}
 </style>
