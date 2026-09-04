@@ -32,9 +32,6 @@ importers:
       reicon-brands:
         specifier: ^1.0.2
         version: 1.0.2
-      reicon-svelte:
-        specifier: ^1.0.104
-        version: 1.0.104(svelte@5.57.0)
       sharp:
         specifier: 0.35.4
         version: 0.35.4
@@ -1884,11 +1881,6 @@ packages:
 
   reicon-brands@1.0.2:
     resolution: {integrity: sha512-m+J4Ooa9vU1+Kg73GKni3eJgrFsoRmesLEgjkzHq4b3hkoJZj7so5kk8rYnkS8WZGfgH+ACb1u5wcjBRFUX4tw==}
-
-  reicon-svelte@1.0.104:
-    resolution: {integrity: sha512-gYZnCvExunTKm7MHLD6Q0I+IeRMKLsfkfqoFE6M2I4+dNbJm9wjSOoVWFzB19/UO/NSbtxk9lFQMMf5O1TYHmA==}
-    peerDependencies:
-      svelte: '>=3.0.0'
 
   reicon@1.2.4:
     resolution: {integrity: sha512-rjTDLJIYXc4kDaw3/g2IhggGCkZHtlahdOKaWvqoo/QxsKVc3sHOM0OdNH83nZTAmvCvsWQp8wHPF9USo76TYA==}
@@ -3908,10 +3900,6 @@ snapshots:
       regex-utilities: 2.3.0
 
   reicon-brands@1.0.2: {}
-
-  reicon-svelte@1.0.104(svelte@5.57.0):
-    dependencies:
-      svelte: 5.57.0
 
   reicon@1.2.4: {}
 

@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { Tooltip } from 'bits-ui';
-	import Sun from 'reicon-svelte/icons/Sun.svelte';
-	import Moon from 'reicon-svelte/icons/Moon.svelte';
+	import Moon from 'reicon/icons/Moon';
+	import Sun from 'reicon/icons/Sun';
+	import { iconSvg } from '../lib/icons';
 
 	type Theme = 'light' | 'dark';
+
+	const sunSvg = iconSvg(Sun, { size: 18 });
+	const moonSvg = iconSvg(Moon, { size: 18 });
 
 	let theme = $state<Theme>('light');
 	let ready = $state(false);
@@ -91,10 +95,10 @@
 					<span class="glow" aria-hidden="true"></span>
 					<span class="icon-stack" aria-hidden="true" class:ready>
 						<span class="icon sun" class:active={theme === 'light'}>
-							<Sun size={18} color="currentColor" />
+							{@html sunSvg}
 						</span>
 						<span class="icon moon" class:active={theme === 'dark'}>
-							<Moon size={18} color="currentColor" />
+							{@html moonSvg}
 						</span>
 					</span>
 				</button>

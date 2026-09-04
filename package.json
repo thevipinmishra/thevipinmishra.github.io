@@ -21,7 +21,6 @@
     "cuelume": "^0.2.2",
     "reicon": "^1.2.4",
     "reicon-brands": "^1.0.2",
-    "reicon-svelte": "^1.0.104",
     "sharp": "0.35.4",
     "svelte": "^5.57.0"
   },
