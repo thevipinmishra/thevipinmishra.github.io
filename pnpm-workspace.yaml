@@ -2,3 +2,5 @@ allowBuilds:
   esbuild: false
 minimumReleaseAgeExclude:
   - astro@7.3.1
+  - reicon-svelte@1.0.104
+  - reicon@1.2.4

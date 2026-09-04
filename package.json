@@ -17,9 +17,10 @@
     "astro": "^7.3.1",
     "bits-ui": "^2.19.0",
     "cuelume": "^0.2.2",
-    "reicon": "^1.2.3",
+    "reicon": "^1.2.4",
     "reicon-brands": "^1.0.2",
-    "reicon-svelte": "^1.0.103",
+    "reicon-svelte": "^1.0.104",
+    "sharp": "0.35.4",
     "svelte": "^5.57.0"
   },
   "allowScripts": {

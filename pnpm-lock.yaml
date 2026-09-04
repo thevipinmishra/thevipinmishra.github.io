@@ -20,15 +20,21 @@ importers:
       bits-ui:
         specifier: ^2.19.0
         version: 2.19.0(@internationalized/date@3.12.4)(svelte@5.57.0)
+      cuelume:
+        specifier: ^0.2.2
+        version: 0.2.2
       reicon:
-        specifier: ^1.2.3
-        version: 1.2.3
+        specifier: ^1.2.4
+        version: 1.2.4
       reicon-brands:
         specifier: ^1.0.2
         version: 1.0.2
       reicon-svelte:
-        specifier: ^1.0.103
-        version: 1.0.103(svelte@5.57.0)
+        specifier: ^1.0.104
+        version: 1.0.104(svelte@5.57.0)
+      sharp:
+        specifier: 0.35.4
+        version: 0.35.4
       svelte:
         specifier: ^5.57.0
         version: 5.57.0
@@ -967,6 +973,9 @@ packages:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
 
+  cuelume@0.2.2:
+    resolution: {integrity: sha512-TiNzJRjhddjC4jy4M7sv63V/86VaFhdIs6iHUCrc4CKhqypaxRBv1aedCBGebrz/cO7nroPkEfqHe/P7fOE2GQ==}
+
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
     engines: {node: '>=6.0'}
@@ -1411,13 +1420,13 @@ packages:
   reicon-brands@1.0.2:
     resolution: {integrity: sha512-m+J4Ooa9vU1+Kg73GKni3eJgrFsoRmesLEgjkzHq4b3hkoJZj7so5kk8rYnkS8WZGfgH+ACb1u5wcjBRFUX4tw==}
 
-  reicon-svelte@1.0.103:
-    resolution: {integrity: sha512-Rv4rclnxbfXZQEkXI/tbMKYdmAu7ifA5Xi45mnZM4WdJe0jHDtxAQ74MdDqS54Wo4URBuE8Ygtk6N1aF/Wtx/w==}
+  reicon-svelte@1.0.104:
+    resolution: {integrity: sha512-gYZnCvExunTKm7MHLD6Q0I+IeRMKLsfkfqoFE6M2I4+dNbJm9wjSOoVWFzB19/UO/NSbtxk9lFQMMf5O1TYHmA==}
     peerDependencies:
       svelte: '>=3.0.0'
 
-  reicon@1.2.3:
-    resolution: {integrity: sha512-MJOZY5C+mQH99qwuoPDg51gTTmvu9D4kH1eOOIgVYrx5wreFflMOD1PaRtx55Tt7R1FHHZAeg9zoKT5AJFk14g==}
+  reicon@1.2.4:
+    resolution: {integrity: sha512-rjTDLJIYXc4kDaw3/g2IhggGCkZHtlahdOKaWvqoo/QxsKVc3sHOM0OdNH83nZTAmvCvsWQp8wHPF9USo76TYA==}
 
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
@@ -2120,8 +2129,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@img/colour@1.1.0':
-    optional: true
+  '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.35.4':
     optionalDependencies:
@@ -2628,6 +2636,8 @@ snapshots:
     dependencies:
       css-tree: 2.2.1
 
+  cuelume@0.2.2: {}
+
   debug@4.4.3:
     dependencies:
       ms: 2.1.3
@@ -3023,11 +3033,11 @@ snapshots:
 
   reicon-brands@1.0.2: {}
 
-  reicon-svelte@1.0.103(svelte@5.57.0):
+  reicon-svelte@1.0.104(svelte@5.57.0):
     dependencies:
       svelte: 5.57.0
 
-  reicon@1.2.3: {}
+  reicon@1.2.4: {}
 
   resolve-pkg-maps@1.0.0: {}
 
@@ -3121,7 +3131,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.4
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
-    optional: true
 
   shiki@4.4.3:
     dependencies:
