@@ -7,10 +7,20 @@ import ThemeToggle from './ThemeToggle.svelte';
 </div>
 
 <style>
+	/*
+	 * Below laptop: absolute (scrolls with page) — not a sticky floating control.
+	 * ≥1024px: fixed corner control for desktop/laptop.
+	 */
 	.theme-float {
-		position: fixed;
+		position: absolute;
 		top: max(1rem, env(safe-area-inset-top));
 		inset-inline-end: max(1rem, env(safe-area-inset-right));
 		z-index: 40;
+	}
+
+	@media (min-width: 1024px) {
+		.theme-float {
+			position: fixed;
+		}
 	}
 </style>

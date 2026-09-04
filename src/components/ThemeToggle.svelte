@@ -50,6 +50,7 @@
 					type="button"
 					class="theme-toggle"
 					aria-label={theme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+					data-cuelume-toggle
 					onclick={toggle}
 				>
 					<span class="icon-stack" aria-hidden="true" class:ready>

@@ -1,6 +1,8 @@
 ---
 import * as stylex from '@stylexjs/stylex';
 import { Font } from 'astro:assets';
+import PageAtmosphere from '../components/PageAtmosphere.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 import ThemeFloat from '../components/ThemeFloat.astro';
 import { layout, footer } from '../styles/site.stylex';
 import '../styles/global.css';
@@ -12,7 +14,7 @@ interface Props {
 
 const {
 	title = 'Vipin Mishra, Full Stack Engineer',
-	description = 'Full Stack Engineer. TypeScript, React, Next.js, Node.js. 5+ years shipping production web apps. hi@vipin.me',
+	description = 'Full Stack Engineer. 5+ years shipping production web apps in TypeScript, React, Next.js, and Node.js. hi@vipin.me',
 } = Astro.props;
 
 const shell = stylex.props(layout.shell);
@@ -67,6 +69,7 @@ const year = new Date().getFullYear();
 		}
 	</head>
 	<body class={shell.className} style={shell.style} id="top">
+		<PageAtmosphere />
 		<a class="skip-link" href="#main">Skip to content</a>
 		<ThemeFloat />
 		<main id="main" class={main.className} style={main.style}>
@@ -78,6 +81,11 @@ const year = new Date().getFullYear();
 				<span>© {year}</span>
 			</div>
 		</footer>
+		<ScrollReveal />
+		<script>
+			import { initSounds } from '../lib/sounds';
+			initSounds();
+		</script>
 	</body>
 </html>
 

@@ -60,6 +60,10 @@
 	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 55%, transparent);
 	--color-portrait-rim: color-mix(in oklab, var(--gold-7) 70%, var(--mauve-5));
 	--color-portrait-glow: color-mix(in oklab, var(--gold-8) 22%, transparent);
+	/* Page atmosphere — barely-there; soft-light keeps text contrast intact */
+	--page-wash-opacity: 0.42;
+	--page-grain-opacity: 0.038;
+	--page-grain-blend: soft-light;
 }
 
 [data-theme='dark'] {
@@ -120,6 +124,9 @@
 	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 45%, transparent);
 	--color-portrait-rim: color-mix(in oklab, var(--gold-8) 55%, var(--mauve-5));
 	--color-portrait-glow: color-mix(in oklab, var(--gold-9) 18%, transparent);
+	--page-wash-opacity: 0.36;
+	--page-grain-opacity: 0.055;
+	--page-grain-blend: soft-light;
 }
 
 :root {

@@ -6,9 +6,11 @@ import Nextdotjs from 'reicon-brands/icons/Nextdotjs';
 import Nodedotjs from 'reicon-brands/icons/Nodedotjs';
 import Postgresql from 'reicon-brands/icons/Postgresql';
 import React from 'reicon-brands/icons/React';
+import Supabase from 'reicon-brands/icons/Supabase';
 import Tailwindcss from 'reicon-brands/icons/Tailwindcss';
 import Tanstack from 'reicon-brands/icons/Tanstack';
 import Typescript from 'reicon-brands/icons/Typescript';
+import Vercel from 'reicon-brands/icons/Vercel';
 import Vite from 'reicon-brands/icons/Vite';
 import { iconSvg, type IconSvgFn } from './icons';
 
@@ -24,12 +26,14 @@ const SKILL_ICONS: Record<string, IconSvgFn> = {
 	GraphQL: Graphql,
 	'Tailwind CSS': Tailwindcss,
 	'TanStack Query': Tanstack,
+	Supabase: Supabase,
 	Vite: Vite,
+	Vercel: Vercel,
 	GitHub: Github,
 };
 
 export function skillIconSvg(name: string): string | null {
 	const icon = SKILL_ICONS[name];
 	if (!icon) return null;
-	return iconSvg(icon, { size: 14 });
+	return iconSvg(icon, { size: 15 });
 }

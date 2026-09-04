@@ -3,18 +3,18 @@ export const IDENTITY = {
 	title: 'Full Stack Engineer',
 	email: 'hi@vipin.me',
 	github: 'https://github.com/thevipinmishra',
+	linkedin: 'https://www.linkedin.com/in/thevipinmishra',
 	site: 'https://vipinmishra.dev',
 } as const;
 
 export const HERO = {
 	headline: 'Full Stack Engineer',
 	support:
-		'5+ years building production web apps with TypeScript, React, Next.js, and Node.js.',
+		'5+ years shipping production web apps in TypeScript, React, Next.js, and Node.js.',
 } as const;
 
 export const ABOUT = {
-	lede: 'UI through APIs.',
-	body: 'Full Stack Engineer with 5+ years shipping and scaling 15+ production web apps. Frontend and backend, system architecture, APIs, performance, and legacy modernization. TypeScript, React, Next.js, Node.js. Builds systems that stay fast and hold up.',
+	title: 'How I actually build',
 } as const;
 
 export const EXPERIENCE = {
@@ -23,10 +23,14 @@ export const EXPERIENCE = {
 	dates: '03/2021 – present',
 	place: 'Ahmedabad, India',
 	bullets: [
-		'Shipped 15+ production apps across B2B, insurance, real estate, healthcare, and marketplaces — several from scratch.',
+		'Shipped 15+ production apps across B2B, insurance, real estate, healthcare, and marketplaces. Several from scratch.',
 		'Owned architecture end to end: React/Next.js frontends, Node.js APIs, data flows, and reusable abstractions.',
 		'Built design systems with 40+ components and mentored on TypeScript, reviews, and shared patterns.',
 	],
+} as const;
+
+export const SKILLS = {
+	title: 'What I ship with',
 } as const;
 
 /** One curated skills map — chips (+ logos where we have them). */
@@ -49,11 +53,15 @@ export const SKILL_GROUPS: Array<{ label: string; items: string[] }> = [
 	},
 	{
 		label: 'Data',
-		items: ['PostgreSQL', 'SQL', 'Drizzle ORM', 'Convex'],
+		items: ['PostgreSQL', 'SQL', 'Drizzle ORM', 'Convex', 'Supabase', 'Amazon RDS'],
 	},
 	{
 		label: 'AI',
 		items: ['OpenAI APIs', 'OCR', 'RAG', 'LLM workflows'],
+	},
+	{
+		label: 'Deployments',
+		items: ['AWS', 'Vercel'],
 	},
 	{
 		label: 'Tooling',
@@ -66,6 +74,10 @@ export type SiteProject = {
 	stack: string;
 	bullets: string[];
 };
+
+export const WORK = {
+	title: 'Shipped work',
+} as const;
 
 export const PROJECTS: SiteProject[] = [
 	{
@@ -116,3 +128,7 @@ export const PROJECTS: SiteProject[] = [
 		],
 	},
 ];
+
+export const CONTACT = {
+	title: 'Say hello',
+} as const;

@@ -1,14 +1,26 @@
 import * as stylex from '@stylexjs/stylex';
 import { colors, fonts, space } from './tokens.stylex';
 
-const fadeUp = stylex.keyframes({
+/* Soft veil lift — opacity + short travel + light blur. Coordinates with PortraitReveal. */
+const veilLift = stylex.keyframes({
 	from: {
 		opacity: 0,
-		transform: 'translateY(12px)',
+		transform: 'translateY(8px)',
+		filter: 'blur(5px)',
 	},
 	to: {
 		opacity: 1,
 		transform: 'translateY(0)',
+		filter: 'blur(0px)',
+	},
+});
+
+const veilFade = stylex.keyframes({
+	from: {
+		opacity: 0,
+	},
+	to: {
+		opacity: 1,
 	},
 });
 
@@ -83,14 +95,14 @@ export const layout = stylex.create({
 		margin: 0,
 		color: colors.fg,
 	},
-	lede: {
-		fontFamily: fonts.body,
-		fontSize: '1.0625rem',
-		lineHeight: 1.6,
-		color: colors.muted,
-		maxWidth: '36rem',
-		textWrap: 'pretty',
-		margin: 0,
+	titleEm: {
+		fontStyle: 'italic',
+		fontWeight: 400,
+		letterSpacing: '-0.015em',
+	},
+	titleStop: {
+		color: colors.accentText,
+		marginInlineStart: '0.01em',
 	},
 });
 
@@ -159,21 +171,11 @@ export const hero = stylex.create({
 			0 0 40px ${colors.portraitGlow},
 			0 12px 28px color-mix(in oklab, ${colors.shadow} 12%, transparent)
 		`,
-		animationName: fadeUp,
-		animationDuration: '700ms',
+		/* Opacity only — PortraitReveal owns the scale dissolve. */
+		animationName: veilFade,
+		animationDuration: '380ms',
 		animationTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		animationFillMode: 'both',
-	},
-	portrait: {
-		display: 'block',
-		width: '100%',
-		height: '100%',
-		maxWidth: 'none',
-		aspectRatio: '1 / 1',
-		borderRadius: '9999px',
-		objectFit: 'cover',
-		objectPosition: 'center top',
-		boxShadow: `inset 0 0 0 1px ${colors.imageOutline}`,
 	},
 	copy: {
 		display: 'flex',
@@ -191,9 +193,9 @@ export const hero = stylex.create({
 		textWrap: 'balance',
 		margin: 0,
 		color: colors.fg,
-		animationName: fadeUp,
-		animationDuration: '700ms',
-		animationDelay: '80ms',
+		animationName: veilLift,
+		animationDuration: '420ms',
+		animationDelay: '200ms',
 		animationTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		animationFillMode: 'both',
 	},
@@ -206,9 +208,9 @@ export const hero = stylex.create({
 		textWrap: 'balance',
 		margin: 0,
 		color: colors.fg,
-		animationName: fadeUp,
-		animationDuration: '700ms',
-		animationDelay: '140ms',
+		animationName: veilLift,
+		animationDuration: '420ms',
+		animationDelay: '280ms',
 		animationTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		animationFillMode: 'both',
 	},
@@ -220,9 +222,9 @@ export const hero = stylex.create({
 		maxWidth: '34rem',
 		textWrap: 'pretty',
 		margin: 0,
-		animationName: fadeUp,
-		animationDuration: '700ms',
-		animationDelay: '200ms',
+		animationName: veilLift,
+		animationDuration: '400ms',
+		animationDelay: '340ms',
 		animationTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		animationFillMode: 'both',
 	},
@@ -232,9 +234,9 @@ export const hero = stylex.create({
 		alignItems: 'center',
 		gap: space.md,
 		marginTop: space.xs,
-		animationName: fadeUp,
-		animationDuration: '700ms',
-		animationDelay: '280ms',
+		animationName: veilLift,
+		animationDuration: '400ms',
+		animationDelay: '400ms',
 		animationTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		animationFillMode: 'both',
 	},
@@ -295,40 +297,8 @@ export const about = stylex.create({
 			alignItems: 'start',
 		},
 	},
-	meta: {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: space.md,
-		fontFamily: fonts.body,
-		fontSize: '0.9375rem',
-		color: colors.muted,
-	},
-	metaRow: {
-		display: 'flex',
-		gap: space.sm,
-		alignItems: 'center',
-	},
-	metaLabel: {
-		fontSize: '0.75rem',
-		fontWeight: 500,
-		letterSpacing: '0.06em',
-		textTransform: 'uppercase',
-		color: colors.muted,
-		minWidth: '5.5rem',
-	},
-	body: {
-		fontFamily: fonts.body,
-		fontSize: '1.0625rem',
-		lineHeight: 1.65,
-		color: colors.fg,
-		maxWidth: '38rem',
-		textWrap: 'pretty',
-		margin: 0,
-	},
 	experience: {
-		marginTop: space['2xl'],
-		paddingTop: space.xl,
-		boxShadow: `inset 0 1px 0 ${colors.borderSubtle}`,
+		margin: 0,
 	},
 	expRole: {
 		fontFamily: fonts.body,
@@ -361,11 +331,15 @@ export const about = stylex.create({
 });
 
 export const skills = stylex.create({
+	title: {
+		fontSize: 'clamp(1.9rem, 3.9vw, 2.75rem)',
+		letterSpacing: '-0.025em',
+	},
 	groups: {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: space.xl,
-		marginTop: space.xl,
+		gap: space['2xl'],
+		marginTop: space['2xl'],
 	},
 	group: {
 		display: 'flex',
@@ -374,17 +348,18 @@ export const skills = stylex.create({
 	},
 	label: {
 		fontFamily: fonts.body,
-		fontSize: '0.6875rem',
-		fontWeight: 500,
-		letterSpacing: '0.06em',
+		fontSize: '0.75rem',
+		fontWeight: 600,
+		letterSpacing: '0.07em',
 		textTransform: 'uppercase',
-		color: colors.muted,
+		color: colors.fg,
+		opacity: 0.72,
 		margin: 0,
 	},
 	list: {
 		display: 'flex',
 		flexWrap: 'wrap',
-		gap: '0.35rem',
+		gap: '0.4rem',
 		padding: 0,
 		listStyle: 'none',
 		margin: 0,
@@ -392,34 +367,36 @@ export const skills = stylex.create({
 	chip: {
 		display: 'inline-flex',
 		alignItems: 'center',
-		gap: '0.35rem',
+		gap: '0.4rem',
 		fontFamily: fonts.body,
-		fontSize: '0.75rem',
-		fontWeight: 500,
+		fontSize: '0.8125rem',
+		fontWeight: 600,
 		letterSpacing: '-0.01em',
 		lineHeight: 1.2,
 		color: colors.fg,
 		backgroundColor: colors.secondary,
-		paddingBlock: '0.3rem',
-		paddingInline: '0.55rem',
-		borderRadius: '6px',
-		transitionProperty: 'background-color, color',
+		boxShadow: `inset 0 0 0 1px ${colors.borderSubtle}`,
+		paddingBlock: '0.4rem',
+		paddingInline: '0.7rem',
+		borderRadius: '7px',
+		transitionProperty: 'background-color, color, box-shadow',
 		transitionDuration: '140ms',
 		transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
 		':hover': {
 			backgroundColor: colors.accent,
 			color: colors.accentFg,
+			boxShadow: 'none',
 		},
 	},
 	mark: {
 		display: 'inline-flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '0.875rem',
-		height: '0.875rem',
+		width: '0.9375rem',
+		height: '0.9375rem',
 		flexShrink: 0,
 		color: 'inherit',
-		opacity: 0.85,
+		opacity: 0.9,
 	},
 });
 
@@ -427,7 +404,7 @@ export const projects = stylex.create({
 	list: {
 		display: 'flex',
 		flexDirection: 'column',
-		margin: `${space['2xl']} 0 0`,
+		margin: `${space.xl} 0 0`,
 		padding: 0,
 		listStyle: 'none',
 		gap: 0,
@@ -474,17 +451,34 @@ export const projects = stylex.create({
 	},
 	bullets: {
 		margin: 0,
-		paddingInlineStart: '1.1rem',
+		padding: 0,
+		listStyle: 'none',
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '0.45rem',
+		gap: '0.55rem',
 	},
 	bullet: {
+		display: 'flex',
+		alignItems: 'flex-start',
+		gap: '0.55rem',
 		fontFamily: fonts.body,
-		fontSize: '0.9375rem',
+		fontSize: '0.8125rem',
+		fontWeight: 400,
 		lineHeight: 1.5,
 		color: colors.muted,
+		opacity: 0.9,
 		textWrap: 'pretty',
+	},
+	bulletMark: {
+		display: 'inline-flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexShrink: 0,
+		width: '0.75rem',
+		height: '1.2em',
+		marginTop: '0.05em',
+		color: colors.accentText,
+		opacity: 0.7,
 	},
 });
 
@@ -503,6 +497,32 @@ export const contact = stylex.create({
 		flexWrap: 'wrap',
 		alignItems: 'center',
 		gap: space.md,
+	},
+	aside: {
+		margin: 0,
+		fontFamily: fonts.body,
+		fontSize: '0.8125rem',
+		lineHeight: 1.4,
+		color: colors.muted,
+	},
+	asideLink: {
+		color: colors.muted,
+		textDecoration: 'none',
+		letterSpacing: '-0.01em',
+		borderBottom: `1px solid ${colors.borderSubtle}`,
+		paddingBottom: '0.05rem',
+		transitionProperty: 'color, border-color',
+		transitionDuration: '140ms',
+		transitionTimingFunction: 'cubic-bezier(0.2, 0, 0, 1)',
+		':hover': {
+			color: colors.fg,
+			borderBottomColor: colors.accentText,
+		},
+		':focus-visible': {
+			color: colors.fg,
+			outline: `2px solid ${colors.ring}`,
+			outlineOffset: '3px',
+		},
 	},
 });
 
@@ -523,8 +543,6 @@ export const footer = stylex.create({
 		fontFamily: fonts.body,
 		fontSize: '0.8125rem',
 		color: colors.muted,
-		boxShadow: `inset 0 1px 0 ${colors.borderSubtle}`,
-		paddingTop: space.xl,
 	},
 	mark: {
 		fontFamily: fonts.display,

@@ -1,6 +1,8 @@
 ---
 import * as stylex from '@stylexjs/stylex';
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
+import PortraitReveal from '../components/PortraitReveal.svelte';
+import ArrowRight from 'reicon/icons/ArrowRight';
 import Briefcase from 'reicon/icons/Briefcase';
 import Code from 'reicon/icons/Code';
 import Envelope from 'reicon/icons/Envelope';
@@ -10,12 +12,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import avatar from '../images/dp.jpg';
 import {
-	ABOUT,
 	EXPERIENCE,
 	HERO,
 	IDENTITY,
 	PROJECTS,
 	SKILL_GROUPS,
+	WORK,
 } from '../lib/content';
 import { getProfile } from '../lib/github';
 import { iconSvg } from '../lib/icons';
@@ -32,6 +34,20 @@ import {
 
 const profile = await getProfile();
 
+const sharpPortrait = await getImage({
+	src: avatar,
+	width: 296,
+	height: 296,
+	format: 'webp',
+	densities: [1, 2],
+});
+const pixelPortrait = await getImage({
+	src: avatar,
+	width: 18,
+	height: 18,
+	format: 'webp',
+});
+
 const skillRows = SKILL_GROUPS.map((group) => ({
 	label: group.label,
 	items: group.items.map((name) => ({
@@ -47,6 +63,7 @@ const icons = {
 	letterMark: iconSvg(Envelope, { size: 28 }),
 	user: iconSvg(UserCheck, { size: 28 }),
 	github: iconSvg(Github, { size: 16 }),
+	bullet: iconSvg(ArrowRight, { size: 12 }),
 };
 
 const heroRoot = stylex.props(hero.root);
@@ -54,7 +71,6 @@ const atmosphere = stylex.props(hero.atmosphere);
 const grain = stylex.props(hero.grain);
 const heroInner = stylex.props(hero.inner);
 const portraitWrap = stylex.props(hero.portraitWrap);
-const portrait = stylex.props(hero.portrait);
 const copy = stylex.props(hero.copy);
 const brand = stylex.props(hero.brand);
 const headline = stylex.props(hero.headline);
@@ -71,13 +87,10 @@ const sectionMarkTilt = stylex.props(layout.sectionMark, layout.sectionMarkTilt)
 const sectionMarkSkew = stylex.props(layout.sectionMark, layout.sectionMarkSkew);
 const sectionMarkAskew = stylex.props(layout.sectionMark, layout.sectionMarkAskew);
 const sectionTitle = stylex.props(layout.sectionTitle);
-const lede = stylex.props(layout.lede);
+const titleEm = stylex.props(layout.titleEm);
+const titleStop = stylex.props(layout.titleStop);
 
 const aboutGrid = stylex.props(about.grid);
-const aboutMeta = stylex.props(about.meta);
-const aboutMetaRow = stylex.props(about.metaRow);
-const aboutMetaLabel = stylex.props(about.metaLabel);
-const aboutBody = stylex.props(about.body);
 const experience = stylex.props(about.experience);
 const expRole = stylex.props(about.expRole);
 const expMeta = stylex.props(about.expMeta);
@@ -90,6 +103,7 @@ const skillLabel = stylex.props(skillsStyles.label);
 const skillList = stylex.props(skillsStyles.list);
 const skillChip = stylex.props(skillsStyles.chip);
 const skillMark = stylex.props(skillsStyles.mark);
+const skillsTitle = stylex.props(layout.sectionTitle, skillsStyles.title);
 
 const projectList = stylex.props(projects.list);
 const projectItem = stylex.props(projects.item);
@@ -99,13 +113,17 @@ const projectName = stylex.props(projects.name);
 const projectStack = stylex.props(projects.stack);
 const projectBullets = stylex.props(projects.bullets);
 const projectBullet = stylex.props(projects.bullet);
+const projectBulletMark = stylex.props(projects.bulletMark);
 
 const contactPanel = stylex.props(contact.panel);
 const contactActions = stylex.props(contact.actions);
+const contactAside = stylex.props(contact.aside);
+const contactAsideLink = stylex.props(contact.asideLink);
 
 const description = `${IDENTITY.title}. ${HERO.support}`;
 const mailHref = `mailto:${IDENTITY.email}`;
 const githubHref = profile.html_url || IDENTITY.github;
+const linkedinHref = IDENTITY.linkedin;
 ---
 
 <BaseLayout
@@ -117,17 +135,15 @@ const githubHref = profile.html_url || IDENTITY.github;
 		<div class={grain.className} style={grain.style} aria-hidden="true"></div>
 		<div class={heroInner.className} style={heroInner.style}>
 			<div class={portraitWrap.className} style={portraitWrap.style}>
-				<Image
-					class={portrait.className}
-					style={portrait.style}
-					src={avatar}
+				<PortraitReveal
+					client:load
+					sharpSrc={sharpPortrait.src}
+					sharpSrcSet={sharpPortrait.srcSet.attribute}
+					pixelSrc={pixelPortrait.src}
 					alt={`${IDENTITY.name} portrait`}
 					width={296}
 					height={296}
-					densities={[1, 2]}
-					format="webp"
-					loading="eager"
-					fetchpriority="high"
+					sizes="148px"
 				/>
 			</div>
 			<div class={copy.className} style={copy.style}>
@@ -143,6 +159,8 @@ const githubHref = profile.html_url || IDENTITY.github;
 						href={mailHref}
 						class:list={[btnPrimary.className, 'btn-primary']}
 						style={btnPrimary.style}
+						data-cuelume-press="pulse"
+						data-cuelume-release
 					>
 						<Icon svg={icons.letter} />
 						{IDENTITY.email}
@@ -153,6 +171,8 @@ const githubHref = profile.html_url || IDENTITY.github;
 						style={btnGhost.style}
 						target="_blank"
 						rel="noopener noreferrer"
+						data-cuelume-press="scan"
+						data-cuelume-release
 					>
 						<Icon svg={icons.github} />
 						GitHub
@@ -171,7 +191,11 @@ const githubHref = profile.html_url || IDENTITY.github;
 		<div class={container.className} style={container.style}>
 			<div class={aboutGrid.className} style={aboutGrid.style}>
 				<div>
-					<div class={sectionHead.className} style={sectionHead.style}>
+					<div
+						class={sectionHead.className}
+						style={sectionHead.style}
+						data-reveal="veil"
+					>
 						<span
 							class={sectionMark.className}
 							style={sectionMark.style}
@@ -184,22 +208,13 @@ const githubHref = profile.html_url || IDENTITY.github;
 							class={sectionTitle.className}
 							style={sectionTitle.style}
 						>
-							{ABOUT.lede}
+							How I{' '}
+							<em class={titleEm.className} style={titleEm.style}>actually</em>
+							{' '}build<span class={titleStop.className} style={titleStop.style}>.</span>
 						</h2>
 					</div>
-					<div class={aboutMeta.className} style={aboutMeta.style}>
-						<div class={aboutMetaRow.className} style={aboutMetaRow.style}>
-							<span class={aboutMetaLabel.className} style={aboutMetaLabel.style}>
-								Role
-							</span>
-							<span>{IDENTITY.title}</span>
-						</div>
-					</div>
 				</div>
-				<div>
-					<p class={aboutBody.className} style={aboutBody.style}>
-						{ABOUT.body}
-					</p>
+				<div data-reveal="soft">
 					<div class={experience.className} style={experience.style}>
 						<p class={expRole.className} style={expRole.style}>
 							{EXPERIENCE.role} · {EXPERIENCE.company}
@@ -229,7 +244,11 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="skills-title"
 	>
 		<div class={container.className} style={container.style}>
-			<div class={sectionHead.className} style={sectionHead.style}>
+			<div
+				class={sectionHead.className}
+				style={sectionHead.style}
+				data-reveal="veil"
+			>
 				<span
 					class={sectionMarkTilt.className}
 					style={sectionMarkTilt.style}
@@ -237,21 +256,28 @@ const githubHref = profile.html_url || IDENTITY.github;
 				>
 					<Icon svg={icons.code} />
 				</span>
-				<h2 id="skills-title" class={sectionTitle.className} style={sectionTitle.style}>
-					Stack I ship with.
+				<h2 id="skills-title" class={skillsTitle.className} style={skillsTitle.style}>
+					What I{' '}
+					<em class={titleEm.className} style={titleEm.style}>ship</em>
+					{' '}with<span class={titleStop.className} style={titleStop.style}>.</span>
 				</h2>
 			</div>
-			<p class={lede.className} style={lede.style}>
-				Frontend, backend, data, and AI. What I actually ship.
-			</p>
 			<div class={skillGroups.className} style={skillGroups.style}>
 				{
 					skillRows.map((group) => (
-						<div class={skillGroup.className} style={skillGroup.style}>
+						<div
+							class={skillGroup.className}
+							style={skillGroup.style}
+							data-reveal="soft"
+						>
 							<p class={skillLabel.className} style={skillLabel.style}>
 								{group.label}
 							</p>
-							<ul class={skillList.className} style={skillList.style}>
+							<ul
+								class={skillList.className}
+								style={skillList.style}
+								data-reveal="chips"
+							>
 								{group.items.map((item) => (
 									<li class={skillChip.className} style={skillChip.style}>
 										{item.svg ? (
@@ -277,7 +303,11 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="work-title"
 	>
 		<div class={container.className} style={container.style}>
-			<div class={sectionHead.className} style={sectionHead.style}>
+			<div
+				class={sectionHead.className}
+				style={sectionHead.style}
+				data-reveal="veil"
+			>
 				<span
 					class={sectionMarkSkew.className}
 					style={sectionMarkSkew.style}
@@ -286,13 +316,17 @@ const githubHref = profile.html_url || IDENTITY.github;
 					<Icon svg={icons.briefcase} />
 				</span>
 				<h2 id="work-title" class={sectionTitle.className} style={sectionTitle.style}>
-					Selected projects.
+					{WORK.title}<span class={titleStop.className} style={titleStop.style}>.</span>
 				</h2>
 			</div>
 			<ul class={projectList.className} style={projectList.style}>
 				{
 					PROJECTS.map((project) => (
-						<li class={projectItem.className} style={projectItem.style}>
+						<li
+							class={projectItem.className}
+							style={projectItem.style}
+							data-reveal="soft"
+						>
 							<article class={projectBody.className} style={projectBody.style}>
 								<div class={projectHeading.className} style={projectHeading.style}>
 									<h3 class={projectName.className} style={projectName.style}>
@@ -305,7 +339,14 @@ const githubHref = profile.html_url || IDENTITY.github;
 								<ul class={projectBullets.className} style={projectBullets.style}>
 									{project.bullets.map((bullet) => (
 										<li class={projectBullet.className} style={projectBullet.style}>
-											{bullet}
+											<span
+												class={projectBulletMark.className}
+												style={projectBulletMark.style}
+												aria-hidden="true"
+											>
+												<Icon svg={icons.bullet} />
+											</span>
+											<span>{bullet}</span>
 										</li>
 									))}
 								</ul>
@@ -324,7 +365,11 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="contact-title"
 	>
 		<div class={container.className} style={container.style}>
-			<div class={sectionHead.className} style={sectionHead.style}>
+			<div
+				class={sectionHead.className}
+				style={sectionHead.style}
+				data-reveal="veil"
+			>
 				<span
 					class={sectionMarkAskew.className}
 					style={sectionMarkAskew.style}
@@ -337,18 +382,23 @@ const githubHref = profile.html_url || IDENTITY.github;
 					class={sectionTitle.className}
 					style={sectionTitle.style}
 				>
-					Say hello.
+					Say{' '}
+					<em class={titleEm.className} style={titleEm.style}>hello</em>
+					<span class={titleStop.className} style={titleStop.style}>.</span>
 				</h2>
 			</div>
-			<p class={lede.className} style={lede.style}>
-				Open to full-stack roles and product work. Email is the best way in.
-			</p>
-			<div class={contactPanel.className} style={contactPanel.style}>
+			<div
+				class={contactPanel.className}
+				style={contactPanel.style}
+				data-reveal="soft"
+			>
 				<div class={contactActions.className} style={contactActions.style}>
 					<a
 						href={mailHref}
 						class:list={[btnPrimary.className, 'btn-primary']}
 						style={btnPrimary.style}
+						data-cuelume-press="pulse"
+						data-cuelume-release
 					>
 						<Icon svg={icons.letter} />
 						{IDENTITY.email}
@@ -359,11 +409,26 @@ const githubHref = profile.html_url || IDENTITY.github;
 						style={btnGhost.style}
 						target="_blank"
 						rel="noopener noreferrer"
+						data-cuelume-press="scan"
+						data-cuelume-release
 					>
 						<Icon svg={icons.github} />
 						GitHub
 					</a>
 				</div>
+				<p class={contactAside.className} style={contactAside.style}>
+					Also on{' '}
+					<a
+						href={linkedinHref}
+						class={contactAsideLink.className}
+						style={contactAsideLink.style}
+						target="_blank"
+						rel="noopener noreferrer"
+						data-cuelume-press="whisper"
+					>
+						LinkedIn
+					</a>
+				</p>
 			</div>
 		</div>
 	</section>
