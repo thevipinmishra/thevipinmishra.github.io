@@ -26,7 +26,8 @@ const veilFade = stylex.keyframes({
 
 export const layout = stylex.create({
 	shell: {
-		minHeight: '100dvh',
+		/* svh stays stable while mobile browser chrome shows/hides (dvh does not). */
+		minHeight: '100svh',
 		display: 'flex',
 		flexDirection: 'column',
 		backgroundColor: colors.bg,
@@ -110,7 +111,8 @@ export const hero = stylex.create({
 	root: {
 		position: 'relative',
 		isolation: 'isolate',
-		minHeight: '100dvh',
+		/* svh: avoid layout jump when dynamic viewport height changes on scroll. */
+		minHeight: '100svh',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'flex-end',

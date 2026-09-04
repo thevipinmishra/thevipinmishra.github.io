@@ -13,6 +13,8 @@
 		-webkit-text-size-adjust: 100%;
 		text-size-adjust: 100%;
 		scroll-behavior: smooth;
+		/* Reserve scrollbar space so content width doesn't jump when overflow appears. */
+		scrollbar-gutter: stable;
 	}
 
 	html.theme-switching,
@@ -24,7 +26,7 @@
 
 	body {
 		margin: 0;
-		min-height: 100dvh;
+		min-height: 100svh;
 		/* Isolate so page-atmosphere (z-index: -1) sits above body bg, under content */
 		isolation: isolate;
 		font-family: var(--font-body), ui-sans-serif, sans-serif;

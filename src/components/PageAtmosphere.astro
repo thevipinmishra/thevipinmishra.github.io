@@ -12,11 +12,17 @@
 
 <style>
 	.page-atmosphere {
+		/* Pin to largest viewport height so the layer doesn't resize with mobile chrome. */
 		position: fixed;
-		inset: 0;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 100lvh;
 		z-index: -1;
 		overflow: hidden;
 		pointer-events: none;
+		isolation: isolate;
+		contain: paint;
 	}
 
 	.page-atmosphere__wash {
@@ -48,25 +54,23 @@
 
 	.page-atmosphere__grain {
 		position: absolute;
-		inset: -40%;
-		width: 180%;
-		height: 180%;
+		inset: -12%;
 		opacity: var(--page-grain-opacity);
 		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 		background-size: 180px 180px;
 		mix-blend-mode: var(--page-grain-blend);
 		transform: translateZ(0);
 		backface-visibility: hidden;
-		/* Fewer steps + longer period = less paint thrash in production */
+		/* Tiny stepped jitter — large % travel on oversized layers reads as layout jump */
 		animation: page-grain-drift 36s steps(8) infinite;
 	}
 
 	@keyframes page-wash-drift {
 		from {
-			transform: translate3d(-1.2%, -0.8%, 0) scale(1);
+			transform: translate3d(-0.6%, -0.4%, 0) scale(1);
 		}
 		to {
-			transform: translate3d(1.4%, 1%, 0) scale(1.04);
+			transform: translate3d(0.7%, 0.5%, 0) scale(1.02);
 		}
 	}
 
@@ -77,31 +81,31 @@
 			transform: translate3d(0, 0, 0);
 		}
 		10% {
-			transform: translate3d(-2.2%, -1.4%, 0);
+			transform: translate3d(-0.5%, -0.35%, 0);
 		}
 		20% {
-			transform: translate3d(1.6%, 2%, 0);
+			transform: translate3d(0.4%, 0.5%, 0);
 		}
 		30% {
-			transform: translate3d(-1%, 1.2%, 0);
+			transform: translate3d(-0.25%, 0.3%, 0);
 		}
 		40% {
-			transform: translate3d(2.4%, -1.8%, 0);
+			transform: translate3d(0.55%, -0.4%, 0);
 		}
 		50% {
-			transform: translate3d(-1.8%, 0.6%, 0);
+			transform: translate3d(-0.4%, 0.15%, 0);
 		}
 		60% {
-			transform: translate3d(1.2%, -2.2%, 0);
+			transform: translate3d(0.3%, -0.5%, 0);
 		}
 		70% {
-			transform: translate3d(-2.6%, 1.6%, 0);
+			transform: translate3d(-0.6%, 0.35%, 0);
 		}
 		80% {
-			transform: translate3d(0.8%, 2.4%, 0);
+			transform: translate3d(0.2%, 0.55%, 0);
 		}
 		90% {
-			transform: translate3d(-1.4%, -0.8%, 0);
+			transform: translate3d(-0.35%, -0.2%, 0);
 		}
 	}
 
@@ -130,7 +134,7 @@
 
 		.page-atmosphere__grain {
 			/* Static grain still present; pin to a neutral crop */
-			transform: translate3d(-8%, -6%, 0);
+			transform: translate3d(-2%, -1.5%, 0);
 		}
 	}
 </style>
