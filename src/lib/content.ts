@@ -4,7 +4,7 @@ export const IDENTITY = {
 	email: 'hi@vipin.me',
 	github: 'https://github.com/thevipinmishra',
 	linkedin: 'https://www.linkedin.com/in/thevipinmishra',
-	site: 'https://vipinmishra.dev',
+	site: 'https://thevipinmishra.github.io',
 } as const;
 
 export const HERO = {

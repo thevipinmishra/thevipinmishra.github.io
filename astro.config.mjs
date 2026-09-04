@@ -5,6 +5,7 @@ import stylex from '@stylexjs/unplugin';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://thevipinmishra.github.io',
 	integrations: [svelte()],
 	fonts: [
 		{

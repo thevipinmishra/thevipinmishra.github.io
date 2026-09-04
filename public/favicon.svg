@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#12A594"/>
-  <path d="M10 22V10h4.2c2.6 0 4.2 1.4 4.2 3.5 0 1.4-.7 2.5-1.9 3.1L20.8 22h-3.2l-3.7-5.1H13V22H10zm3-7.8h1.1c1.1 0 1.8-.6 1.8-1.5S15.2 11.2 14.1 11.2H13v3z" fill="#FAFEFD"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="V">
+  <!-- Mauve ground + gold V — quiet mark for browser chrome -->
+  <rect width="32" height="32" rx="7" fill="#211f26"/>
+  <path
+    d="M9.2 8.4h3.05l3.75 12.05L19.75 8.4H22.8L17.15 24.1h-2.3L9.2 8.4Z"
+    fill="#978365"
+  />
 </svg>

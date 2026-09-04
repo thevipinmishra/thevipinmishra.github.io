@@ -1,9 +1,11 @@
 ---
 import * as stylex from '@stylexjs/stylex';
-import { Font } from 'astro:assets';
+import { Font, getImage } from 'astro:assets';
 import PageAtmosphere from '../components/PageAtmosphere.astro';
 import ScrollReveal from '../components/ScrollReveal.astro';
 import ThemeFloat from '../components/ThemeFloat.astro';
+import portrait from '../images/dp.jpg';
+import { IDENTITY } from '../lib/content';
 import { layout, footer } from '../styles/site.stylex';
 import '../styles/global.css';
 
@@ -13,9 +15,30 @@ interface Props {
 }
 
 const {
-	title = 'Vipin Mishra, Full Stack Engineer',
-	description = 'Full Stack Engineer. 5+ years shipping production web apps in TypeScript, React, Next.js, and Node.js. hi@vipin.me',
+	title = `${IDENTITY.name}, ${IDENTITY.title}`,
+	description = `${IDENTITY.title}. 5+ years shipping production web apps in TypeScript, React, Next.js, and Node.js. ${IDENTITY.email}`,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? IDENTITY.site);
+const siteOrigin = Astro.site?.origin ?? IDENTITY.site;
+const ogImage = await getImage({
+	src: portrait,
+	width: 1200,
+	height: 1200,
+	format: 'jpg',
+});
+const ogImageURL = new URL(ogImage.src, siteOrigin).href;
+
+const personJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: IDENTITY.name,
+	jobTitle: IDENTITY.title,
+	url: siteOrigin,
+	email: IDENTITY.email,
+	image: ogImageURL,
+	sameAs: [IDENTITY.github, IDENTITY.linkedin],
+};
 
 const shell = stylex.props(layout.shell);
 const main = stylex.props(layout.main);
@@ -29,14 +52,40 @@ const year = new Date().getFullYear();
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content={IDENTITY.name} />
+		<meta name="generator" content={Astro.generator} />
+
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="sitemap" href="/sitemap.xml" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={IDENTITY.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:alt" content={`${IDENTITY.name} portrait`} />
+		<meta property="og:locale" content="en_US" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+		<meta name="twitter:image:alt" content={`${IDENTITY.name} portrait`} />
+
 		<meta name="theme-color" content="#fdfcfd" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#121113" media="(prefers-color-scheme: dark)" />
-		<title>{title}</title>
+
+		<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+
 		<Font cssVariable="--font-display" preload />
 		<Font cssVariable="--font-body" preload />
 		<script is:inline>
