@@ -52,6 +52,8 @@ export const layout = stylex.create({
 		width: 'fit-content',
 		maxWidth: '100%',
 		margin: `0 0 ${space.lg}`,
+		/* Scaled watermark icons sit outside the title box */
+		overflow: 'visible',
 	},
 	sectionMark: {
 		position: 'absolute',
@@ -63,6 +65,7 @@ export const layout = stylex.create({
 		lineHeight: 0,
 		pointerEvents: 'none',
 		userSelect: 'none',
+		overflow: 'visible',
 		transform: 'translateY(-50%) rotate(-16deg) scale(3.4)',
 		transformOrigin: 'center center',
 	},

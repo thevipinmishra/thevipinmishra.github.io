@@ -25,9 +25,6 @@ export const colors = stylex.defineVars({
 	portraitRim: 'var(--color-portrait-rim)',
 	portraitGlow: 'var(--color-portrait-glow)',
 	shadow: 'var(--color-shadow)',
-	meshA: 'var(--color-hero-mesh-a)',
-	meshB: 'var(--color-hero-mesh-b)',
-	meshC: 'var(--color-hero-mesh-c)',
 });
 
 export const fonts = stylex.defineVars({

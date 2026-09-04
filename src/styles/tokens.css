@@ -53,15 +53,11 @@
 	--color-destructive: #e5484d;
 	--color-overlay: color-mix(in oklab, #000 40%, transparent);
 	--color-shadow: color-mix(in oklab, var(--mauve-12) 8%, transparent);
-	--color-hero-mesh-a: color-mix(in oklab, var(--gold-4) 50%, transparent);
-	--color-hero-mesh-b: color-mix(in oklab, var(--mauve-3) 75%, transparent);
-	--color-hero-mesh-c: color-mix(in oklab, var(--gold-2) 65%, transparent);
 	--color-image-outline: oklch(0 0 0 / 0.08);
 	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 55%, transparent);
 	--color-portrait-rim: color-mix(in oklab, var(--gold-7) 70%, var(--mauve-5));
 	--color-portrait-glow: color-mix(in oklab, var(--gold-8) 22%, transparent);
-	/* Page atmosphere — canvas grain + static wash; soft-light keeps text contrast */
-	--page-wash-opacity: 0.42;
+	/* Page atmosphere — canvas grain only; soft-light keeps text contrast */
 	--page-grain-opacity: 0.04;
 	--page-grain-blend: soft-light;
 }
@@ -117,14 +113,10 @@
 	--color-destructive: #ff6369;
 	--color-overlay: color-mix(in oklab, #000 70%, transparent);
 	--color-shadow: #000;
-	--color-hero-mesh-a: color-mix(in oklab, var(--gold-4) 40%, transparent);
-	--color-hero-mesh-b: color-mix(in oklab, var(--mauve-3) 65%, transparent);
-	--color-hero-mesh-c: color-mix(in oklab, var(--gold-2) 55%, transparent);
 	--color-image-outline: oklch(1 0 0 / 0.1);
 	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 45%, transparent);
 	--color-portrait-rim: color-mix(in oklab, var(--gold-8) 55%, var(--mauve-5));
 	--color-portrait-glow: color-mix(in oklab, var(--gold-9) 18%, transparent);
-	--page-wash-opacity: 0.36;
 	--page-grain-opacity: 0.055;
 	--page-grain-blend: soft-light;
 }

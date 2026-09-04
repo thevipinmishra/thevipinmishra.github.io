@@ -1,12 +1,11 @@
 ---
 /**
- * Fixed decorative backdrop: static mauve–gold wash + canvas film grain.
+ * Fixed decorative backdrop: canvas film grain only.
  * Canvas tiles a 128px noise texture (~12fps refresh); no CSS grain animation.
  */
 ---
 
 <div class="page-atmosphere" aria-hidden="true">
-	<div class="page-atmosphere__wash"></div>
 	<canvas class="page-atmosphere__grain" data-page-grain></canvas>
 </div>
 
@@ -26,28 +25,6 @@
 		contain: strict;
 	}
 
-	.page-atmosphere__wash {
-		position: absolute;
-		inset: 0;
-		opacity: var(--page-wash-opacity);
-		background-image:
-			radial-gradient(
-				ellipse 55% 45% at 22% 18%,
-				var(--color-hero-mesh-a),
-				transparent 62%
-			),
-			radial-gradient(
-				ellipse 50% 42% at 78% 72%,
-				var(--color-hero-mesh-c),
-				transparent 58%
-			),
-			radial-gradient(
-				ellipse 40% 36% at 48% 48%,
-				var(--color-hero-mesh-b),
-				transparent 65%
-			);
-	}
-
 	.page-atmosphere__grain {
 		position: absolute;
 		inset: 0;
@@ -59,10 +36,6 @@
 	}
 
 	@media (max-width: 767px) {
-		.page-atmosphere__wash {
-			opacity: calc(var(--page-wash-opacity) * 0.65);
-		}
-
 		.page-atmosphere__grain {
 			opacity: calc(var(--page-grain-opacity) * 0.75);
 		}

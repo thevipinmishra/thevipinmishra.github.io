@@ -90,7 +90,8 @@
 	html.reveal-ready [data-reveal].is-in {
 		opacity: 1;
 		transform: none;
-		clip-path: inset(0 0 0 0);
+		/* none — inset(0) still clips overflow (scaled section marks) */
+		clip-path: none;
 		filter: none;
 	}
 
