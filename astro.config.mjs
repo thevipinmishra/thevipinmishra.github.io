@@ -36,8 +36,14 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [
+			// Place StyleX before framework plugins. Production CSS is appended to
+			// the imported global.css asset; virtual:stylex.css is DEV-only (BaseLayout).
 			stylex.vite({
-				useCSSLayers: true,
+				// Keep StyleX above the global `reset` layer so atomic rules win
+				// over unlayered-equivalent resets (avoids !important workarounds).
+				useCSSLayers: {
+					before: ['reset'],
+				},
 				dev: process.env.NODE_ENV !== 'production',
 				runtimeInjection: false,
 			}),

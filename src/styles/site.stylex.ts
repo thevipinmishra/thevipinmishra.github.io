@@ -118,27 +118,6 @@ export const hero = stylex.create({
 		paddingBottom: `clamp(3rem, 8vw, ${space['4xl']})`,
 		overflow: 'hidden',
 	},
-	atmosphere: {
-		position: 'absolute',
-		inset: 0,
-		zIndex: -1,
-		backgroundImage: `
-			radial-gradient(ellipse 80% 55% at 85% 10%, ${colors.meshA}, transparent 55%),
-			radial-gradient(ellipse 60% 50% at 10% 80%, ${colors.meshB}, transparent 50%),
-			radial-gradient(ellipse 50% 40% at 50% 40%, ${colors.meshC}, transparent 60%),
-			linear-gradient(180deg, ${colors.bg} 0%, ${colors.bg} 100%)
-		`,
-		backgroundColor: colors.bg,
-	},
-	grain: {
-		position: 'absolute',
-		inset: 0,
-		zIndex: -1,
-		opacity: 0.32,
-		pointerEvents: 'none',
-		backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")`,
-		mixBlendMode: 'soft-light',
-	},
 	inner: {
 		width: '100%',
 		maxWidth: '72rem',

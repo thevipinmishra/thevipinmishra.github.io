@@ -67,8 +67,6 @@ const icons = {
 };
 
 const heroRoot = stylex.props(hero.root);
-const atmosphere = stylex.props(hero.atmosphere);
-const grain = stylex.props(hero.grain);
 const heroInner = stylex.props(hero.inner);
 const portraitWrap = stylex.props(hero.portraitWrap);
 const copy = stylex.props(hero.copy);
@@ -131,8 +129,6 @@ const linkedinHref = IDENTITY.linkedin;
 	description={description}
 >
 	<section class={heroRoot.className} style={heroRoot.style} aria-label="Introduction">
-		<div class={atmosphere.className} style={atmosphere.style} aria-hidden="true"></div>
-		<div class={grain.className} style={grain.style} aria-hidden="true"></div>
 		<div class={heroInner.className} style={heroInner.style}>
 			<div class={portraitWrap.className} style={portraitWrap.style}>
 				<PortraitReveal
@@ -157,7 +153,7 @@ const linkedinHref = IDENTITY.linkedin;
 				<div class={ctas.className} style={ctas.style}>
 					<a
 						href={mailHref}
-						class:list={[btnPrimary.className, 'btn-primary']}
+						class={btnPrimary.className}
 						style={btnPrimary.style}
 						data-cuelume-press="pulse"
 						data-cuelume-release
@@ -395,7 +391,7 @@ const linkedinHref = IDENTITY.linkedin;
 				<div class={contactActions.className} style={contactActions.style}>
 					<a
 						href={mailHref}
-						class:list={[btnPrimary.className, 'btn-primary']}
+						class={btnPrimary.className}
 						style={btnPrimary.style}
 						data-cuelume-press="pulse"
 						data-cuelume-release

@@ -130,7 +130,7 @@
 	.icon.active {
 		opacity: 1;
 		transform: scale(1);
-		filter: blur(0);
+		filter: none;
 	}
 
 	:global(.tooltip-content) {
