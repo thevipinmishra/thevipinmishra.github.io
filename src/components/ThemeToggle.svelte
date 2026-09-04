@@ -7,6 +7,19 @@
 
 	let theme = $state<Theme>('light');
 	let ready = $state(false);
+	let kicking = $state(false);
+	let reduceMotion = $state(false);
+
+	const copy = {
+		light: {
+			action: 'Kill the lights',
+			hint: 'Dim it. Eyes will thank you.',
+		},
+		dark: {
+			action: 'Flip the lights on',
+			hint: 'Enough midnight oil.',
+		},
+	} as const;
 
 	function readTheme(): Theme {
 		const fromDom = document.documentElement.dataset.theme;
@@ -32,12 +45,31 @@
 	}
 
 	function toggle() {
+		if (!reduceMotion) {
+			kicking = false;
+			requestAnimationFrame(() => {
+				kicking = true;
+			});
+		}
 		applyTheme(theme === 'dark' ? 'light' : 'dark');
+	}
+
+	function onKickEnd(event: AnimationEvent) {
+		if (event.target !== event.currentTarget) return;
+		if (event.animationName !== 'theme-kick') return;
+		kicking = false;
 	}
 
 	$effect(() => {
 		theme = readTheme();
 		ready = true;
+		const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+		reduceMotion = mq.matches;
+		const onChange = () => {
+			reduceMotion = mq.matches;
+		};
+		mq.addEventListener('change', onChange);
+		return () => mq.removeEventListener('change', onChange);
 	});
 </script>
 
@@ -49,10 +81,14 @@
 					{...props}
 					type="button"
 					class="theme-toggle"
-					aria-label={theme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+					class:kicking
+					aria-label={copy[theme].action}
 					data-cuelume-toggle
+					data-theme-state={theme}
 					onclick={toggle}
+					onanimationend={onKickEnd}
 				>
+					<span class="glow" aria-hidden="true"></span>
 					<span class="icon-stack" aria-hidden="true" class:ready>
 						<span class="icon sun" class:active={theme === 'light'}>
 							<Sun size={18} color="currentColor" />
@@ -66,7 +102,7 @@
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
 			<Tooltip.Content sideOffset={8} class="tooltip-content">
-				{theme === 'dark' ? 'Light mode' : 'Dark mode'}
+				{copy[theme].hint}
 			</Tooltip.Content>
 		</Tooltip.Portal>
 	</Tooltip.Root>
@@ -89,22 +125,49 @@
 			0 8px 28px color-mix(in oklab, var(--color-shadow) 18%, transparent);
 		cursor: pointer;
 		color: var(--color-foreground);
+		overflow: hidden;
+		isolation: isolate;
 		transition:
 			background-color 160ms cubic-bezier(0.2, 0, 0, 1),
 			transform 160ms cubic-bezier(0.2, 0, 0, 1),
-			box-shadow 160ms cubic-bezier(0.2, 0, 0, 1);
+			box-shadow 160ms cubic-bezier(0.2, 0, 0, 1),
+			color 160ms cubic-bezier(0.2, 0, 0, 1);
 	}
 
 	.theme-toggle:hover {
 		background: var(--color-secondary);
+		color: var(--color-accent-text);
 	}
 
 	.theme-toggle:active {
 		transform: scale(0.96);
 	}
 
+	.theme-toggle.kicking {
+		animation: theme-kick 420ms cubic-bezier(0.2, 0, 0, 1);
+	}
+
+	.theme-toggle.kicking .glow {
+		animation: theme-glow 420ms cubic-bezier(0.2, 0, 0, 1);
+	}
+
+	.glow {
+		position: absolute;
+		inset: -30%;
+		border-radius: 50%;
+		background: radial-gradient(
+			circle,
+			color-mix(in oklab, var(--gold-8) 42%, transparent) 0%,
+			transparent 68%
+		);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 0;
+	}
+
 	.icon-stack {
 		position: relative;
+		z-index: 1;
 		width: 18px;
 		height: 18px;
 	}
@@ -116,21 +179,64 @@
 		align-items: center;
 		justify-content: center;
 		opacity: 0;
-		transform: scale(0.25);
+		transform: scale(0.25) rotate(var(--enter-rotate));
 		filter: blur(4px);
+	}
+
+	.icon.sun {
+		--enter-rotate: -48deg;
+	}
+
+	.icon.moon {
+		--enter-rotate: 48deg;
 	}
 
 	.icon-stack.ready .icon {
 		transition:
-			opacity 200ms cubic-bezier(0.2, 0, 0, 1),
-			transform 200ms cubic-bezier(0.2, 0, 0, 1),
-			filter 200ms cubic-bezier(0.2, 0, 0, 1);
+			opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+			transform 300ms cubic-bezier(0.2, 0, 0, 1),
+			filter 300ms cubic-bezier(0.2, 0, 0, 1);
 	}
 
 	.icon.active {
 		opacity: 1;
-		transform: scale(1);
+		transform: scale(1) rotate(0deg);
 		filter: none;
+	}
+
+	@keyframes theme-kick {
+		0% {
+			transform: scale(0.96) rotate(0deg);
+		}
+		38% {
+			transform: scale(1.04) rotate(var(--kick-tilt));
+		}
+		100% {
+			transform: scale(1) rotate(0deg);
+		}
+	}
+
+	.theme-toggle[data-theme-state='light'].kicking {
+		--kick-tilt: -8deg;
+	}
+
+	.theme-toggle[data-theme-state='dark'].kicking {
+		--kick-tilt: 8deg;
+	}
+
+	@keyframes theme-glow {
+		0% {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+		35% {
+			opacity: 0.9;
+			transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(1.35);
+		}
 	}
 
 	:global(.tooltip-content) {
@@ -145,5 +251,25 @@
 		font-weight: 500;
 		box-shadow: 0 8px 24px var(--color-shadow);
 		transform-origin: var(--bits-tooltip-content-transform-origin);
+		max-width: 14rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.theme-toggle.kicking,
+		.theme-toggle.kicking .glow {
+			animation: none;
+		}
+
+		.icon-stack.ready .icon {
+			transition: none;
+		}
+
+		.icon {
+			transform: scale(0.25);
+		}
+
+		.icon.active {
+			transform: scale(1);
+		}
 	}
 </style>
