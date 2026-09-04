@@ -41,11 +41,11 @@ const skillRows = SKILL_GROUPS.map((group) => ({
 }));
 
 const icons = {
-	briefcase: iconSvg(Briefcase, { size: 22 }),
-	code: iconSvg(Code, { size: 22 }),
+	briefcase: iconSvg(Briefcase, { size: 28 }),
+	code: iconSvg(Code, { size: 28 }),
 	letter: iconSvg(Envelope, { size: 16 }),
-	letterMark: iconSvg(Envelope, { size: 22 }),
-	user: iconSvg(UserCheck, { size: 22 }),
+	letterMark: iconSvg(Envelope, { size: 28 }),
+	user: iconSvg(UserCheck, { size: 28 }),
 	github: iconSvg(Github, { size: 16 }),
 };
 
@@ -65,6 +65,7 @@ const btnGhost = stylex.props(button.base, button.ghost);
 
 const section = stylex.props(layout.section);
 const container = stylex.props(layout.container);
+const sectionHead = stylex.props(layout.sectionHead);
 const sectionMark = stylex.props(layout.sectionMark);
 const sectionMarkTilt = stylex.props(layout.sectionMark, layout.sectionMarkTilt);
 const sectionMarkSkew = stylex.props(layout.sectionMark, layout.sectionMarkSkew);
@@ -168,22 +169,24 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="about-title"
 	>
 		<div class={container.className} style={container.style}>
-			<span
-				class={sectionMark.className}
-				style={sectionMark.style}
-				aria-hidden="true"
-			>
-				<Icon svg={icons.user} />
-			</span>
 			<div class={aboutGrid.className} style={aboutGrid.style}>
 				<div>
-					<h2
-						id="about-title"
-						class={sectionTitle.className}
-						style={sectionTitle.style}
-					>
-						{ABOUT.lede}
-					</h2>
+					<div class={sectionHead.className} style={sectionHead.style}>
+						<span
+							class={sectionMark.className}
+							style={sectionMark.style}
+							aria-hidden="true"
+						>
+							<Icon svg={icons.user} />
+						</span>
+						<h2
+							id="about-title"
+							class={sectionTitle.className}
+							style={sectionTitle.style}
+						>
+							{ABOUT.lede}
+						</h2>
+					</div>
 					<div class={aboutMeta.className} style={aboutMeta.style}>
 						<div class={aboutMetaRow.className} style={aboutMetaRow.style}>
 							<span class={aboutMetaLabel.className} style={aboutMetaLabel.style}>
@@ -226,16 +229,18 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="skills-title"
 	>
 		<div class={container.className} style={container.style}>
-			<span
-				class={sectionMarkTilt.className}
-				style={sectionMarkTilt.style}
-				aria-hidden="true"
-			>
-				<Icon svg={icons.code} />
-			</span>
-			<h2 id="skills-title" class={sectionTitle.className} style={sectionTitle.style}>
-				Stack I ship with.
-			</h2>
+			<div class={sectionHead.className} style={sectionHead.style}>
+				<span
+					class={sectionMarkTilt.className}
+					style={sectionMarkTilt.style}
+					aria-hidden="true"
+				>
+					<Icon svg={icons.code} />
+				</span>
+				<h2 id="skills-title" class={sectionTitle.className} style={sectionTitle.style}>
+					Stack I ship with.
+				</h2>
+			</div>
 			<p class={lede.className} style={lede.style}>
 				Frontend, backend, data, and AI. What I actually ship.
 			</p>
@@ -272,16 +277,18 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="work-title"
 	>
 		<div class={container.className} style={container.style}>
-			<span
-				class={sectionMarkSkew.className}
-				style={sectionMarkSkew.style}
-				aria-hidden="true"
-			>
-				<Icon svg={icons.briefcase} />
-			</span>
-			<h2 id="work-title" class={sectionTitle.className} style={sectionTitle.style}>
-				Selected projects.
-			</h2>
+			<div class={sectionHead.className} style={sectionHead.style}>
+				<span
+					class={sectionMarkSkew.className}
+					style={sectionMarkSkew.style}
+					aria-hidden="true"
+				>
+					<Icon svg={icons.briefcase} />
+				</span>
+				<h2 id="work-title" class={sectionTitle.className} style={sectionTitle.style}>
+					Selected projects.
+				</h2>
+			</div>
 			<ul class={projectList.className} style={projectList.style}>
 				{
 					PROJECTS.map((project) => (
@@ -317,20 +324,22 @@ const githubHref = profile.html_url || IDENTITY.github;
 		aria-labelledby="contact-title"
 	>
 		<div class={container.className} style={container.style}>
-			<span
-				class={sectionMarkAskew.className}
-				style={sectionMarkAskew.style}
-				aria-hidden="true"
-			>
-				<Icon svg={icons.letterMark} />
-			</span>
-			<h2
-				id="contact-title"
-				class={sectionTitle.className}
-				style={sectionTitle.style}
-			>
-				Say hello.
-			</h2>
+			<div class={sectionHead.className} style={sectionHead.style}>
+				<span
+					class={sectionMarkAskew.className}
+					style={sectionMarkAskew.style}
+					aria-hidden="true"
+				>
+					<Icon svg={icons.letterMark} />
+				</span>
+				<h2
+					id="contact-title"
+					class={sectionTitle.className}
+					style={sectionTitle.style}
+				>
+					Say hello.
+				</h2>
+			</div>
 			<p class={lede.className} style={lede.style}>
 				Open to full-stack roles and product work. Email is the best way in.
 			</p>
