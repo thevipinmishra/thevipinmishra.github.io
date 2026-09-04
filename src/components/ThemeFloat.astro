@@ -1,0 +1,16 @@
+---
+import ThemeToggle from './ThemeToggle.svelte';
+---
+
+<div class="theme-float">
+	<ThemeToggle client:load />
+</div>
+
+<style>
+	.theme-float {
+		position: fixed;
+		top: max(1rem, env(safe-area-inset-top));
+		inset-inline-end: max(1rem, env(safe-area-inset-right));
+		z-index: 40;
+	}
+</style>

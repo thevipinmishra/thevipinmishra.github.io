@@ -1,0 +1,104 @@
+---
+import * as stylex from '@stylexjs/stylex';
+import { Font } from 'astro:assets';
+import ThemeFloat from '../components/ThemeFloat.astro';
+import { layout, footer } from '../styles/site.stylex';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Vipin Mishra, Full Stack Engineer',
+	description = 'Full Stack Engineer. TypeScript, React, Next.js, Node.js. 5+ years shipping production web apps. hi@vipin.me',
+} = Astro.props;
+
+const shell = stylex.props(layout.shell);
+const main = stylex.props(layout.main);
+const footerRoot = stylex.props(footer.root);
+const footerInner = stylex.props(footer.inner);
+const footerMark = stylex.props(footer.mark);
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#fdfcfd" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#121113" media="(prefers-color-scheme: dark)" />
+		<title>{title}</title>
+		<Font cssVariable="--font-display" preload />
+		<Font cssVariable="--font-body" preload />
+		<script is:inline>
+			(function () {
+				try {
+					var stored = localStorage.getItem('theme');
+					var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					var theme =
+						stored === 'light' || stored === 'dark'
+							? stored
+							: prefersDark
+								? 'dark'
+								: 'light';
+					document.documentElement.dataset.theme = theme;
+					document.documentElement.classList.toggle('dark', theme === 'dark');
+				} catch (_) {
+					document.documentElement.dataset.theme = 'light';
+				}
+			})();
+		</script>
+		{
+			import.meta.env.DEV && (
+				<>
+					<link rel="stylesheet" href="/virtual:stylex.css" />
+					<script>
+						import('virtual:stylex:runtime');
+					</script>
+				</>
+			)
+		}
+	</head>
+	<body class={shell.className} style={shell.style} id="top">
+		<a class="skip-link" href="#main">Skip to content</a>
+		<ThemeFloat />
+		<main id="main" class={main.className} style={main.style}>
+			<slot />
+		</main>
+		<footer class={footerRoot.className} style={footerRoot.style}>
+			<div class={footerInner.className} style={footerInner.style}>
+				<span class={footerMark.className} style={footerMark.style}>Vipin Mishra</span>
+				<span>© {year}</span>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.skip-link {
+		position: absolute;
+		left: var(--space-page);
+		top: 0.75rem;
+		z-index: 100;
+		transform: translateY(-160%);
+		padding: 0.5rem 0.75rem;
+		border-radius: 8px;
+		background: var(--color-primary);
+		color: var(--color-primary-foreground);
+		font-family: var(--font-body), ui-sans-serif, sans-serif;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.skip-link:focus {
+		transform: translateY(0);
+	}
+</style>

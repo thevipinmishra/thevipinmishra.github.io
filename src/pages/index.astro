@@ -1,17 +1,361 @@
 ---
+import * as stylex from '@stylexjs/stylex';
+import { Image } from 'astro:assets';
+import Briefcase from 'reicon/icons/Briefcase';
+import Code from 'reicon/icons/Code';
+import Envelope from 'reicon/icons/Envelope';
+import UserCheck from 'reicon/icons/UserCheck';
+import Github from 'reicon-brands/icons/Github';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import avatar from '../images/dp.jpg';
+import {
+	ABOUT,
+	EXPERIENCE,
+	HERO,
+	IDENTITY,
+	PROJECTS,
+	SKILL_GROUPS,
+} from '../lib/content';
+import { getProfile } from '../lib/github';
+import { iconSvg } from '../lib/icons';
+import { skillIconSvg } from '../lib/tech';
+import {
+	about,
+	button,
+	contact,
+	hero,
+	layout,
+	projects,
+	skills as skillsStyles,
+} from '../styles/site.stylex';
 
+const profile = await getProfile();
+
+const skillRows = SKILL_GROUPS.map((group) => ({
+	label: group.label,
+	items: group.items.map((name) => ({
+		name,
+		svg: skillIconSvg(name),
+	})),
+}));
+
+const icons = {
+	briefcase: iconSvg(Briefcase, { size: 22 }),
+	code: iconSvg(Code, { size: 22 }),
+	letter: iconSvg(Envelope, { size: 16 }),
+	letterMark: iconSvg(Envelope, { size: 22 }),
+	user: iconSvg(UserCheck, { size: 22 }),
+	github: iconSvg(Github, { size: 16 }),
+};
+
+const heroRoot = stylex.props(hero.root);
+const atmosphere = stylex.props(hero.atmosphere);
+const grain = stylex.props(hero.grain);
+const heroInner = stylex.props(hero.inner);
+const portraitWrap = stylex.props(hero.portraitWrap);
+const portrait = stylex.props(hero.portrait);
+const copy = stylex.props(hero.copy);
+const brand = stylex.props(hero.brand);
+const headline = stylex.props(hero.headline);
+const support = stylex.props(hero.support);
+const ctas = stylex.props(hero.ctas);
+const btnPrimary = stylex.props(button.base, button.primary);
+const btnGhost = stylex.props(button.base, button.ghost);
+
+const section = stylex.props(layout.section);
+const container = stylex.props(layout.container);
+const sectionMark = stylex.props(layout.sectionMark);
+const sectionMarkTilt = stylex.props(layout.sectionMark, layout.sectionMarkTilt);
+const sectionMarkSkew = stylex.props(layout.sectionMark, layout.sectionMarkSkew);
+const sectionMarkAskew = stylex.props(layout.sectionMark, layout.sectionMarkAskew);
+const sectionTitle = stylex.props(layout.sectionTitle);
+const lede = stylex.props(layout.lede);
+
+const aboutGrid = stylex.props(about.grid);
+const aboutMeta = stylex.props(about.meta);
+const aboutMetaRow = stylex.props(about.metaRow);
+const aboutMetaLabel = stylex.props(about.metaLabel);
+const aboutBody = stylex.props(about.body);
+const experience = stylex.props(about.experience);
+const expRole = stylex.props(about.expRole);
+const expMeta = stylex.props(about.expMeta);
+const expList = stylex.props(about.expList);
+const expItem = stylex.props(about.expItem);
+
+const skillGroups = stylex.props(skillsStyles.groups);
+const skillGroup = stylex.props(skillsStyles.group);
+const skillLabel = stylex.props(skillsStyles.label);
+const skillList = stylex.props(skillsStyles.list);
+const skillChip = stylex.props(skillsStyles.chip);
+const skillMark = stylex.props(skillsStyles.mark);
+
+const projectList = stylex.props(projects.list);
+const projectItem = stylex.props(projects.item);
+const projectBody = stylex.props(projects.body);
+const projectHeading = stylex.props(projects.heading);
+const projectName = stylex.props(projects.name);
+const projectStack = stylex.props(projects.stack);
+const projectBullets = stylex.props(projects.bullets);
+const projectBullet = stylex.props(projects.bullet);
+
+const contactPanel = stylex.props(contact.panel);
+const contactActions = stylex.props(contact.actions);
+
+const description = `${IDENTITY.title}. ${HERO.support}`;
+const mailHref = `mailto:${IDENTITY.email}`;
+const githubHref = profile.html_url || IDENTITY.github;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title={`${IDENTITY.name}, ${IDENTITY.title}`}
+	description={description}
+>
+	<section class={heroRoot.className} style={heroRoot.style} aria-label="Introduction">
+		<div class={atmosphere.className} style={atmosphere.style} aria-hidden="true"></div>
+		<div class={grain.className} style={grain.style} aria-hidden="true"></div>
+		<div class={heroInner.className} style={heroInner.style}>
+			<div class={portraitWrap.className} style={portraitWrap.style}>
+				<Image
+					class={portrait.className}
+					style={portrait.style}
+					src={avatar}
+					alt={`${IDENTITY.name} portrait`}
+					width={296}
+					height={296}
+					densities={[1, 2]}
+					format="webp"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			</div>
+			<div class={copy.className} style={copy.style}>
+				<h1 class={brand.className} style={brand.style}>{IDENTITY.name}</h1>
+				<p class={headline.className} style={headline.style}>
+					{HERO.headline}
+				</p>
+				<p class={support.className} style={support.style}>
+					{HERO.support}
+				</p>
+				<div class={ctas.className} style={ctas.style}>
+					<a
+						href={mailHref}
+						class:list={[btnPrimary.className, 'btn-primary']}
+						style={btnPrimary.style}
+					>
+						<Icon svg={icons.letter} />
+						{IDENTITY.email}
+					</a>
+					<a
+						href={githubHref}
+						class={btnGhost.className}
+						style={btnGhost.style}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon svg={icons.github} />
+						GitHub
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section
+		id="about"
+		class={section.className}
+		style={section.style}
+		aria-labelledby="about-title"
+	>
+		<div class={container.className} style={container.style}>
+			<span
+				class={sectionMark.className}
+				style={sectionMark.style}
+				aria-hidden="true"
+			>
+				<Icon svg={icons.user} />
+			</span>
+			<div class={aboutGrid.className} style={aboutGrid.style}>
+				<div>
+					<h2
+						id="about-title"
+						class={sectionTitle.className}
+						style={sectionTitle.style}
+					>
+						{ABOUT.lede}
+					</h2>
+					<div class={aboutMeta.className} style={aboutMeta.style}>
+						<div class={aboutMetaRow.className} style={aboutMetaRow.style}>
+							<span class={aboutMetaLabel.className} style={aboutMetaLabel.style}>
+								Role
+							</span>
+							<span>{IDENTITY.title}</span>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p class={aboutBody.className} style={aboutBody.style}>
+						{ABOUT.body}
+					</p>
+					<div class={experience.className} style={experience.style}>
+						<p class={expRole.className} style={expRole.style}>
+							{EXPERIENCE.role} · {EXPERIENCE.company}
+						</p>
+						<p class={expMeta.className} style={expMeta.style}>
+							{EXPERIENCE.dates} · {EXPERIENCE.place}
+						</p>
+						<ul class={expList.className} style={expList.style}>
+							{
+								EXPERIENCE.bullets.map((item) => (
+									<li class={expItem.className} style={expItem.style}>
+										{item}
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section
+		id="skills"
+		class={section.className}
+		style={section.style}
+		aria-labelledby="skills-title"
+	>
+		<div class={container.className} style={container.style}>
+			<span
+				class={sectionMarkTilt.className}
+				style={sectionMarkTilt.style}
+				aria-hidden="true"
+			>
+				<Icon svg={icons.code} />
+			</span>
+			<h2 id="skills-title" class={sectionTitle.className} style={sectionTitle.style}>
+				Stack I ship with.
+			</h2>
+			<p class={lede.className} style={lede.style}>
+				Frontend, backend, data, and AI. What I actually ship.
+			</p>
+			<div class={skillGroups.className} style={skillGroups.style}>
+				{
+					skillRows.map((group) => (
+						<div class={skillGroup.className} style={skillGroup.style}>
+							<p class={skillLabel.className} style={skillLabel.style}>
+								{group.label}
+							</p>
+							<ul class={skillList.className} style={skillList.style}>
+								{group.items.map((item) => (
+									<li class={skillChip.className} style={skillChip.style}>
+										{item.svg ? (
+											<span class={skillMark.className} style={skillMark.style}>
+												<Icon svg={item.svg} />
+											</span>
+										) : null}
+										{item.name}
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section
+		id="work"
+		class={section.className}
+		style={section.style}
+		aria-labelledby="work-title"
+	>
+		<div class={container.className} style={container.style}>
+			<span
+				class={sectionMarkSkew.className}
+				style={sectionMarkSkew.style}
+				aria-hidden="true"
+			>
+				<Icon svg={icons.briefcase} />
+			</span>
+			<h2 id="work-title" class={sectionTitle.className} style={sectionTitle.style}>
+				Selected projects.
+			</h2>
+			<ul class={projectList.className} style={projectList.style}>
+				{
+					PROJECTS.map((project) => (
+						<li class={projectItem.className} style={projectItem.style}>
+							<article class={projectBody.className} style={projectBody.style}>
+								<div class={projectHeading.className} style={projectHeading.style}>
+									<h3 class={projectName.className} style={projectName.style}>
+										{project.title}
+									</h3>
+									<p class={projectStack.className} style={projectStack.style}>
+										{project.stack}
+									</p>
+								</div>
+								<ul class={projectBullets.className} style={projectBullets.style}>
+									{project.bullets.map((bullet) => (
+										<li class={projectBullet.className} style={projectBullet.style}>
+											{bullet}
+										</li>
+									))}
+								</ul>
+							</article>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section
+		id="contact"
+		class={section.className}
+		style={section.style}
+		aria-labelledby="contact-title"
+	>
+		<div class={container.className} style={container.style}>
+			<span
+				class={sectionMarkAskew.className}
+				style={sectionMarkAskew.style}
+				aria-hidden="true"
+			>
+				<Icon svg={icons.letterMark} />
+			</span>
+			<h2
+				id="contact-title"
+				class={sectionTitle.className}
+				style={sectionTitle.style}
+			>
+				Say hello.
+			</h2>
+			<p class={lede.className} style={lede.style}>
+				Open to full-stack roles and product work. Email is the best way in.
+			</p>
+			<div class={contactPanel.className} style={contactPanel.style}>
+				<div class={contactActions.className} style={contactActions.style}>
+					<a
+						href={mailHref}
+						class:list={[btnPrimary.className, 'btn-primary']}
+						style={btnPrimary.style}
+					>
+						<Icon svg={icons.letter} />
+						{IDENTITY.email}
+					</a>
+					<a
+						href={githubHref}
+						class={btnGhost.className}
+						style={btnGhost.style}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon svg={icons.github} />
+						GitHub
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

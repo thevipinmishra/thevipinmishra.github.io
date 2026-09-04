@@ -12,9 +12,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.1"
+    "@astrojs/svelte": "^9.0.1",
+    "@stylexjs/stylex": "^0.19.0",
+    "astro": "^7.3.1",
+    "bits-ui": "^2.19.0",
+    "reicon": "^1.2.3",
+    "reicon-brands": "^1.0.2",
+    "reicon-svelte": "^1.0.103",
+    "svelte": "^5.57.0"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@stylexjs/unplugin": "^0.19.0",
+    "typescript": "^6.0.3"
   }
 }

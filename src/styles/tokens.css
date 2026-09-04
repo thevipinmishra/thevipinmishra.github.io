@@ -1,0 +1,132 @@
+/* Radix Colors: Mauve (neutral) + Gold (accent). Values from @radix-ui/colors. */
+
+:root,
+[data-theme='light'] {
+	--mauve-1: #fdfcfd;
+	--mauve-2: #faf9fb;
+	--mauve-3: #f2eff3;
+	--mauve-4: #eae7ec;
+	--mauve-5: #e3dfe6;
+	--mauve-6: #dbd8e0;
+	--mauve-7: #d0cdd7;
+	--mauve-8: #bcbac7;
+	--mauve-9: #8e8c99;
+	--mauve-10: #84828e;
+	--mauve-11: #65636d;
+	--mauve-12: #211f26;
+
+	--gold-1: #fdfdfc;
+	--gold-2: #faf9f2;
+	--gold-3: #f2f0e7;
+	--gold-4: #eae6db;
+	--gold-5: #e1dccf;
+	--gold-6: #d8d0bf;
+	--gold-7: #cbc0aa;
+	--gold-8: #b9a88d;
+	--gold-9: #978365;
+	--gold-10: #8c7a5e;
+	--gold-11: #71624b;
+	--gold-12: #3b352b;
+
+	/* Semantic tokens mapped to Radix scale roles */
+	--color-background: var(--mauve-1);
+	--color-foreground: var(--mauve-12);
+	--color-muted: var(--mauve-11);
+	--color-muted-foreground: var(--mauve-11);
+	--color-card: var(--mauve-2);
+	--color-card-foreground: var(--mauve-12);
+	--color-popover: #ffffff;
+	--color-popover-foreground: var(--mauve-12);
+	--color-border: var(--mauve-6);
+	--color-border-subtle: var(--mauve-4);
+	--color-input: var(--mauve-6);
+	--color-ring: var(--gold-8);
+	/* Dark solid + light label — gold-9 + white fails AA in light */
+	--color-primary: var(--gold-12);
+	--color-primary-foreground: var(--gold-1);
+	--color-primary-hover: var(--mauve-12);
+	--color-accent: var(--gold-3);
+	--color-accent-foreground: var(--gold-11);
+	--color-accent-text: var(--gold-11);
+	--color-secondary: var(--mauve-3);
+	--color-secondary-foreground: var(--mauve-12);
+	--color-destructive: #e5484d;
+	--color-overlay: color-mix(in oklab, #000 40%, transparent);
+	--color-shadow: color-mix(in oklab, var(--mauve-12) 8%, transparent);
+	--color-hero-mesh-a: color-mix(in oklab, var(--gold-4) 50%, transparent);
+	--color-hero-mesh-b: color-mix(in oklab, var(--mauve-3) 75%, transparent);
+	--color-hero-mesh-c: color-mix(in oklab, var(--gold-2) 65%, transparent);
+	--color-image-outline: oklch(0 0 0 / 0.08);
+	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 55%, transparent);
+	--color-portrait-rim: color-mix(in oklab, var(--gold-7) 70%, var(--mauve-5));
+	--color-portrait-glow: color-mix(in oklab, var(--gold-8) 22%, transparent);
+}
+
+[data-theme='dark'] {
+	--mauve-1: #121113;
+	--mauve-2: #1a191b;
+	--mauve-3: #232225;
+	--mauve-4: #2b292d;
+	--mauve-5: #323035;
+	--mauve-6: #3c393f;
+	--mauve-7: #49474e;
+	--mauve-8: #625f69;
+	--mauve-9: #6f6d78;
+	--mauve-10: #7c7a85;
+	--mauve-11: #b5b2bc;
+	--mauve-12: #eeeef0;
+
+	--gold-1: #121211;
+	--gold-2: #1b1a17;
+	--gold-3: #24231f;
+	--gold-4: #2d2b26;
+	--gold-5: #38352e;
+	--gold-6: #444039;
+	--gold-7: #544f46;
+	--gold-8: #696256;
+	--gold-9: #978365;
+	--gold-10: #a39073;
+	--gold-11: #cbb99f;
+	--gold-12: #e8e2d9;
+
+	--color-background: var(--mauve-1);
+	--color-foreground: var(--mauve-12);
+	--color-muted: var(--mauve-11);
+	--color-muted-foreground: var(--mauve-11);
+	--color-card: var(--mauve-2);
+	--color-card-foreground: var(--mauve-12);
+	--color-popover: var(--mauve-2);
+	--color-popover-foreground: var(--mauve-12);
+	--color-border: var(--mauve-6);
+	--color-border-subtle: var(--mauve-4);
+	--color-input: var(--mauve-6);
+	--color-ring: var(--gold-8);
+	/* gold-12 inverts in dark (light cream) + gold-1 (near-black) text */
+	--color-primary: var(--gold-12);
+	--color-primary-foreground: var(--gold-1);
+	--color-primary-hover: var(--gold-11);
+	--color-accent: var(--gold-3);
+	--color-accent-foreground: var(--gold-11);
+	--color-accent-text: var(--gold-11);
+	--color-secondary: var(--mauve-3);
+	--color-secondary-foreground: var(--mauve-12);
+	--color-destructive: #ff6369;
+	--color-overlay: color-mix(in oklab, #000 70%, transparent);
+	--color-shadow: #000;
+	--color-hero-mesh-a: color-mix(in oklab, var(--gold-4) 40%, transparent);
+	--color-hero-mesh-b: color-mix(in oklab, var(--mauve-3) 65%, transparent);
+	--color-hero-mesh-c: color-mix(in oklab, var(--gold-2) 55%, transparent);
+	--color-image-outline: oklch(1 0 0 / 0.1);
+	--color-portrait-ring: color-mix(in oklab, var(--gold-8) 45%, transparent);
+	--color-portrait-rim: color-mix(in oklab, var(--gold-8) 55%, var(--mauve-5));
+	--color-portrait-glow: color-mix(in oklab, var(--gold-9) 18%, transparent);
+}
+
+:root {
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 14px;
+	--ease-out: cubic-bezier(0.2, 0, 0, 1);
+	--space-page: clamp(1.25rem, 4vw, 2.5rem);
+	--measure: 65ch;
+}

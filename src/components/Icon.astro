@@ -1,0 +1,31 @@
+---
+interface Props {
+	svg: string;
+	label?: string;
+	class?: string;
+}
+
+const { svg, label, class: className } = Astro.props;
+---
+
+{
+	label ? (
+		<span class:list={['icon', className]} role="img" aria-label={label} set:html={svg} />
+	) : (
+		<span class:list={['icon', className]} aria-hidden="true" set:html={svg} />
+	)
+}
+
+<style>
+	.icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		line-height: 0;
+	}
+
+	.icon :global(svg) {
+		display: block;
+	}
+</style>

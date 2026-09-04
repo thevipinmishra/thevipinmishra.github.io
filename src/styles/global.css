@@ -1,0 +1,100 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	color-scheme: light dark;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+	transition: none !important;
+}
+
+body {
+	margin: 0;
+	min-height: 100dvh;
+	font-family: var(--font-body), ui-sans-serif, sans-serif;
+	font-optical-sizing: auto;
+	font-synthesis: none;
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+
+/* Beat `a { color: inherit }` so CTA label always matches the fill pair */
+a.btn-primary,
+.btn-primary {
+	background-color: var(--color-primary) !important;
+	color: var(--color-primary-foreground) !important;
+}
+
+a.btn-primary:hover,
+a.btn-primary:focus-visible,
+.btn-primary:hover,
+.btn-primary:focus-visible {
+	background-color: var(--color-primary-hover) !important;
+	color: var(--color-primary-foreground) !important;
+}
+
+a.btn-primary :is(svg, .icon),
+.btn-primary :is(svg, .icon) {
+	color: inherit;
+}
+
+button {
+	font: inherit;
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-ring);
+	outline-offset: 3px;
+}
+
+::selection {
+	background: var(--gold-5);
+	color: var(--gold-12);
+}
+
+[data-theme='dark'] ::selection {
+	background: var(--gold-5);
+	color: var(--gold-12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
